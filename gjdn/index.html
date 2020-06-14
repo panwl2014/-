@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>管局大脑可视化数据大屏</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet"  href="./public/css/global.css">
+        <link rel="stylesheet" href="./public/css/global.animate.css">
+        <link rel="stylesheet" href="./public/css/chart.css">
+        <script src="./public/js/echarts.min.js"></script>
+        <script src="./public/images/svg/icon/iconfont.js"></script>
+    </head>
+    <body>
+        <canvas id="mycanvas"></canvas>
+        <div class="body-bg h-100">
+            
+            <div class="data-head">
+                <span class="color-style">浙江省通信大数据综合管理平台</span>
+            </div>
+    
+            <div class="data-body flex-container">
+                <div class="data-body-left flex-item-1">
+                    <div class="flex-container flex-direction-column h-100">
+                        <div class="echart-box flex-item-1 flex-container flex-direction-column">
+                            <div class="flex-item-1 pt-2 pb-1 flex-container text-vertical-center">拒绝服务攻击检测情况</div>
+                            <div class="flex-item-11 h-100">
+                                <div  id="dos-attack"></div>
+                                <div id="dos-attack-line"></div>
+                            </div>
+                        </div>
+                        <div class="echart-box flex-item-1 flex-container flex-direction-column">
+                                <div class="flex-item-1 pt-2 pb-1 flex-container text-vertical-center">网络安全监测情况</div>
+                                <div class="flex-item-11 flex-container"></div>
+                        </div>
+                        <div class="echart-box flex-item-1 flex-container flex-direction-column">
+                            <div class="flex-item-1  pt-2 pb-1 flex-container text-vertical-center">恶意程序监测情况</div>
+                            <div class="flex-item-11 flex-container">
+                                <div class="flex-item-1"></div>
+                                <div class="flex-item-1"></div>
+                                <div class="flex-item-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            
+                <div class="data-body-center flex-item-3 flex-container flex-direction-column h-100">
+                    <!-- 大屏中间主要部分 -->
+                    <div class="flex-item-2">
+                        <div class="out-circle-border zoomin_animate">
+                            <div class="left-block flex-container flex-direction-column" style="position: absolute;left: 90px;">
+                                <div class="flex-item-1 hulianw_animate">
+                                    <svg class="hd_svg svg_style" xmlns="http://www.w3.org/2000/svg" width="150">
+                                        <image xlink:href="./public/images/svg/hulianwang.svg" src="./public/images/svg/hulianwang.svg" />
+                                        <text x="40" y="107" fill="#2DFFE4">互联网</text>
+                                    </svg>
+                                    <svg class="icon iconhulianwang" aria-hidden="true">
+                                        <use xlink:href="#iconhulianwang"></use>
+                                    </svg>                                      
+                                </div>
+                                <div class="flex-item-1 wanan_animate">
+                                    <svg class="hd_svg2 svg_style" width="150">
+                                        <image xlink:href="./public/images/svg/wanganbg.svg" src="./public/images/svg/wanganbg.svg" />
+                                        <text x="45" y="100" fill="#2DFFE4">网安</text>
+                                    </svg>
+                                    <svg class="icon iconwangan" aria-hidden="true">
+                                        <use xlink:href="#iconwangan"></use>
+                                    </svg>
+                                </div>
+                                <div class="flex-item-1 fanzha_animate">
+                                    <svg class="hd_svg3 svg_style" width="165">
+                                        <image xlink:href="./public/images/svg/fanzha.svg" src="./public/images/svg/fanzha.svg" />
+                                        <text x="55" y="115" fill="#2DFFE4">反诈</text>
+                                    </svg>
+                                    <svg class="icon iconfanzha" aria-hidden="true">
+                                        <use xlink:href="#iconfanzha"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="right-block flex-container flex-direction-column" style="position: absolute;left: 100px;">
+                                <div class="flex-item-1 beian_animate">
+                                    <svg class="hd_svg4 svg_style" width="150">
+                                        <image xlink:href="./public/images/svg/beian.svg" src="./public/images/svg/beian.svg" />
+                                        <text x="75" y="107" fill="#2DFFE4">备案</text>
+                                    </svg>
+                                    <svg class="icon iconbeian" aria-hidden="true">
+                                        <use xlink:href="#iconbeian"></use>
+                                    </svg>
+                                </div>
+                                <div class="flex-item-1 weiwen_animate" width="150">
+                                    <svg class="hd_svg5 svg_style">
+                                        <image xlink:href="./public/images/svg/weiwen.svg" src="./public/images/svg/weiwen.svg" />
+                                        <text x="58" y="103" fill="#2DFFE4">维稳</text>
+                                     </svg>
+                                     <svg class="icon iconweiwengongzuo" aria-hidden="true">
+                                        <use xlink:href="#iconweiwengongzuo"></use>
+                                    </svg>
+                                </div>
+                                <div class="flex-item-1 xuke_animate">
+                                    <svg class="hd_svg6 svg_style" width="165">
+                                        <image xlink:href="./public/images/svg/xuke.svg" src="./public/images/svg/xuke.svg" />
+                                        <text x="80" y="115" fill="#2DFFE4">许可</text>
+                                     </svg>
+                                     <svg class="icon iconxuke" aria-hidden="true">
+                                        <use xlink:href="#iconm_xukeshenqing"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <img src="./public/images/top_circle.png" alt="" class="top_circle transform_top4">
+                            <img src="./public/images/bottom_circle.png" alt="" class="bottom_circle transform_bottom4">
+                            <div class="main-circle flex-container">
+                                
+                                <img src="./public/images/img1.png" width="180px" height="200px" alt="" class="zoomout_animate">
+                                <img src="./public/images/img2.png" width="140px" height="165px" alt="" class="img-center-in">
+                                
+                                <img src="./public/images/img_linecenter.png" alt="" class="img_linecenter">
+                                <!--top-->
+                                <img src="./public/images/img_linetop.png" alt="" class="img_linetop transform_top1">
+                                <img src="./public/images/icon_point1.png" alt="" class="icon_point1_top transform_top2">
+                                <img src="./public/images/img-jiantou1.png" alt="" class="img-jiantou1 transform_top3">
+
+                                <!--bottom-->
+                                <img src="./public/images/img_linebottom.png" alt="" class="img_linebottom transform_bottom1">
+                                <img src="./public/images/icon_point1.png" alt="" class="icon_point1_bottom transform_bottom2">
+                                <img src="./public/images/img-jiantou2.png" alt="" class="img-jiantou2 transform_bottom3">
+
+                                <!--left-->
+                                <img src="./public/images//img_left_line.png" alt="" class="img_left_line transform_left3">
+                                <img src="./public/images/img_littlecircle.png" alt="" class="img_littlecircle_left transform_left4">
+                                <img src="./public/images/icon_point1.png" alt="" class="icon_point1_left transform_left5">
+
+                                <!--right-->
+                                <img src="./public/images/img_right_line.png" alt="" class="img_right_line transform_right3">
+                                <img src="./public/images/img_littlecircle.png" alt="" class="img_littlecircle_right transform_right4">
+                                <img src="./public/images/icon_point1.png" alt="" class="icon_point1_right transform_right5">
+                                
+                                <div class="flex-item-1 flex-container text-vertical-center">
+                                    <div class="flex-item-1 transform_left1">
+                                        <div class="middle-circle"><div class="small-circle"></div></div>
+                                    </div>
+                                    <div class="flex-item-1 ml-4 transform_left2">
+                                        <div class="middle-circle"><div class="small-circle"></div></div>
+                                    </div>
+                                </div>
+                                <div class="flex-item-1 flex-container text-vertical-center ml-5">
+                                    <div class="flex-item-1 transform_right2">
+                                        <div class="middle-circle"><div class="small-circle"></div></div>
+                                    </div>
+                                    <div class="flex-item-1 ml-4 transform_right1">
+                                        <div class="middle-circle"><div class="small-circle"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="flex-item-1 flex-container">
+                        <div class="flex-item-1 flex-container flex-direction-column echart-box">
+                            <div class="flex-item-1  pt-2 pb-1 flex-container text-vertical-center">反诈监测情况</div>
+                            <div class="flex-item-11 flex-container">
+                                <div class="flex-item-1 text-center">
+                                    <div class="box">
+                                        <div class="fz-out-circle"></div>
+                                    </div>
+                                    
+                                    <div class="fz-circle">
+                                        <span>366</span>
+                                        <span>实时监测中</span>
+                                    </div>
+                                    <div class="fz-title">诈骗电话数</div>
+                                </div>
+                                <div class="flex-item-1 text-center">
+                                    <div class="box">
+                                        <div class="fz-out-circle"></div>
+                                    </div>
+                                    <div class="fz-circle">
+                                        <span>366</span>
+                                        <span>实时监测中</span>
+                                    </div>
+                                    <div class="fz-title">诈骗短信数</div>
+                                </div>
+                                <div class="flex-item-1 text-center">
+                                    <div class="box">
+                                        <div class="fz-out-circle"></div>
+                                    </div>
+                                    <div class="fz-circle">
+                                        <span>366</span>
+                                        <span>实时监测中</span>
+                                    </div>
+                                    <div class="fz-title">仿冒APP数</div>
+                                </div>
+                                <div class="flex-item-1 text-center">
+                                    <div class="box">
+                                        <div class="fz-out-circle"></div>
+                                    </div>
+                                    <div class="fz-circle">
+                                        <span>366</span>
+                                        <span>实时监测中</span>
+                                    </div>
+                                    <div class="fz-title">钓鱼网站数</div>
+                                </div>
+                                <div class="flex-item-1 text-center">
+                                    <div class="box">
+                                        <div class="fz-out-circle"></div>
+                                    </div>
+                                    <div class="fz-circle">
+                                        <span>366</span>
+                                        <span>实时监测中</span>
+                                    </div>
+                                    <div class="fz-title">伪基站数量</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="data-body-right  flex-item-1">
+                    <div class="flex-container flex-direction-column h-100">
+                        <div class="echart-box flex-item-2 flex-container flex-direction-column">
+                            <div class="flex-item-1 pt-2 pb-1 flex-container text-vertical-center">省内接入网站备案情况</div>
+                            <div class="flex-item-11 flex-container beian_box">
+                                <div class="flex-item-1 flex-container justify-center text-vertical-end">
+                                    <div>
+                                        <div class="beian_title text-center">未备案数</div>
+                                        <div class="beian_nums text-center">76</div>
+                                    </div>
+                                </div>
+                                <div class="flex-item-1 flex-container justify-center text-vertical-end">
+                                    <div>
+                                        <div class="beian_title text-center">已备案数</div>
+                                        <div class="beian_nums text-center">76</div>
+                                    </div>
+                                </div>
+                                <div class="flex-item-1 flex-container justify-center text-vertical-end">
+                                    <div>
+                                        <div class="beian_title text-center">已备案抽查结果</div>
+                                        <div class="beian_nums text-center">20</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="echart-box flex-item-5 flex-container flex-direction-column">
+                            <div class="flex-item-1 pt-2 pb-1 flex-container text-vertical-center">浙江省ICP许可情况</div>
+                            <div class="flex-item-14 flex-container flex-direction-column">
+                                <div class="flex-item-3"></div>
+                                <div class="flex-item-6"></div>
+                            </div>
+                        </div>
+                        <div class="echart-box flex-item-3 flex-container flex-direction-column">
+                            <div class="flex-item-1 pt-2 pb-1 flex-container text-vertical-center">维稳工作情况</div>
+                            <div class="flex-item-11"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="./public/js/background.js"></script>
+        <script src="./public/js/index.js"></script>
+    </body>
+</html>

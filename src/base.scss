@@ -1,0 +1,54 @@
+@font-face {
+    src: url('../public/static/font/chathura-v1-latin-800.woff.ttf');
+    font-family: "font-Family-self";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+$color: red;
+
+.icon {
+    width: 4em;
+    height: 4em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+#test1 {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #fff;
+}
+#bg {
+    width: 100%;
+    height: 99vh;
+    opacity: .1;
+}
+
+#app {
+    position: absolute;
+    left: 0;
+    top: 0; 
+}
+html,
+body,
+#app {
+    width: 100%;
+    min-width: 1200px;
+}
+
+body {
+    background-image: url('../public/static/img/imgs/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #020b13;
+}
