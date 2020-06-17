@@ -54,7 +54,7 @@ export default {
       }
       return res;
     };
-
+    // console.log(convertData(data), 9876543)
     option = {
       tooltip: {
         trigger: "item",

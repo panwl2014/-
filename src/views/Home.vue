@@ -104,7 +104,6 @@ import ICP from "../components/ICP";
 import Nav from "../components/Nav";
 import Monitor from "../components/Monitor";
 import Weiwen from "../components/WeiWen";
-import worldMap from "../components/worldMap";
 
 export default {
   data() {
@@ -191,7 +190,6 @@ export default {
     Nav,
     Monitor,
     Weiwen,
-    worldMap
   }
 };
 </script>

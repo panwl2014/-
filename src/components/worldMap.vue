@@ -9,12 +9,10 @@
 }
 </style>
 <script>
+import data from 'echarts/map/json/province/zhejiang.json';
 export default {
   mounted() {
     const chart = this.$echarts.init(document.getElementById("container"));
-    this.$http
-      .get("/static/zhejiang.json", {})
-      .catch(data => {
         if (data) {
           const coord = data.features.map(val => {
             return {
@@ -73,7 +71,7 @@ export default {
                 type: "effectScatter",
                 coordinateSystem: "geo",
                 zlevel: 15,
-                symbolSize: 8,
+                symbolSize: 50,
                 rippleEffect: {
                   period: 4,
                   brushType: "stroke",
@@ -127,12 +125,7 @@ export default {
             ]
           };
           chart.setOption(option);
-          chart.on("click", function(params) {
-            console.log(11, params);
-          });
         }
-      })
-      .catch(err => console.log(222, err));
   }
 };
 </script>

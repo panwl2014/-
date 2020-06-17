@@ -1,13 +1,18 @@
 import axios from 'axios';
+import store from '../store/store';
 
-// const http = axios.create()
-axios.defaults.timeout = 120000;
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+const http = axios.create({
+    headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }
+})
 
 // 拦截请求 验证token
-axios.interceptors.request.use(
+http.interceptors.request.use(
     config => {
         // 验证
+        let token = store.state.token;
+        config.headers.token = token;
         return config;
     },
     error => {
@@ -16,17 +21,15 @@ axios.interceptors.request.use(
 );
 
 // response 拦截器
-axios.interceptors.response.use(response => {
-    let data = response.data
-    if (data.code === 200) {
-        return data.data
+http.interceptors.response.use(response => {
+
+    if (response.status <= 400) {
+        return response
     }
-    if (data.code === 401) {
-        alert('重新登录')
-    }
-    return Promise.reject(data)
+  
+    return Promise.reject(response)
 }, error => {
     return Promise.reject(error)
 })
 
-export default axios
+export default http
