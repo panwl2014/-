@@ -1,8 +1,8 @@
 <template>
-  <div class="com-nav">
-    <div class="nav-main">
-      <!-- 互联网 备案 -->
-      <div class="row">
+  <div class="com-control">
+    <div class="control-main">
+      <!-- 管控信息中心 -->
+      <router-link to="/managementControl">
         <div class="bg hulianwang">
           <div class="bgbox">
             <div class="title">
@@ -36,10 +36,13 @@
               <svg class="icon iconhulianwang" aria-hidden="true">
                 <use xlink:href="#iconhulianwang" />
               </svg>
-              <p class="hlw-text">互联网</p>
+              <p class="hlw-text">管控信息中心</p>
             </div>
           </div>
         </div>
+      </router-link>
+      <!-- 信息安全中心 -->
+      <router-link to="/infoSecurityCenter">
         <div class="bg beian">
           <div class="bgbox">
             <div class="title">
@@ -73,13 +76,13 @@
               <svg class="icon iconbeian" aria-hidden="true">
                 <use xlink:href="#iconbeian" />
               </svg>
-              <p class="ba-text">备案</p>
+              <p class="ba-text">信息安全中心</p>
             </div>
           </div>
         </div>
-      </div>
-      <!-- 网安 维稳 -->
-      <div class="row">
+      </router-link>
+      <!-- 网络安全中心 -->
+      <router-link to="/internetSecurity">
         <div class="bg wangan">
           <div class="bgbox">
             <div class="title">
@@ -113,10 +116,13 @@
               <svg class="icon iconwangan" aria-hidden="true">
                 <use xlink:href="#iconwangan" />
               </svg>
-              <p class="wa-text">网安</p>
+              <p class="wa-text">网络安全中心</p>
             </div>
           </div>
         </div>
+      </router-link>
+      <!-- 维稳管控 -->
+      <router-link to="/weiWen">
         <div class="bg weiwen">
           <div class="bgbox">
             <div class="title">
@@ -150,17 +156,16 @@
               <svg class="icon iconweiwengongzuo" aria-hidden="true">
                 <use xlink:href="#iconweiwengongzuo" />
               </svg>
-              <p class="ww-text">维稳</p>
+              <p class="ww-text">维稳管控中心</p>
             </div>
           </div>
         </div>
-      </div>
-      <!-- 反诈 许可 -->
-      <div class="row">
+      </router-link>
+      <!-- 反诈中心 -->
+      <router-link to="/fanzha">
         <div class="bg fanzha">
           <div class="bgbox">
             <div class="title">
-              <!-- <img class="img-svg" src="../../public/static/img/imgs/fanzha.svg" alt /> -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="180"
@@ -190,10 +195,13 @@
               <svg class="icon iconfanzha" aria-hidden="true">
                 <use xlink:href="#iconfanzha" />
               </svg>
-              <p class="fz-text">反诈</p>
+              <p class="fz-text">反诈中心</p>
             </div>
           </div>
         </div>
+      </router-link>
+      <!-- 新业务 -->
+      <router-link to="/newService">
         <div class="bg xuke">
           <div class="bgbox">
             <div class="title">
@@ -223,34 +231,33 @@
                   />
                 </g>
               </svg>
-
               <svg class="icon iconxuke" aria-hidden="true">
                 <use xlink:href="#iconm_xukeshenqing" />
               </svg>
-              <p class="xk-text">许可</p>
+              <p class="xk-text">新业务安全中心</p>
             </div>
           </div>
         </div>
-      </div>
+      </router-link>
       <!-- 中间的大圆 -->
       <div class="big-circle">
-        <img class="circle" src="../../public/static/img/imgs/img_liubianxing.png" alt />
+        <img class="circle" src="../../../public/static/img/imgs/img_liubianxing.png" alt />
       </div>
       <!-- top -->
-      <img class="top-line" src="../../public/static/img/imgs/img_linebottom.png" />
-      <img class="bottom-line" src="../../public/static/img/imgs/img_linebottom.png" />
+      <img class="top-line" src="../../../public/static/img/imgs/img_linebottom.png" />
+      <img class="bottom-line" src="../../../public/static/img/imgs/img_linebottom.png" />
 
-      <img class="top-icon1" src="../../public/static/img/imgs/img-jiantou.png" alt />
-      <img class="bottom-icon1" src="../../public/static/img/imgs/img-jiantou.png" alt />
+      <img class="top-icon1" src="../../../public/static/img/imgs/img-jiantou.png" alt />
+      <img class="bottom-icon1" src="../../../public/static/img/imgs/img-jiantou.png" alt />
 
-      <img class="top-icon2" src="../../public/static/img/imgs/icon_point.png" alt />
-      <img class="bottom-icon2" src="../../public/static/img/imgs/icon_point.png" alt />
+      <img class="top-icon2" src="../../../public/static/img/imgs/icon_point.png" alt />
+      <img class="bottom-icon2" src="../../../public/static/img/imgs/icon_point.png" alt />
 
-      <img class="top1" src="../../public/static/img/imgs/img_topring.png" alt />
-      <img class="bottom1" src="../../public/static/img/imgs/img_bottomring.png" alt />
+      <img class="top1" src="../../../public/static/img/imgs/img_topring.png" alt />
+      <img class="bottom1" src="../../../public/static/img/imgs/img_bottomring.png" alt />
 
       <!-- 旋转的三条线 -->
-      <img src="../../public/static/img/imgs/rotate_circle.png" class="rotate-circle" alt />
+      <img src="../../../public/static/img/imgs/rotate_circle.png" class="rotate-circle" alt />
 
       <!-- 移动的线 -->
       <div class="line-move-lt line-move"></div>
@@ -265,11 +272,11 @@
       <div class="circleRight1 m-circle"></div>
       <div class="circleRight2 m-circle"></div>
       <!-- line -->
-      <img class="m-leftLine" src="../../public/static/img/imgs/img_right_line.png" alt />
-      <img class="m-rightLine" src="../../public/static/img/imgs/img_right_line.png" alt />
+      <img class="m-leftLine" src="../../../public/static/img/imgs/img_right_line.png" alt />
+      <img class="m-rightLine" src="../../../public/static/img/imgs/img_right_line.png" alt />
       <!-- point -->
-      <img class="m-leftPoint" src="../../public/static/img/imgs/icon_point.png" alt />
-      <img class="m-rightPoint" src="../../public/static/img/imgs/icon_point.png" alt />
+      <img class="m-leftPoint" src="../../../public/static/img/imgs/icon_point.png" alt />
+      <img class="m-rightPoint" src="../../../public/static/img/imgs/icon_point.png" alt />
 
       <div class="mimi-circleLeft minicircle"></div>
       <div class="mimi-circleRight minicircle"></div>
@@ -277,22 +284,18 @@
   </div>
 </template>
 <style lang="scss" scoped>
-.com-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #60e6d2;
+.com-control {
   font-size: 12px;
   width: 100%;
+  height: 400px;
   position: relative;
-  margin-top: 120px;
-  .nav-main {
-    transform: scale(1.05);
-    top: 0;
+  display: flex;
+  align-items: center;
+  .control-main {
+    // transform: scale(1.05);
     position: relative;
-    width: 740px;
-    height: 356px;
-    min-width: 740px;
+    width: 100%;
+    height: 345px;
     .bg {
       // position: relative;
       opacity: 0;
@@ -306,7 +309,7 @@
       }
       // 互联网
       .hlw-text {
-        left: 44px;
+        left: 30px;
       }
       .iconhulianwang {
         position: absolute;
@@ -316,7 +319,7 @@
       }
       // 备案
       .ba-text {
-        left: 96px;
+        left: 80px;
       }
       .iconbeian {
         position: absolute;
@@ -326,7 +329,7 @@
       }
       // 网安
       .wa-text {
-        left: 37px;
+        left: 17px;
       }
       .iconwangan {
         position: absolute;
@@ -335,7 +338,7 @@
       }
       // 维稳
       .ww-text {
-        left: 107px;
+        left: 87px;
         z-index: 100;
       }
       .iconweiwengongzuo {
@@ -347,7 +350,7 @@
       }
       // 反诈
       .fz-text {
-        left: 60px;
+        left: 55px;
         z-index: 100;
       }
       .iconfanzha {
@@ -359,7 +362,7 @@
       }
       // 许可
       .xk-text {
-        left: 83px;
+        left: 53px;
         z-index: 100;
       }
       .iconxuke {
@@ -372,8 +375,9 @@
       p {
         position: absolute;
         top: 80px;
-        font-size: 15px;
+        font-size: 12px;
         left: 65px;
+        color: #60e6d2;
       }
       img {
         width: 180px;
@@ -390,11 +394,6 @@
         }
       }
     }
-  }
-  .row {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
   }
 
   // 88************************************************
@@ -537,43 +536,43 @@
   //   }
   // }
   // ************************************************
-  .line-move {
-    height: 2px;
-    width: 15px;
-    background-color: #53d8c5;
-    z-index: 110;
-  }
-  .line-move-lb {
-    opacity: 0;
-    position: absolute;
-    top: 212px;
-    left: 229px;
-    animation: line_move_lt 1.5s 2s ease-in-out forwards infinite;
-  }
-  .line-move-lt {
-    opacity: 0;
-    position: absolute;
-    top: 141px;
-    left: 229px;
-    animation: line_move_lt 1.5s 2s ease-in-out forwards infinite;
-    @keyframes line_move_lt {
-      0% {
-        opacity: 0;
-        width: 0;
-        left: 229px;
-      }
-      40% {
-        opacity: 1;
-        width: 93px;
-        left: 229px;
-      }
-      100% {
-        opacity: 0;
-        width: 0px;
-        left: 322px;
-      }
-    }
-  }
+  // .line-move {
+  //   height: 2px;
+  //   width: 15px;
+  //   background-color: #53d8c5;
+  //   z-index: 110;
+  // }
+  // .line-move-lb {
+  //   opacity: 0;
+  //   position: absolute;
+  //   top: 212px;
+  //   left: 229px;
+  //   animation: line_move_lt 1.5s 2s ease-in-out forwards infinite;
+  // }
+  // .line-move-lt {
+  //   opacity: 0;
+  //   position: absolute;
+  //   top: 141px;
+  //   left: 229px;
+  //   animation: line_move_lt 1.5s 2s ease-in-out forwards infinite;
+  //   @keyframes line_move_lt {
+  //     0% {
+  //       opacity: 0;
+  //       width: 0;
+  //       left: 229px;
+  //     }
+  //     40% {
+  //       opacity: 1;
+  //       width: 93px;
+  //       left: 229px;
+  //     }
+  //     100% {
+  //       opacity: 0;
+  //       width: 0px;
+  //       left: 322px;
+  //     }
+  //   }
+  // }
   .hulianwang {
     animation: hulianwang 1.2s 1s ease-in forwards;
     @keyframes hulianwang {
@@ -679,7 +678,7 @@
   }
   .big-circle {
     display: flex;
-    background-image: url("../../public/static/img/imgs/shizijia.png");
+    background-image: url("../../../public/static/img/imgs/shizijia.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 40%;
@@ -928,7 +927,7 @@
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    border: 30px solid rgba(21, 96, 99, 0.7);
+    border: 25px solid rgba(21, 96, 99, 0.7);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -1003,7 +1002,7 @@
         transform: translateX(0) rotate(180deg);
       }
       100% {
-        opacity: 0.5;
+        opacity: 1;
         transform: translateX(-92px) rotate(180deg);
       }
     }
@@ -1023,7 +1022,7 @@
         transform: translateX(0);
       }
       100% {
-        opacity: 0.5;
+        opacity: 1;
         transform: translateX(92px);
       }
     }
@@ -1036,14 +1035,14 @@
     bottom: 0;
     margin: auto;
     width: 12px;
-    animation: leftPoint 0.5s 1s forwards ease-in;
+    animation: leftPoint 0.5s 1s forwards;
     @keyframes leftPoint {
       0% {
-        transform: translate(100px);
+        transform: translate(130px);
         opacity: 0;
       }
       100% {
-        transform: translateX(147px);
+        transform: translateX(198px);
         opacity: 1;
       }
     }
@@ -1056,14 +1055,14 @@
     bottom: 0;
     margin: auto;
     width: 12px;
-    animation: rightPoint 0.5s 1s forwards ease-in;
+    animation: rightPoint 0.5s 1s forwards;
     @keyframes rightPoint {
       0% {
-        transform: translate(-100px);
+        transform: translate(-130px);
         opacity: 0;
       }
       100% {
-        transform: translateX(-147px);
+        transform: translateX(-198px);
         opacity: 1;
       }
     }

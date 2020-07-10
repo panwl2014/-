@@ -11,9 +11,8 @@
 <style lang="scss" scoped>
 .com-Program {
   overflow: hidden;
-  height: 100%;
   .main {
-    margin-top: 10px;
+    margin-top: 10px; 
     margin-left: 10px;
     display: flex;
     justify-content: space-between;

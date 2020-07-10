@@ -29,6 +29,7 @@ export default {
                 coords: [v.value, coord[0].value]
               });
           });
+          console.log(22222, lines_coord)
 
           this.$echarts.registerMap("zhejiang", data);
           const option = {

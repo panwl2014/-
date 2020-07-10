@@ -16,7 +16,7 @@
 #lineCharts {
   width: 100%;
   height: 120px;
-  background: url('/static/img/charts_img/charts_bg.png');
+  background: url('../../../public/static/img/charts_img/charts_bg.png');
   background-repeat: repeat-x;
   background-position: 18px 35px;
 }
@@ -215,8 +215,6 @@ export default {
     lineCharts.setOption(option1);
     window.addEventListener("resize", () => {
       pieCharts.resize();
-    });
-    window.addEventListener("resize", () => {
       lineCharts.resize();
     });
   }

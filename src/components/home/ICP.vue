@@ -105,7 +105,7 @@ export default {
             style: {
               width: 55,
               height: 55,
-              image: require("../../public/static/img/charts_img/circle.png")
+              image: require("../../../public/static/img/charts_img/circle.png")
             }
           }
         ]

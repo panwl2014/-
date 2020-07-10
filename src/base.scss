@@ -3,13 +3,24 @@
     font-family: "font-Family-self";
 }
 
+@font-face {
+    src: url('../public/static/font/UnidreamLED.ttf');
+    font-family: "font-Family-number";
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
+    cursor: default;
 }
+.text-overfllow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
+}
 $color: red;
 
 .icon {
@@ -51,4 +62,27 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #020b13;
+}
+
+.animate-left {
+    animation: showright 1.2s forwards;
+        @keyframes showright {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
+        }
+}
+.animate-right {
+    animation: showleft 1.2s ease-out forwards;
+        @keyframes showleft {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
+        }
 }

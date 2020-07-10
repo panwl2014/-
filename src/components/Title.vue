@@ -4,7 +4,7 @@
       <span class="icon-line"></span>
       <span class="title">{{title}}</span>
     </p>
-    <div class="img"></div>
+    <span class="img"></span>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
     flex: 1;
     margin-left: 20px;
     height: 100%;
-    background-image: url("/static/img/imgs/title_right.png");
+    background-image: url("../../public/static/img/imgs/title_bg.png");
     background-repeat: no-repeat;
     background-position: 0 center;
   }

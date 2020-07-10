@@ -10,34 +10,52 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: () => import('../views/Login.vue') },
-  { path: '/home', component: () => import('../views/Home.vue') },
+  // { path: '/', component: () => import('../views/Login.vue') },
+  { path: '/', component: () => import('../views/Home.vue') },
+
+  // 反诈
+  { path: '/ip', component: () => import('../views/IPConvergence.vue') },
+  { path: '/fanzha', component: () => import('../views/FanZha.vue') },
+  // 信息安全
+  { path: '/infoSecurityCenter', component: () => import('../views/InfoSecurityCenter.vue') },
+  // 网络安全
+  { path: '/internetSecurity', component: () => import('../views/InternetSecurity.vue') },
+  // 管控信息中心
+  { path: '/managementControl', component: () => import('../views/ManagementControl.vue') },
+  // 新业务安全中心
+  { path: '/newService', component: () => import('../views/NewService.vue') },
+
+  // { path: '/systemManagement', component: () => import('../views/SystemManagement.vue') },
+
+  // 维稳
+  { path: '/weiWen', component: () => import('../views/WeiWen.vue') },
+
+  // 测试
   { path: '/map', component: () => import('../components/worldMap.vue') },
-  { path: '/map3d', component: () => import('../components/Map3D.vue') },
-  { path: '/datav', component: () => import('../views/Datav.vue') }
+  { path: '/map3d', component: () => import('../components/test/Map3D.vue') },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   routes
 })
 
 export default router
 
-router.beforeEach((to, from, next) => {
-  let isLogin = localStorage.getItem('token')
+// router.beforeEach((to, from, next) => {
+//   let isLogin = localStorage.getItem('token')
 
-  if (to.path == '/') {
-    if (isLogin) {
-      next('/home')
-    } else {
-      next()
-    }
-  } else {
-    if (isLogin) {
-      next()
-    } else {
-      next('/')
-    }
-  }
-})
+//   if (to.path == '/') {
+//     if (isLogin) {
+//       next('/home')
+//     } else {
+//       next()
+//     }
+//   } else {
+//     if (isLogin) {
+//       next()
+//     } else {
+//       next('/')
+//     }
+//   }
+// })

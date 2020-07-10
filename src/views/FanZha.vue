@@ -1,5 +1,10 @@
 <template>
-    <div class="page-mc">
-        <h1>反诈中心</h1>
+    <div class="page-ip-Convergence">
+        反诈
     </div>
 </template>
+
+<script>
+export default {
+}
+</script>
