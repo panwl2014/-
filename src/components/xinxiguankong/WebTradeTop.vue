@@ -1,30 +1,26 @@
 <template>
   <div class="com-wangzhanfenbu">
     <li class="top10" id="title">
-      <!-- <span class="num">{{title[0]}}</span> -->
-      <!-- <span class="type">{{title[1]}}</span> -->
       <span class="top"></span>
       <span class="idc">{{title[2]}}</span>
       <span class="num2">{{title[3]}}</span>
     </li>
     <li v-for="(item, index) in chartData" :key="index" :class="'top10'">
-      <!-- <span class="num">
-        <span class="left-data" :style="{width: `${item.num/1000 * 100 + '%'}`}"></span>
-        <span class="left-num">{{item.num}}</span>
-      </span> -->
-      <!-- <span class="type">{{item.type}}</span>   -->
       <span :class="(index <= 2) ? 'topColor': '' + 'top' ">{{index + 1}}</span>
       <span class="idc">{{item.name}}</span>
       <span class="num2">
-        <span class="right-data" :style="{width: `${item.value/Math.max(...chartData.map(item => item.value)) * 100 + '%'}`}"></span>
-        <span class="right-num">{{item.value}}</span>
+        <span
+          class="right-data"
+          :style="{width: `${item.value/Math.max(...chartData.map(item => item.value)) * 100 + '%'}`}"
+        ></span>
       </span>
+      <span class="right-num">{{item.value}}</span>
     </li>
   </div>
 </template>
 <script>
 export default {
-  props: ['chartData', 'title'],
+  props: ["chartData", "title"]
 };
 </script>
 
@@ -32,47 +28,35 @@ export default {
 .com-wangzhanfenbu {
   width: 100%;
   position: relative;
-  font-size: 11px;
+  font-size: 12rem;
   line-height: 12px;
   .top10 {
+    position: relative;
+    height: 12px;
+    margin: 10rem 0;
     span {
-      height: 10px;
+      height: 10rem;
     }
     display: flex;
     justify-content: space-between;
-    margin: 8px 0 8px 10px;
+    margin: 12rem 0 12rem 10rem;
     // .num,
     .num2 {
-        text-align: right;
+      text-align: right;
       background-color: rgba(80, 80, 80, 0.4);
       width: 50%;
       color: rgb(187, 187, 187);
       position: relative;
-      overflow: hidden;
+      overflow-y: hidden;
     }
-    // .num {
-    //   .left-data {
-    //     background-color: #87726e;
-    //     display: block;
-    //     height: 100%;
-    //     position: absolute;
-    //     right: 0;
-    //     animation: showleft 1.2s ease-out forwards;
-    //     @keyframes showleft {
-    //       0% {
-    //         transform: translateX(100%);
-    //       }
-    //       100% {
-    //         transform: translateX(0%);
-    //       }
-    //     }
-    //   }
-    //   .left-num {
-    //     position: absolute;
-    //     left: 2px;
-    //     top: 0;
-    //   }
-    // }
+    .right-num {
+      height: 12px;
+      position: absolute;
+      right: 2rem;
+      top: 0;
+      line-height: 10rem;
+       color: rgb(187, 187, 187);
+    }
     .num2 {
       .right-data {
         background-color: rgb(121, 104, 102);
@@ -90,22 +74,8 @@ export default {
           }
         }
       }
-      .right-num {
-        position: absolute;
-        right: 2px;
-        top: 0;
-      }
     }
-    // .type {
-    //   color: #488877;
-    //   width: 20%;
-    //   text-align: right;
-    //   text-overflow: ellipsis;
-    //   white-space: nowrap;
-    //   overflow: hidden;
-    //   height: 12px;
-    //   direction: rtl;
-    // }
+
     .idc {
       width: 30%;
       color: #87726e;
@@ -119,7 +89,7 @@ export default {
       color: rgb(202, 202, 202);
       height: 15px;
       width: 15px;
-      border-radius: 1px;
+      border-radius: 2px;
       text-align: center;
       line-height: 15px;
     }
@@ -128,20 +98,21 @@ export default {
       color: #fff;
       height: 15px;
       width: 15px;
-      border-radius: 1px;
+      border-radius: 2px;
       text-align: center;
       line-height: 15px;
     }
   }
   #title {
-      span {
-          height: 20px;
-      }
-    .num, .num2 {
-        background-color: transparent;
+    span {
+      height: 20rem;
+    }
+    .num,
+    .num2 {
+      background-color: transparent;
     }
     .top {
-        background-color: transparent;
+      background-color: transparent;
     }
   }
 }

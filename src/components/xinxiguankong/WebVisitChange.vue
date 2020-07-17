@@ -1,5 +1,5 @@
 <template>
-  <div class="com-wanghanhuoyue">
+  <div class="com-wanghanhuoyue" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
     <div class="box" ref="wanghanhuoyue"></div>
     <div class="tab">
       <div>
@@ -11,66 +11,37 @@
       </div>
     </div>
     <p class="y">网站数</p>
-    <p class="x">时间</p>
+    <p class="x">{{isCheck == 'day'? '小时':'日期'}}</p>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      data: [
-        { name: 5.1, value: 2000 },
-        { name: 5.1, value: 2500 },
-        { name: 5.1, value: 2400 },
-        { name: 5.1, value: 2000 },
-        { name: 5.1, value: 2800 },
-        { name: 5.1, value: 2500 },
-        { name: 5.1, value: 2300 },
-        { name: 5.1, value: 2000 },
-        { name: 5.1, value: 2500 },
-        { name: 5.1, value: 2400 },
-        { name: 5.1, value: 2000 },
-        { name: 5.1, value: 2500 },
-        { name: 5.1, value: 2400 },
-        { name: 5.1, value: 2000 },
-        { name: 5.1, value: 2800 },
-        { name: 5.1, value: 2500 },
-        { name: 5.1, value: 2300 },
-        { name: 5.1, value: 2000 },
-        { name: 5.1, value: 2500 },
-        { name: 5.1, value: 2400 },
-        { name: 5.1, value: 2000 },
-        { name: 5.1, value: 2500 },
-        { name: 5.1, value: 2400 },
-        { name: 5.1, value: 2000 },
-        { name: 5.1, value: 2800 },
-        { name: 5.1, value: 2500 },
-        { name: 5.1, value: 2300 },
-        { name: 5.1, value: 2000 },
-        { name: 5.1, value: 2500 },
-        { name: 5.1, value: 2400 }
-      ],
       isCheck: "day",
-      chartData: ''
+      chartData: "",
+      start: 0,
+      end: 30,
+      timer: null
     };
   },
-  // computed: {
-  //   getData() {
-  //     return this.data;
-  //   }
-  // },
   methods: {
     showChart(chartType) {
+      this.isCheck != chartType && this.initChart();
       this.isCheck = chartType;
       switch (chartType) {
         case "day":
-          this.chartData = this.$store.state.controlData.visit_website_last_24hours_trend;
+          this.end = 0;
+          (this.start = 30),
+            (this.chartData = this.$store.state.controlData.visit_website_last_24hours_trend);
           break;
         case "week":
           this.chartData = this.$store.state.controlData.visit_website_last_week_trend;
           break;
         case "month":
-          this.chartData = this.$store.state.controlData.visit_website_last_month_trend;
+          this.end = 0;
+          (this.start = 30),
+            (this.chartData = this.$store.state.controlData.visit_website_last_month_trend);
           break;
         case "quarter":
           this.chartData = this.$store.state.controlData.visit_website_last_4quarter_trend;
@@ -96,79 +67,10 @@ export default {
           left: "10",
           right: "10%",
           top: "20%",
-          bottom: "5%",
+          bottom: "0%",
           containLabel: true
         },
         tooltip: this.$store.state.tooltip[1],
-        // tooltip: {
-        //   confine: true,
-        //   trigger: "axis",
-        //   axisPointer: {
-        //     label: {
-        //       show: true,
-        //       textStyle: {
-        //         fontSize: 10
-        //       }
-        //     },
-        //     lineStyle: {
-        //       width: 0
-        //     }
-        //   },
-        //   backgroundColor: "#fff",
-        //   textStyle: {
-        //     color: "#5c6c7c"
-        //   },
-        //   padding: [10, 10],
-        //   extraCssText: "box-shadow: 1px 0 2px 0 rgba(163,163,163,0.5)"
-        // },
-        // legend: {
-        //   show: true,
-        //   icon: "circle",
-        //   itemWidth: 8,
-        //   right: 0,
-        //   orient: 'vertical',
-        //   textStyle: {
-        //     color: '#9e9fa3',
-        //     fontSize: 10
-        //   }
-        // },
-
-        // legend: {
-        //   data: ['高危漏洞', '中危漏洞', '低危漏洞'],
-        //   orient: "vertical",
-        //   right: 0,
-        //   top: 0,
-        //   itemGap: 5,
-        //   icon: "rect",
-        //   itemWidth:8,
-        //   itemHeight:8,
-        //   textStyle: {
-        //     color: "#fff",
-        //     rich: {
-        //       name: {
-        //         fontSize: 10,
-        //         width: 50,
-        //         height: 10,
-        //         align: "left"
-
-        //       },
-        //       value: {
-        //         width: 40,
-        //         height: 10,
-        //         fontSize: 10,
-        //         align: "right"
-        //       }
-        //     }
-        //   },
-        //   formatter(name) {
-        //     let data = option.series[0].data;
-        //     let allData = data.reduce((prev, item) => +item.value + +prev, 0);
-        //     // console.log(allData)
-        //     let num = 0;
-        //     num = "{name|" + name + "}" + "{value|" + allData + "}";
-        //     return num;
-        //   }
-        // },
 
         xAxis: [
           {
@@ -224,18 +126,9 @@ export default {
             }
           }
         ],
-        // dataZoom: [
-        //   {
-        //     type: "inside",
-        //     show: true,
-        //     xAxisIndex: [0],
-        //     start: 1,
-        //     end: 30
-        //   }
-        // ],
         series: [
           {
-            name: "低危漏洞",
+            name: "访问量",
             type: "bar",
             stack: "总量",
             barWidth: 10,
@@ -248,7 +141,9 @@ export default {
           },
 
           {
-            name: "总数",
+            tooltip: {
+              show: false
+            },
             type: "line",
             symbolSize: 5,
             symbol: "circle",
@@ -269,13 +164,40 @@ export default {
           }
         ]
       };
-      if (this.isCheck == "day" || this.isCheck == "month" ) {
-        option.dataZoom = this.$store.state.dataZoom;
+      if (this.isCheck == "day" || this.isCheck == "month") {
+        let dataZoom = [
+          {
+            type: "inside",
+            show: true,
+            xAxisIndex: [0],
+            start: this.start,
+            end: this.end
+          }
+        ];
+        option.dataZoom = dataZoom;
       }
       chart.setOption(option, true);
       window.addEventListener("resize", () => {
         chart.resize();
       });
+    },
+
+    mouseEnter() {
+      clearInterval(this.timer);
+      this.timer = null;
+    },
+
+    mouseLeave() {
+      this.timer = setInterval(() => {
+        if (this.start >= 70) {
+          this.start = 0;
+        }
+        if (this.end >= 100) {
+          this.end = 30;
+        }
+        this.start = this.start + 5;
+        this.end = this.end + 5;
+      }, 3000);
     }
   },
   watch: {
@@ -283,21 +205,35 @@ export default {
       if (a !== b) {
         this.initChart();
       }
+    },
+    end(a, b) {
+      if (a !== b) {
+        this.initChart();
+      }
     }
   },
   mounted() {
     this.chartData = this.$store.state.controlData.visit_website_last_24hours_trend;
-    console.log(233,this.chartData)
     this.initChart();
+    this.timer = setInterval(() => {
+      if (this.start >= 70) {
+        this.start = 0;
+      }
+      if (this.end >= 100) {
+        this.end = 30;
+      }
+      this.start = this.start + 5;
+      this.end = this.end + 5;
+    }, 3000);
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .com-wanghanhuoyue {
-  // border: 1px solid orange;
+  // border: 1rem solid orange;
   width: 100%;
-  height: calc(100% - 30px);
+  height: calc(100% - 30rem);
   position: relative;
   overflow: hidden;
   .box {
@@ -305,30 +241,30 @@ export default {
     height: 100%;
   }
   p {
-    font-size: 10px;
+    font-size: 10rem;
     position: absolute;
     color: #9e9fa3;
     &.y {
       top: 5%;
-      left: 12px;
+      left: 12rem;
     }
     &.x {
-      bottom: 5%;
-      right: 10px;
+      bottom: 0%;
+      right: 10rem;
     }
   }
   .tab {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 10rem;
+    right: 10rem;
     z-index: 10;
     span {
       display: inline-block;
-      font-size: 11px;
-      padding: 2px 5px;
-      margin: 0 3px;
+      font-size: 11rem;
+      padding: 2rem 5rem;
+      margin: 0 3rem;
       background-color: #133841;
-      border: 1px solid #2f4c4d;
+      border: 1rem solid #2f4c4d;
       color: #70878d;
       &:hover {
         cursor: pointer;
@@ -336,7 +272,7 @@ export default {
     }
     .active {
       background: #226567;
-      border: 1px solid #439d84;
+      border: 1rem solid #439d84;
       color: #fff;
     }
   }

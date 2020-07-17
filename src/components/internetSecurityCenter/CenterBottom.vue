@@ -27,8 +27,7 @@ export default {
   justify-content: space-between;
   & > div {
     width: 48%;
-    height: 250px;
-    // border: 1px solid red;
+    height: 305rem;
   }
 }
 </style>

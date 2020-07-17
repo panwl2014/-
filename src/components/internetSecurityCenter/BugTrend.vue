@@ -16,7 +16,7 @@
         <span class="top">
           <span :class="'t' + (index + 1)">{{index + 1}}</span>
         </span>
-        <span class="name">{{item.name}}</span>
+        <span class="name text-overfllow">{{item.name}}</span>
         <span class="bg">
           <span class="data" :style="{width: (item.value/chartData[0].value * 100) + '%'}"></span>
           <span class="num">{{item.value}}</span>
@@ -28,30 +28,32 @@
 
 <style lang="scss" scoped>
 .com-BugTrend {
+  line-height: 12px;
   width: 100%;
-  height: calc(100% - 30px);
+  height: calc(100% - 30rem);
   display: flex;
-  padding-top: 10px;
-  padding-left: 10px;
-  font-size: 12px;
+  padding-top: 10rem;
+  padding-left: 10rem;
+  font-size: 12rem;
+  margin-top: 10rem;
   .ctrl {
-    font-size: 11px;
+    font-size: 11rem;
     color: #fff;
     height: 80%;
-    padding-right: 10px;
+    padding-right: 10rem;
     span {
       display: block;
-      height: 22px;
-      padding: 0 5px;
-      line-height: 20px;
+      height: 22rem;
+      padding: 0 5rem;
+      line-height: 20rem;
       color: #929294;
-      border: 1px solid #2f4c4d;
+      border: 1rem solid #2f4c4d;
       text-align: center;
-      margin-bottom: 10px;
-      border-radius: 2px;
+      margin-bottom: 10rem;
+      border-radius: 2rem;
       background-color: #133841;
       &.active {
-        border: 1px solid #39a397;
+        border: 1rem solid #39a397;
         color: #fff;
         background: #226566;
       }
@@ -59,22 +61,30 @@
   }
   .right {
     width: 70%;
+    height: 98%;
     color: #82888f;
-    font-size: 11px;
+    font-size: 12rem;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     .name {
+      line-height: 12px;
+      width: 25%;
       text-align: left;
     }
     .bg {
       text-align: right;
     }
     li {
+      height: 12px;
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      display: flex;
       &.title {
-        height: 16px;
-        line-height: 16px;
+        height: 16rem;
+        line-height: 16rem;
         background-color: #102a30;
         .top,
         .name,
@@ -82,20 +92,14 @@
           background-color: rgba(1, 1, 1, 0);
         }
       }
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      display: flex;
-      margin-bottom: 6px;
-      height: 12px;
       .top {
         //   background-color: orange;
-        width: 10%;
+        width: 15%;
         span {
           width: 80%;
           height: 100%;
           background-color: #555f61;
-          border-radius: 3px 0 3px 0;
+          border-radius: 3rem 0 3rem 0;
           display: block;
           margin-left: 10%;
           &.t1 {
@@ -113,7 +117,7 @@
         }
       }
       .name {
-        width: 20%;
+        width: 25%;
         height: 100%;
         //   background-color: orange;
       }
@@ -143,7 +147,7 @@
         .num {
           position: absolute;
           top: 0;
-          right: 5px;
+          right: 5rem;
         }
       }
     }
@@ -161,7 +165,7 @@ export default {
   },
   created() {
     this.chartData = this.$store.state.webSecurityData.industry_loopholes_last_30day;
-    console.log("test", this.chartData);
+    // console.log("test", this.chartData);
   },
   computed: {
     getNum() {

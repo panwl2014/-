@@ -73,7 +73,7 @@ export default {
         },
         series: [
           {
-            name: "被下载次数",
+            name: "信安事件数",
             type: "bar",
             barWidth: 8,
             label: {
@@ -114,7 +114,7 @@ export default {
 <style lang="scss" scoped>
 .com-info-security-city {
   width: 100%;
-  height: 190px;
+  height: 250rem;
   .chart {
     width: 100%;
     height: 100%;

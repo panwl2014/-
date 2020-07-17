@@ -11,14 +11,8 @@
             <img src="../../public/static/img/icons/icon_search.png" alt />
           </div>
         </div>
-        <div class="ip-show">
-          <div class="box">
-            <div class="mark1" @click="clickIp(1)"></div>
-            <div class="mark2" @click="clickIp(2)"></div>
-            <div class="mark3" @click="clickIp(3)"></div>
-
-            <img :src="require(`../../public/static/img/imgs/ip/ip_info${bg}.png`)" alt />
-          </div>
+        <div class="chart" ref="chart">
+          <!-- <img src="../../public/static/img/imgs/ip/ip_info1.png" alt /> -->
         </div>
       </div>
       <div class="right">
@@ -37,7 +31,10 @@
           <vue-scroll :ops="ops">
             <dl v-for="(item, index) in showData" :key="index">
               <dt>{{item.type}}</dt>
-              <dd v-for="(item1, index1) in item.data" :key="index1">{{item1.name + '：' + item1.value}}</dd>
+              <dd
+                v-for="(item1, index1) in item.data"
+                :key="index1"
+              >{{item1.name + '：' + item1.value}}</dd>
             </dl>
           </vue-scroll>
         </div>
@@ -47,18 +44,17 @@
 </template>
 <style lang="scss" scoped>
 .page-ip-Convergence {
+  width: 100%;
   .main {
-    // border: 1rem solid red;
     padding-left: 10rem;
     padding-right: 10rem;
     padding-bottom: 10rem;
-    height: calc(100vh - 60rem);
-    margin-top: -25rem;
+    height: calc(100vh - 70rem);
+    margin-top: -35rem;
     display: flex;
     .left {
       width: 80%;
       height: 100%;
-      // border: 1rem solid red;
       .search-bar {
         height: 30rem;
         width: 25%;
@@ -97,56 +93,15 @@
           }
         }
       }
-      .ip-show {
+      .chart {
         width: 100%;
         height: calc(100% - 30rem);
-        .box {
+        border: 1rem solid red;
+        padding: 50rem 30rem;
+        img {
           width: 100%;
           height: 100%;
-          // background-color: #fff;
-          position: relative;
-        }
-        // border: 1rem solid orange;
-        .mark1,
-        .mark2,
-        .mark3 {
-          position: absolute;
-          width: 100rem;
-          height: 100rem;
           border: 1rem solid red;
-          opacity: .1;
-        }
-        .mark1 {
-          width: 200rem;
-          height: 200rem;
-          left: 44%;
-          top: 40%;
-          z-index: 12;
-        }
-        .mark2 {
-          width: 100rem;
-          height: 100rem;
-          left: 23.5%;
-          top: 19%;
-          z-index: 11;
-        }
-        .mark3 {
-          z-index: 10;
-          width: 80rem;
-          height: 80rem;
-          left: 28%;
-          top: 3%;
-        }
-        img {
-          // background-color: red;
-          width: 95%;
-          // border: 1rem solid red;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          margin: auto;
         }
       }
     }
@@ -209,15 +164,6 @@
         &:hover .bar {
           opacity: 0.5;
         }
-        // .bar {
-        //   width: 4rem;
-        //   border-radius: 2rem;
-        //   position: absolute;
-        //   background-color: #34605e;
-        //   opacity: 0;
-        //   height: calc(100%);
-        //   right: 8rem;
-        // }
         dl {
           margin-bottom: 25rem;
           dt {
@@ -241,19 +187,20 @@ import ChildHeader from "../components/ChildHeader";
 export default {
   data() {
     return {
-      searchData: "",
-      check: "left",
-      bg: 1,
-      showData: "",
-       ops: {
+      ops: {
         bar: {
           hoverStyle: true,
           onlyShowBarOnScroll: false,
           background: "#34605e",
           // opacity: 0.3,
-          size: "4rem"
+          size: "4px"
         }
       },
+      searchData: "",
+      check: "left",
+      bg: 1,
+      showData: "",
+      ipData: '',
       data: {
         data1: {
           ipInfoLeft: [
@@ -403,8 +350,130 @@ export default {
     };
   },
   components: { ChildHeader },
+
+  mounted() {
+    const chart = this.$echarts.init(this.$refs.chart);
+    
+    var lines = [
+      { source: 0, target: 1, value: " " },
+      { source: 1, target: 2, value: " " },
+      { source: 1, target: 3, value: " " },
+      { source: 1, target: 4, value: " " },
+      { source: 0, target: 5, value: " " },
+      { source: 5, target: 6, value: " " },
+      { source: 5, target: 7, value: " " },
+      { source: 5, target: 8, value: " " },
+      { source: 0, target: 9, value: " " },
+      { source: 9, target: 10, value: " " },
+      { source: 9, target: 11, value: " " },
+      { source: 9, target: 12, value: " " }
+    ];
+    var datas = [
+      { name: "项目", draggable: true },
+      { name: "人员", category: 0, draggable: true },
+      { name: "人员1", category: 0, draggable: true },
+      { name: "人员2", category: 0, draggable: true },
+      { name: "人dfgdfgfdgdf员3", category: 0, draggable: true },
+      { name: "机构", category: 1, draggable: true },
+      { name: "机构1", category: 1, draggable: true },
+      { name: "机构2", category: 1, draggable: true },
+      { name: "机构3", category: 1, draggable: true },
+      { name: "文献", category: 2, draggable: true },
+      { name: "文献1", category: 2, draggable: true },
+      { name: "文献2", category: 2, draggable: true },
+      { name: "文献3", category: 2, draggable: true }
+    ];
+    var option = {
+      title: {
+        text: ""
+      },
+      tooltip: {},
+      animationDurationUpdate: 1500,
+      label: {
+        normal: {
+          show: true,
+          textStyle: {
+            fontSize: 12
+          }
+        }
+      },
+      series: [
+        {
+          type: "graph",
+          layout: "force", //采用力引导布局
+          symbolSize: 100,
+          legendHoverLink: true, //启用图例 hover 时的联动高亮。
+          focusNodeAdjacency: true, //在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点。
+          roam: true,
+          label: {
+            normal: {
+              show: true,
+              position: "inside",
+              textStyle: {
+                fontSize: 12
+              }
+            }
+          },
+          force: {
+            repulsion: 2000
+          },
+          edgeSymbolSize: [4, 50],
+          edgeLabel: {
+            normal: {
+              show: true,
+              textStyle: {
+                fontSize: 40
+              },
+              formatter: "{c}"
+            }
+          },
+          categories: [
+            {
+              itemStyle: {
+                normal: {
+                  color: "orange"
+                }
+              }
+            },
+            {
+              itemStyle: {
+                normal: {
+                  color: "blue"
+                }
+              }
+            },
+            {
+              itemStyle: {
+                normal: {
+                  color: "green"
+                }
+              }
+            }
+          ],
+          data: datas,
+          links: lines,
+          lineStyle: {
+            normal: {
+              opacity: 0.9,
+              width: 1,
+              curveness: 0
+            }
+          }
+        }
+      ]
+    };
+
+    chart.setOption(option);
+    window.addEventListener("resize", () => {
+      chart.resize();
+    });
+  },
   created() {
     this.showData = this.data.data1.ipInfoLeft;
+     this.$http.get("/showData/getIpInfo/192.168.2.1").then(({data}) => {
+       this.ipData = data,
+       console.log(this.ipData)
+     })
   },
   methods: {
     changeTab(e) {

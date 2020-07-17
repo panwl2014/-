@@ -47,10 +47,12 @@ export default {
 
 <style lang="scss" scoped>
 .ISMSTop {
+  margin-top: 15rem;
   width: 100%;
-  padding: 10px;
+  padding: 10rem;
   .tab {
     width: 100%;
+    margin-bottom: 30rem;
     span {
       &:first-child {
         border-right: none;
@@ -59,38 +61,38 @@ export default {
         border-left: none;
       }
       &.active {
-        border: 1px solid #39a397;
+        border: 1rem solid #39a397;
         color: #6beebb;
       }
       display: inline-block;
-      height: 25px;
-      line-height: 25px;
+      height: 25rem;
+      line-height: 25rem;
       width: 50%;
       color: #929294;
-      border: 1px solid #4a515b;
-      font-size: 12px;
+      border: 1rem solid #4a515b;
+      font-size: 12rem;
       text-align: center;
     }
   }
   ul {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 20rem;
     li {
       width: 100%;
-      font-size: 12px;
+      font-size: 12rem;
       justify-content: space-between;
       display: flex;
       height: 12px;
-      margin: 15px 0;
+      margin: 20rem 0;
       align-items: center;
       .top {
-          font-size: 10px;
+        font-size: 10rem;
         background-color: #3f3f3f;
         color: rgba(128, 128, 128, 1);
-        width: 14px;
-        height: 14px;
-        line-height: 14px;
-        margin-right: 10px;
+        width: 20px;
+        height: 16px;
+        line-height: 16px;
+        margin-right: 10rem;
         text-align: center;
         border-radius: 50%;
         &.mark {
@@ -108,12 +110,12 @@ export default {
       .bg {
         background-image: url("../../../public/static/img/imgs/chart_bar_bg_op.png");
         width: 50%;
-        height: 8px;
+        height: 8rem;
         position: relative;
         overflow: hidden;
         .data {
           width: 55%;
-          height: 8px;
+          height: 8rem;
           position: absolute;
           left: 0;
           background-image: url("../../../public/static/img/imgs/chart_bar_bg.png");
@@ -132,7 +134,7 @@ export default {
         width: 15%;
         text-align: right;
         color: #b9babc;
-        font-size: 11px;
+        font-size: 12rem;
       }
     }
   }

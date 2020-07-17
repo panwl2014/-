@@ -15,7 +15,7 @@ const routes = [
 
   // 反诈
   { path: '/ip', component: () => import('../views/IPConvergence.vue') },
-  { path: '/fanzha', component: () => import('../views/FanZha.vue') },
+  // { path: '/fanzha', component: () => import('../views/FanZha.vue') },
   // 信息安全
   { path: '/infoSecurityCenter', component: () => import('../views/InfoSecurityCenter.vue') },
   // 网络安全
@@ -23,12 +23,12 @@ const routes = [
   // 管控信息中心
   { path: '/managementControl', component: () => import('../views/ManagementControl.vue') },
   // 新业务安全中心
-  { path: '/newService', component: () => import('../views/NewService.vue') },
+  // { path: '/newService', component: () => import('../views/NewService.vue') },
 
   // { path: '/systemManagement', component: () => import('../views/SystemManagement.vue') },
 
   // 维稳
-  { path: '/weiWen', component: () => import('../views/WeiWen.vue') },
+  // { path: '/weiWen', component: () => import('../views/WeiWen.vue') },
 
   // 测试
   { path: '/map', component: () => import('../components/worldMap.vue') },

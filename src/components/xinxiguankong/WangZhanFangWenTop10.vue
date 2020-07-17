@@ -1,6 +1,7 @@
 <template>
-  <div class="com-visittop">
+  <div class="com-visittop" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
     <div class="chart" ref="chart"></div>
+    <div class="x">访问量</div>
     <div class="ctrl">
       <p class="tab">
         <span :class="tab == 'left' ? 'active': ''" @click="showChart('left')">本省接入网站访问排名</span>
@@ -48,33 +49,40 @@
 </template>
 <style lang="scss" scoped>
 .com-visittop {
-  height: 300px;
+  padding-top: 20rem;
+  height: 400rem;
   width: 100%;
   position: relative;
   .chart {
     width: 100%;
     height: 100%;
   }
+  .x {
+    position: absolute;
+    bottom: 1%;
+    right: 0;
+    color: #909196;
+  }
   .ctrl {
     ul {
       position: absolute;
-      top: 60px;
+      top: 80rem;
       li {
         img {
           width: 100%;
           height: 100%;
         }
-        margin-left: 5px;
+        margin-left: 5rem;
         display: block;
-        width: 25px;
-        height: 25px;
-        margin-bottom: 10px;
+        width: 25rem;
+        height: 25rem;
+        margin-bottom: 10rem;
       }
     }
     .tab {
       width: 100%;
       position: absolute;
-      top: 10px;
+      top: 25rem;
       span {
         &:first-child {
           border-right: none;
@@ -83,16 +91,16 @@
           border-left: none;
         }
         &.active {
-          border: 1px solid #39a397;
+          border: 1rem solid #39a397;
           color: #6beebb;
         }
         display: inline-block;
-        height: 25px;
-        line-height: 25px;
+        height: 25rem;
+        line-height: 25rem;
         width: 50%;
         color: #929294;
-        border: 1px solid #4a515b;
-        font-size: 12px;
+        border: 1rem solid #4a515b;
+        font-size: 12rem;
         text-align: center;
       }
     }
@@ -104,29 +112,40 @@
 export default {
   data() {
     return {
-      data: [
-        { name: "淘宝", value: 2000 },
-        { name: "阿里巴巴", value: 1800 },
-        { name: "淘宝", value: 1600 },
-        { name: "阿里巴巴", value: 1400 },
-        { name: "淘宝", value: 1200 },
-        { name: "阿里巴巴", value: 1000 },
-        { name: "淘宝", value: 800 },
-        { name: "阿里巴巴", value: 600 },
-        { name: "淘宝", value: 400 },
-        { name: "阿里巴巴", value: 200 }
-      ],
-
       tab: "left",
       iconCheck: "day",
-      chartData: ""
+      chartData: "",
+      timer: null
     };
   },
   mounted() {
     this.chartData = this.$store.state.controlData.access_website_visit_day;
+    console.log('test', this.chartData)
     this.initChart();
+    this.timer = setInterval(() => {
+      if (this.tab == "left") {
+        this.showChart("right");
+      } else {
+        this.showChart("left");
+      }
+    }, 4000);
   },
   methods: {
+    mouseLeave() {
+      clearInterval(this.timer);
+      this.timer = setInterval(() => {
+      if (this.tab == "left") {
+        this.showChart("right");
+      } else {
+        this.showChart("left");
+      }
+    }, 4000);
+
+    },
+    mouseEnter() {
+      clearInterval(this.timer)
+      
+    },
     showChart(chartType) {
       if (chartType == "left" || chartType == "right") {
         this.tab = chartType;
@@ -188,7 +207,7 @@ export default {
         grid: {
           left: "14%",
           right: "13%",
-          bottom: "8%",
+          bottom: "3%",
           containLabel: true
         },
         xAxis: {
@@ -204,7 +223,7 @@ export default {
           splitLine: {
             show: false
           },
-          axisLabel: {  
+          axisLabel: {
             show: false,
             rotate: 20,
             interval: 1,
@@ -215,7 +234,7 @@ export default {
           }
         },
         yAxis: {
-          data: this.chartData.map(item => item.name),
+          data: this.chartData.map(item => item.name).reverse(),
           axisLabel: {
             textStyle: {
               color: "#a7a7a9",
@@ -240,7 +259,7 @@ export default {
             itemStyle: {
               color: "#174046"
             },
-            data: this.chartData,
+            data: this.chartData.reverse(),
             label: {
               show: true,
               position: "right",

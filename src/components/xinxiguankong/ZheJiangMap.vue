@@ -17,11 +17,11 @@
               class="data"
               :style="{width: (item.value.reduce((prev, item) => prev + item, 0)/1400 * 100 + '%') + ''}"
             >
-              <span :style="{backgroundColor: '#2b645b'}"></span>
-              <span :style="{backgroundColor: '#6a623f'}"></span>
-              <span :style="{backgroundColor: '#6a4d56'}"></span>
+              <span :style="{backgroundColor: '#2b645b'}">{{item.value[0]}}</span>
+              <span :style="{backgroundColor: '#6a623f'}">{{item.value[1]}}</span>
+              <span :style="{backgroundColor: '#6a4d56'}">{{item.value[2]}}</span>
             </span>
-            <span class="num">{{item.value.reduce((prev, item) => prev + item, 0)}}</span>
+            <!-- <span class="num">{{item.value.reduce((prev, item) => prev + item, 0)}}</span> -->
           </span>
         </li>
       </ul>
@@ -33,22 +33,22 @@
 .com-zj-map {
   display: flex;
   width: 100%;
-  height: 430px;
+  height: 500rem;
   background-image: url("../../../public/static/img/imgs/gk_map_outline.png");
   background-size: 100% 100%;
   overflow: hidden;
   .zj-map {
     width: 60%;
-    height: 430px;
+    height: 100%;
   }
   .chart {
-    width: 280px;
-    height: 336px;
+    width: 350rem;
+    height: 400rem;
     position: relative;
     top: 0;
     bottom: 0;
     margin: auto;
-    margin-left: -10px;
+    margin-left: -10rem;
     img {
       width: 100%;
       height: 100%;
@@ -58,18 +58,18 @@
     }
     p {
       position: absolute;
-      font-size: 14px;
+      font-size: 14rem;
       width: 100%;
       text-align: center;
-      margin-top: 16px;
+      margin-top: 18rem;
       color: #fff;
     }
     .label {
       width: 100%;
       position: absolute;
       justify-content: space-around;
-      top: 70px;
-      padding: 0 5px;
+      top: 70rem;
+      padding: 0 5rem;
       display: flex;
       color: #b2b2b2;
       :nth-child(1) {
@@ -82,35 +82,42 @@
         border-color: #6a4d56;
       }
       span {
-        padding-left: 3px;
-        font-size: 12px;
-        height: 8px;
-        border-left: 8px solid red;
-        line-height: 8px;
+        padding-left: 3rem;
+        font-size: 12rem;
+        height: 8rem;
+        border-left: 8rem solid red;
+        line-height: 8rem;
       }
     }
     ul {
       height: 100%;
       width: 100%;
-      padding-top: 75px;
+      padding-top: 120rem;
+      display: flex;
+      flex-wrap: wrap;
       li {
-        margin: 30px 20px;
-        font-size: 12px;
+        width: 100%;
+        margin: 0 20rem;
+        font-size: 12rem;
         display: flex;
-        height: 12px;
+        height: 12rem;
         align-items: center;
         .type {
           width: 50%;
           color: #b9babc;
         }
         .bg {
+          text-align: center;
           width: 50%;
-          height: 14px;
+          height: 14rem;
           background-color: #232d37;
           position: relative;
           overflow: hidden;
           .data {
             // width: 50%;
+            color: #fff;
+            line-height: 14rem;
+            font-size: 10rem;
             background-color: #335c58;
             height: 100%;
             position: absolute;
@@ -131,10 +138,10 @@
           }
           .num {
             color: #b3b3b3;
-            font-size: 12px;
+            font-size: 12rem;
             position: absolute;
-            right: 4px;
-            top: 0px;
+            right: 4rem;
+            top: 0rem;
           }
         }
       }
@@ -249,18 +256,18 @@ export default {
         //   position: [20, 20],
         formatter: function(params) {
           return `
-            <div style="background-image: url('${require("../../../public/static/img/imgs/img_map_text_bg2@2x.png")}'); background-size: 100% 100%; width: 150px; height: 100px; padding: 10px 20px">
-                <p style="font-size: 12px">${params.name}</p>
-                <p style="font-size: 12px">${params.data.value[2].name +
-                  ":"}<span font-size: 12px"> ${
+            <div style="background-image: url('${require("../../../public/static/img/imgs/img_map_text_bg2@2x.png")}'); background-size: 100% 100%; padding: 10rem 20rem">
+                <p style="font-size: 12rem">${params.name}</p>
+                <p style="font-size: 12rem">${params.data.value[2].name +
+                  ":"}<span font-size: 12rem"> ${
             params.data.value[2].value
           }</span></p>
-                <p style="font-size: 12px">${params.data.value[3].name +
-                  ":"}<span font-size: 12px"> ${
+                <p style="font-size: 12rem">${params.data.value[3].name +
+                  ":"}<span font-size: 12rem"> ${
             params.data.value[3].value
           }</span></p>
-                <p style="font-size: 12px">${params.data.value[4].name +
-                  ":"}<span font-size: 12px"> ${
+                <p style="font-size: 12rem">${params.data.value[4].name +
+                  ":"}<span font-size: 12rem"> ${
             params.data.value[4].value
           }</span></p>
             </div>

@@ -42,33 +42,12 @@ export default {
       let option = {
         grid: {
           left: "0",
-          right: "0%",
+          right: "5%",
           top: "20%",
           bottom: "5%",
           containLabel: true
         },
-        // tooltip: this.$store.state.tooltip[1],
-        // tooltip: {
-        //     confine: true,
-        //   trigger: "axis",
-        //   axisPointer: {
-        //     label: {
-        //       show: true,
-        //       textStyle: {
-        //           fontSize: 10,
-        //       }
-        //     },
-        //     lineStyle: {
-        //       width: 0
-        //     }
-        //   },
-        //   backgroundColor: "#fff",
-        //   textStyle: {
-        //     color: "#5c6c7c"
-        //   },
-        //   padding: [10, 10],
-        //   extraCssText: "box-shadow: 1px 0 2px 0 rgba(163,163,163,0.5)"
-        // },
+        
         legend: {
           show: false
         },
@@ -97,20 +76,7 @@ export default {
                 color: "#1c2633"
               }
             },
-            data: [
-              "2020.01",
-              "2020.02",
-              "2020.03",
-              "2020.04",
-              "2020.05",
-              "2020.06",
-              "2020.07",
-              "2020.08",
-              "2020.09",
-              "2020.10",
-              "2020.11",
-              "2020.12"
-            ]
+            data: this.data1.map(item => item.name)
           }
         ],
         yAxis: [
@@ -152,18 +118,7 @@ export default {
                   color: "#e8e579",
                   width: 1
                 }
-                // areaStyle: {
-                //   color: new this.$echarts.graphic.LinearGradient(0, 1, 0, 0, [
-                //     {
-                //       offset: 0,
-                //       color: "rgba(36, 68, 55,0.1)"
-                //     },
-                //     {
-                //       offset: 1,
-                //       color: "rgba(36, 68, 55,0.9)"
-                //     }
-                //   ])
-                // }
+               
               }
             },
             markPoint: {
@@ -188,19 +143,7 @@ export default {
                   color: "#e58079",
                   width: 1
                 }
-                // areaStyle: {
-                //   //color: '#94C9EC'
-                //   color: new this.$echarts.graphic.LinearGradient(0, 1, 0, 0, [
-                //     {
-                //       offset: 0,
-                //       color: "rgba(12, 39, 48,0.5)"
-                //     },
-                //     {
-                //       offset: 1,
-                //       color: "rgba(12, 39, 48,0.8)"
-                //     }
-                //   ])
-                // }
+               
               }
             },
             data: this.data2
@@ -218,19 +161,7 @@ export default {
                   color: "#70e4ba",
                   width: 1
                 }
-                // areaStyle: {
-                //   //color: '#94C9EC'
-                //   color: new this.$echarts.graphic.LinearGradient(0, 1, 0, 0, [
-                //     {
-                //       offset: 0,
-                //       color: "rgba(12, 39, 48,0.5)"
-                //     },
-                //     {
-                //       offset: 1,
-                //       color: "rgba(12, 39, 48,0.8)"
-                //     }
-                //   ])
-                // }
+               
               }
             },
             data: this.data3
@@ -252,7 +183,8 @@ export default {
 <style lang="scss" scoped>
 .com-jiangMuRu {
   width: 100%;
-  height: 203px;
+  height: 250rem;
+  margin-top: 10rem;
   position: relative;
   .box {
     width: 100%;
@@ -260,8 +192,8 @@ export default {
   }
   .label {
     width: 100%;
-    padding-right: 10px;
-    font-size: 11px;
+    padding-right: 10rem;
+    font-size: 11rem;
     color: #9e9fa3;
     position: absolute;
     top: 0;
@@ -280,11 +212,11 @@ export default {
       position: relative;
       span {
         display: block;
-        width: 3px;
-        height: 10px;
+        width: 3rem;
+        height: 10rem;
         position: absolute;
-        top: 2px;
-        left: -5px;
+        top: 2rem;
+        left: -5rem;
       }
     }
   }

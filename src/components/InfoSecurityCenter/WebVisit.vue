@@ -49,10 +49,12 @@ export default {
 
 <style lang="scss" scoped>
 .ISMSTop {
+  margin-top: 15rem;
   width: 100%;
-  padding: 10px;
+  padding: 10rem;
   .tab {
     width: 100%;
+    margin-bottom: 30rem;
     span {
       &:first-child {
         border-right: none;
@@ -61,38 +63,38 @@ export default {
         border-left: none;
       }
       &.active {
-        border: 1px solid #39a397;
+        border: 1rem solid #39a397;
         color: #6beebb;
       }
       display: inline-block;
-      height: 25px;
-      line-height: 25px;
+      height: 25rem;
+      line-height: 25rem;
       width: 50%;
       color: #929294;
-      border: 1px solid #4a515b;
-      font-size: 12px;
+      border: 1rem solid #4a515b;
+      font-size: 12rem;
       text-align: center;
     }
   }
   ul {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 20rem;
     li:nth-of-type(odd) {
       background-color: rgba(81, 189, 147, 0.2);
     }
     li {
       width: 100%;
-      font-size: 12px;
+      font-size: 12rem;
       justify-content: space-between;
       display: flex;
-      height: 25px;
-      margin: 2px 0;
+      height: 30rem;
+      margin: 2rem 0;
       align-items: center;
       color: #b9babc;
       .top {
         width: 20%;
         // color: rgba(128, 128, 128, 1);
-        margin-right: 10px;
+        margin-right: 10rem;
         text-align: center;
       }
       .url {
@@ -104,8 +106,8 @@ export default {
       .num {
         width: 20%;
         text-align: right;
-        font-size: 11px;
-        padding-right: 10px;
+        font-size: 11rem;
+        padding-right: 10rem;
       }
     }
   }

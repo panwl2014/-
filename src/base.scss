@@ -21,7 +21,7 @@
   white-space: nowrap;
 
 }
-$color: red;
+$g: #6beebb;
 
 .icon {
     width: 4em;
@@ -54,12 +54,18 @@ html,
 body,
 #app {
     width: 100%;
-    min-width: 1200px;
+    min-width: 1366;
+    // 兼容字号
+    // -webkit-text-size-adjust: none;
+    // min-width: 1600px;
 }
+.part {
+  overflow: hidden;
+}
+
 
 body {
     background-image: url('../public/static/img/imgs/bg.png');
-    background-repeat: no-repeat;
     background-size: cover;
     background-color: #020b13;
 }

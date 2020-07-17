@@ -19,20 +19,7 @@
 
       <div class="center">
         <div class="part">
-          <div class="today-security">
-            <div class="title">今日信息安全事件</div>
-            <div class="num">
-              <span
-                v-for="(item, index) in data5.toLocaleString()"
-                :key="index"
-                :class="item == ',' ? 'douhao': ''"
-              >{{item}}</span>
-            </div>
-            <div class="add">
-              <img src="../../public/static/img/icons/icon_center_add.png" alt />
-              <span class="add-num">100</span>
-            </div>
-          </div>
+          <AllNumber :title="'信息安全事件总数'" :allNumber="data5" :add="add"></AllNumber>
         </div>
         <div class="part">
           <Map :chartData="infoSecurityData.info_security_map"></Map>
@@ -58,11 +45,12 @@
 
 <style lang="scss" scoped>
 .page-internet-security {
+  // overflow: hidden;
   width: 100%;
-  height: 100%;
   .main {
-    padding-left: 10px;
-    padding-right: 10px;
+    // overflow: hidden;
+    padding-left: 10rem;
+    padding-right: 10rem;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -72,77 +60,27 @@
       flex-wrap: wrap;
       align-content: space-between;
       width: 22%;
-      height: calc(100vh - 60px);
-      // border: 1px solid red;
+      // overflow: hidden;
+      height: calc(100vh - 90rem);
+      // border: 1rem solid red;
       .part {
         width: 100%;
-        // border: 1px solid red;
+        // border: 1rem solid red;
       }
     }
     .right {
       // overflow: hidden;
     }
     .center {
-      padding: 0 20px;
-      height: calc(100vh - 60px);
+      // overflow: hidden;
+      padding: 0 20rem;
+      height: calc(100vh - 90rem);
       width: 56%;
       display: flex;
       flex-wrap: wrap;
       align-content: space-between;
       .part {
         width: 100%;
-        .today-security {
-          display: flex;
-          justify-content: center;
-          margin-top: 20px;
-          height: 50px;
-          font-size: 13px;
-          color: rgba(179, 179, 179, 1);
-          .add {
-            width: 20px;
-            width: 100px;
-            height: 100%;
-            img {
-              height: 70%;
-              margin-right: 10px;
-              line-height: 50px;
-              position: relative;
-              top: 10px;
-            }
-            .add-num {
-              font-size: 20px;
-              color: #e4da39;
-            }
-          }
-          .title {
-            line-height: 55px;
-            font-size: 14px;
-            color: #e4da39;
-          }
-          .num {
-            text-align: center;
-            height: 100%;
-            margin: 0 30px;
-            span {
-              font-family: "font-Family-number";
-              margin: 0 5px;
-              display: inline-block;
-              width: 35px;
-              height: 55px;
-              font-size: 45px;
-              color: #e4da39;
-              border-radius: 5px;
-              background-color: #2c4f4f;
-              border: 1px solid #66a794;
-              &.douhao {
-                background-color: transparent;
-                border: 1px solid transparent;
-                margin: 0;
-                width: 20px;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -159,6 +97,7 @@ import EngineRoomTop from "../components/InfoSecurityCenter/EngineRoomTop";
 import ISMSTop from "../components/InfoSecurityCenter/ISMSTop";
 import WebVisit from "../components/InfoSecurityCenter/WebVisit";
 import Title from "../components/InfoSecurityTitle";
+import AllNumber from '../components/AllNumber'
 export default {
   components: {
     ChildHeader,
@@ -169,11 +108,13 @@ export default {
     OneMonthInfoSecurity,
     EngineRoomTop,
     ISMSTop,
-    WebVisit
+    WebVisit,
+    AllNumber
   },
   data() {
     return {
       infoSecurityData: "",
+      add: 100,
       data1: [
         { name: "安全事件总数", value: "2000" },
         { name: "系统漏洞", value: "400" },
@@ -211,6 +152,7 @@ export default {
   mounted() {
     setInterval(() => {
       this.data5 = this.data5 + 1
+      this.add = this.add + 1
     }, 3000);
   },
   created() {

@@ -8,7 +8,7 @@
               <WebIPActiveTrend></WebIPActiveTrend>
           </div>
           <div class="part">
-              <Title title="网站行业分布Top10"></Title>
+              <Title title="网站行业分布TOP10"></Title>
               <WebTradeTop :chartData="controlData.website_distribution" :title="title1"></WebTradeTop>
           </div>
           <div class="part">
@@ -32,7 +32,7 @@
       <div class="right">
           <div class="part">
               <Title title="异常网站数量与分布"></Title>
-              <YiChangWangZhanShuLiang :chartData="controlData.abnormal_website_number"></YiChangWangZhanShuLiang>
+              <YiChangWangZhanShuLiang :height="'250rem'" :chartData="controlData.abnormal_website_number"></YiChangWangZhanShuLiang>
           </div>
           <div class="part">
               <Title title="ICP备案"></Title>
@@ -53,8 +53,8 @@
   width: 100%;
   height: 100%;
   .main {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 10rem;
+    padding-right: 10rem;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -64,24 +64,22 @@
       flex-wrap: wrap;
       align-content: space-between;
       width: 22%;
-      height: calc(100vh - 60px);
-      // border: 1px solid red;
+      height: calc(100vh - 90rem);
       .part {
         width: 100%;
-        // border: 1px solid red;
       }
     }
     .right {
       // overflow: hidden;
     }
     .center {
-      padding: 0 20px;
-      height: calc(100vh - 60px);
+      padding: 0 20rem;
+      height: calc(100vh - 90rem);
       width: 56%;
       display: flex;
       flex-wrap: wrap;
       align-content: space-between;
-      // border: 1px solid red;
+      // border: 1rem solid red;
       .part {
         width: 100%;
       }
@@ -119,18 +117,6 @@ export default {
   data() {
     return {
       controlData: '',
-      data1: [
-        { id: 1, type: "商务网站", num: 1000, IDC: "杭州**公司", num2: 1000 },
-        { id: 2, type: "商务网站", num: 900, IDC: "杭州**公司", num2: 900 },
-        { id: 3, type: "商务网站", num: 800, IDC: "杭州**公司", num2: 800 },
-        { id: 4, type: "商务网站商务", num: 700, IDC: "杭州**公司", num2: 700 },
-        { id: 5, type: "商务网站", num: 600, IDC: "杭州**公司", num2: 600 },
-        { id: 6, type: "商务网站", num: 500, IDC: "杭州**公司", num2: 500 },
-        { id: 7, type: "商务网站", num: 400, IDC: "杭州**公司", num2: 400 },
-        { id: 8, type: "商务网站", num: 300, IDC: "杭州**公司", num2: 300 },
-        { id: 9, type: "商务网站", num: 200, IDC: "杭州**公司", num2: 200 },
-        { id: 10, type: "商务网站", num: 100, IDC: "杭州**公司", num2: 100 }
-      ],
       title1: ['网站数', '网站类型', '网站类型', '网站数']
     }
   },  

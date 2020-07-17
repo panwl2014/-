@@ -6,9 +6,9 @@
 
 <style lang="scss" scoped>
 .unhealthy-info {
-  height: 220px;
+  height: 300rem;
   width: 100%;
-  font-size: 13px;
+  font-size: 13rem;
   .chart2 {
     width: 100%;
     height: 100%;
@@ -20,17 +20,17 @@ export default {
   props: ["chartData"],
 
   mounted() {
+    console.log(999999999, this.chartData)
     let colorList = [
-      "#baa19a",
-      "#c68726",
-      "#779f84",
-      "#95c7ae",
-      "#d08365",
-      "#689ea8",
-      "#67a0a9",
-      "#314453",
-      "#bd3630",
-      "#6f7074"
+       "#c62b30",
+      "#6c7374",
+      "#bfa29c",
+      "#ca8438",
+      "#72a284",
+      "#91c8ae",
+      "#d77f6d",
+      "#61a2a7",
+      "#2e4554",
     ];
     const chart2 = this.$echarts.init(this.$refs.chart2);
     let option2 = {
@@ -47,31 +47,10 @@ export default {
           fontSize: 15
           }
       },
-      // title: {
-      //   top: "center",
-      //   left: "12%",
-      //   text: "{title|" + "总数}" + "\n" + "{num|" + allNum + "}",
-      //   textStyle: {
-      //     fontWeight: "normal",
-      //     color: "#739B9C",
-      //     lineHeight: 20,
-      //     rich: {
-      //       title: {
-      //         fontSize: 15,
-      //         width: 60,
-      //         align: "center"
-      //       },
-      //       num: {
-      //         fontSize: 15,
-      //         width: 60,
-      //         align: "center"
-      //       }
-      //     }
-      //   }
-      // },
+    
       series: [
         {
-          name: "不良事件",
+          name: "事件类型",
           // minShowLabelAngle: 20,
           startAngle: 120,
           avoidLabelOverlap: true,
@@ -98,21 +77,24 @@ export default {
                 }
               }
             },
-            formatter: function({ data }) {
+            formatter: function(e) {
               return (
                 "{title|" +
-                data.name +
+                e.data.name +
                 "}" +
                 "\n" +
                 "{num|" +
-                data.value +
+                e.data.value +
                 "}" +
                 "  " +
                 "{icon|" +
                 " " +
                 "}" +
                 "{num|" +
-                data.add +
+                e.data.add +
+                "}" + '\n' + 
+                "{num|" +
+                e.data.rate + "%" +
                 "}"
               );
             }
@@ -130,7 +112,7 @@ export default {
             }
           },
           data: this.chartData.map(item => {
-            return { value: item.value, name: item.name, add: item.add };
+            return { value: item.value, name: item.name, add: item.add, rate: item.rate };
           })
         }
       ]

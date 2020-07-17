@@ -5,7 +5,8 @@
 <style lang="scss" scoped>
 .chart {
   width: 100%;
-  height: 224px;
+  height: 100%;
+  padding: 40rem;
 }
 </style>
 
@@ -22,16 +23,16 @@ export default {
   mounted() {
     const chart = this.$echarts.init(this.$refs.chart);
     let colorList = [
-      "#575248",
-      "#7c6aaa",
-      "#f7d656",
-      "#7add85",
-      "#575248",
-      "#865451",
-      "#6ac6d0",
-      "#57a0fb",
-      "#f7d656",
-      "#865451"
+      '#964a7d',
+      '#852288',
+      '#5f3c96',
+      '#233f8a',
+      '#25788c',
+      '#1e7049',
+      '#688b24',
+      '#8f663b',
+      '#8f633e',
+      '#925447',
     ];
     let option = {
       angleAxis: {
@@ -78,7 +79,7 @@ export default {
           data: this.data.map(item => item.value).reverse(),
           coordinateSystem: "polar",
           itemStyle: {
-              color: e => colorList[e.dataIndex]
+              color: e => colorList.reverse()[e.dataIndex]
           }
         }
       ]

@@ -25,10 +25,10 @@ export default {
 .center-bottom {
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
   & > div {
     width: 48%;
-    height: 255px;
-    // border: 1px solid red;
+    height: 330rem;
   }
 }
 </style>

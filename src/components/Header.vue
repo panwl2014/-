@@ -13,21 +13,21 @@
 .com-header {
   position: relative;
   width: 100%;
-  height: 50px;
+  height: 60rem;
   background-image: url("../../public/static/img/imgs/top.png");
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   text-align: center;
   .btn {
     position: absolute;
-    right: 10px;
-    top: 0;
+    right: 10rem;
+    top: 8rem;
     bottom: 0;
     margin: auto;
-    padding: 0px 10px;
-    height: 25px;
-    border: 1px solid #74f0bf;
-    border-radius: 3px;
+    padding: 0rem 10rem;
+    height: 25rem;
+    border: 1rem solid #74f0bf;
+    border-radius: 3rem;
     &:hover {
       background-color: rgba(116, 240, 191, 0.3);
     }
@@ -40,7 +40,7 @@
     font-size: 36rem;
     font-weight: 400;
     color: #b3f0c6;
-    text-shadow: 0px 5px 5px rgba(0, 25, 110, 0.75);
+    text-shadow: 0rem 5rem 5rem rgba(0, 25, 110, 0.75);
   }
 }
 </style>

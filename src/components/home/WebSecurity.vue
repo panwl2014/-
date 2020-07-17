@@ -6,9 +6,8 @@
 
 <style lang="scss" scoped>
 .com-web-security {
-  font-size: 13px;
   width: 100%;
-  height: 160px;
+  height: 200rem;
     .chart1 {
       width: 100%;
       height: 100%;
@@ -82,7 +81,7 @@ props: ['type', 'chartData'],
                 "}" +
                 "\n" +
                 "{num|" +
-                data.rate +
+                data.rate  + "%" +
                 "}" +
                 "{icon|" +
                 " " +

@@ -13,11 +13,12 @@ import vuescroll from 'vuescroll';
 import 'vuescroll/dist/vuescroll.css';
 Vue.use(vuescroll)
 ;
-// import 'lib-flexible';
+import 'lib-flexible';
 // import axios from './axios/axios';
 // import dataV from '@jiaminghi/data-view';
 
 import ElementUi from 'element-ui';
+
 import 'element-ui/lib/theme-chalk/index.css';
 import './js/background';
 import './js/iconfont';
@@ -27,6 +28,7 @@ import './js/iconfont';
 // Vue.use(dataV)
 Vue.use(ElementUi);
 Vue.prototype.$http = axios;
+Vue.prototype.$message = ElementUi.Message
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 

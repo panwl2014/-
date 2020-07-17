@@ -5,7 +5,7 @@ function resolve(dir) {
 	return path.join(__dirname, dir)
 }
 let proxyObject1 = {
-	target: 'http://103.44.144.41:9001',
+	target: 'http://103.44.144.35:9001',
 	ws: true,
 	changeOrigin: true,
 	pathRewrite: {

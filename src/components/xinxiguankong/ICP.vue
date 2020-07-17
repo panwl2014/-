@@ -8,22 +8,13 @@
     width: 100%;
     .charts {
         width: 100%;
-        height: 120px;
+        height: 200rem;
     }
 }
 </style>
 <script>
 export default {
   props: ['chartData'],
-  // data() {
-  //   return {
-  //     data: [
-  //       { name: "已备案数", value: "2000", value2: '80' },
-  //       { name: "未备案数", value: "400", value2: '20' },
-  //       { name: "当月抽检合格率", value: "93" }
-  //     ]
-  //   };
-  // },
 
   mounted() {
       const charts = this.$echarts.init(this.$refs.charts);
@@ -54,7 +45,7 @@ export default {
           name: item.name,
           type: "pie",
           clockWise: false,
-          radius: [26, 30],
+          radius: [34, 40],
           itemStyle: {
             normal: {
               color: colors[index][0],
@@ -81,7 +72,7 @@ export default {
                   position: "center",
                   show: true,
                   textStyle: {
-                    fontSize: "16",
+                    fontSize: "13",
                     color: '#fff',
                   }
                 }
@@ -106,7 +97,7 @@ export default {
           name: item.name,
           type: "pie",
           clockWise: false,
-          radius: [26, 30],
+          radius: [34, 40],
           itemStyle: {
             normal: {
               color: colors[index][0],

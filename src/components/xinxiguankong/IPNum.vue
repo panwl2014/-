@@ -18,7 +18,7 @@
 <style lang="scss" scoped>
 .ip-statistics {
   width: 100%;
-  margin: 20px 0;
+  margin: 20rem 0;
   display: flex;
   justify-content: space-between;
   li {
@@ -26,25 +26,24 @@
     background-size: 100% 100%;
     position: relative;
     color: #ed7775;
-    font-size: 13px;
-    height: 40px;
+    font-size: 16rem;
+    height: 50rem;
     width: 24%;
-    line-height: 40px;
     display: flex;
     align-items: center;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10rem;
+    padding-right: 10rem;
     justify-content: space-around;
     .type {
       width: 70%;
     }
     .num {
       text-align: center;
-      width: 30%;
+      width: 40%;
       font-family: "font-Family-number";
-      font-size: 25px;
+      font-size: 30rem;
       .unit {
-        font-size: 14px;
+        font-size: 18rem;
       }
     }
     &.all {

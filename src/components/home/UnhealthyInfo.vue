@@ -6,9 +6,9 @@
 
 <style lang="scss" scoped>
 .unhealthy-info {
-  height: 220px;
+  // overflow: hidden;
+  height: 250rem;
   width: 100%;
-  font-size: 13px;
   .chart2 {
     width: 100%;
     height: 100%;
@@ -21,23 +21,22 @@ export default {
 
   mounted() {
     let colorList = [
-      "#baa19a",
-      "#c68726",
-      "#779f84",
-      "#95c7ae",
-      "#d08365",
-      "#689ea8",
-      "#67a0a9",
-      "#314453",
-      "#bd3630",
-      "#6f7074"
+      "#c62b30",
+      "#6c7374",
+      "#bfa29c",
+      "#ca8438",
+      "#72a284",
+      "#91c8ae",
+      "#d77f6d",
+      "#61a2a7",
+      "#2e4554",
     ];
     const chart2 = this.$echarts.init(this.$refs.chart2);
     let option2 = {
       tooltip: this.$store.state.tooltip[0],
       series: [
         {
-          name: "不良事件",
+          name: "不良信息",
           // minShowLabelAngle: 20,
           startAngle: 120,
           avoidLabelOverlap: true,

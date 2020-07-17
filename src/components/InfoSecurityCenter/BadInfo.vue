@@ -5,7 +5,8 @@
 <style lang="scss" scoped>
 .chart {
   width: 100%;
-  height: 224px;
+  height: 100%;
+  padding: 20rem;
 }
 </style>
 

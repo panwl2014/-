@@ -1,5 +1,5 @@
 <template>
-  <div class="com-OneMonthInfoSecurity">
+  <div class="com-OneMonthInfoSecurity" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
     <div class="box" ref="OneMonthInfoSecurity"></div>
     <span class="y">事件数</span>
     <span class="x">日期</span>
@@ -9,11 +9,31 @@
 export default {
   data() {
     return {
-      data: []
+      data: [],
+      start: 0,
+      end: 30,
+      timer: null
     }
   },
   props: ['chartData'],
   methods: {
+    mouseEnter() {
+      clearInterval(this.timer);
+      this.timer = null;
+    },
+
+    mouseLeave() {
+      this.timer = setInterval(() => {
+        if (this.start >= 70) {
+          this.start = 0;
+        }
+        if (this.end >= 100) {
+          this.end = 30;
+        }
+        this.start = this.start + 5;
+        this.end = this.end + 5;
+      }, 3000);
+    },
     initChart() {
       let fontColor = "#9e9fa3";
       let chart = this.$echarts.init(this.$refs.OneMonthInfoSecurity);
@@ -23,27 +43,7 @@ export default {
       }
       let option = {
         tooltip: this.$store.state.tooltip[1],
-        // tooltip: {
-        //   confine: true,
-        //   trigger: "axis",
-        //   axisPointer: {
-        //     label: {
-        //       show: true,
-        //       textStyle: {
-        //         fontSize: 10
-        //       }
-        //     },
-        //     lineStyle: {
-        //       width: 0
-        //     }
-        //   },
-        //   backgroundColor: "#fff",
-        //   textStyle: {
-        //     color: "#5c6c7c"
-        //   },
-        //   padding: [10, 10],
-        //   extraCssText: "box-shadow: 1px 0 2px 0 rgba(163,163,163,0.5)"
-        // },
+     
         grid: {
           left: "0",
           right: "12%",
@@ -55,15 +55,6 @@ export default {
         //   show: true,
         //   trigger: "item"
         // },
-        dataZoom: [
-          {
-            type: "inside",
-            show: true,
-            xAxisIndex: [0],
-            start: 1,
-            end: 30
-          }
-        ],
 
         xAxis: [
           {
@@ -92,13 +83,6 @@ export default {
         ],
         yAxis: [
           {
-            // name: "事件数",
-            // nameLocation: "end",
-            // nameGap: 10,
-            // nameTextStyle: {
-            //   color: "#9e9fa3",
-            //   fontSize: 11
-            // },
             type: "value",
             min: 0,
             // max: 4000,
@@ -158,6 +142,16 @@ export default {
           }
         ]
       };
+      let dataZoom = [
+          {
+            type: "inside",
+            show: true,
+            xAxisIndex: [0],
+            start: this.start,
+            end: this.end
+          }
+        ];
+        option.dataZoom = dataZoom;
       chart.setOption(option, true);
       window.addEventListener("resize", () => {
         chart.resize();
@@ -169,42 +163,56 @@ export default {
       if (a !== b) {
         this.initChart();
       }
+    },
+    end(a, b) {
+      if (a !== b) {
+        this.initChart();
+      }
     }
   },
   created() {
-      // for (let i = 0; i < this.chartData.name.length; i ++) {
-      //   this.data.push({name: this.chartData.name[i], value: this.chartData.value[i]})
-      // }
   },
   mounted() {
     this.initChart();
+    this.timer = setInterval(() => {
+      if (this.start >= 70) {
+        this.start = 0;
+      }
+      if (this.end >= 100) {
+        this.end = 30;
+      }
+      this.start = this.start + 5;
+      this.end = this.end + 5;
+    }, 3000);
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .com-OneMonthInfoSecurity {
+  padding-top: 20rem;
   width: 100%;
-  height: 200px;
+  height: 250rem;
   position: relative;
-  padding-left: 10px;
+  padding-left: 10rem;
+  margin-bottom: 20rem;
   .box {
     width: 100%;
     height: 100%;
   }
   .y {
     position: absolute;
-    left: 10px;
-    top: 0;
+    left: 10rem;
+    top: 20rem;
     color: #9e9fa3;
-    font-size: 11px;
+    font-size: 11rem;
   }
   .x {
     position: absolute;
-    right: 0px;
+    right: 0rem;
     bottom: 5%;
     color: #9e9fa3;
-    font-size: 11px;
+    font-size: 11rem;
   }
 }
 </style>

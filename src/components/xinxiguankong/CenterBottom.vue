@@ -1,7 +1,7 @@
 <template>
   <div class="center-bottom">
     <div class="visit-top">
-      <Title title="近30天机房被访问量top10"></Title>
+      <Title title="近30天机房被访问量TOP10"></Title>
       <ul>
         <li v-for="item in $store.state.controlData.visit_engine_room_number" :key="item.name">
           <span class="type">{{item.name}}</span>
@@ -31,7 +31,7 @@ export default {
       data: [
         { type: "杭州电信1号机房", num: 5000 },
         { type: "杭州电信2号机房", num: 4500 },
-        { type: "杭州电信3号机房", num: 4000 },
+        { type: "杭州电信3号机房", num: 4000 }, 
         { type: "杭州电信4号机房", num: 3800 },
         { type: "杭州电信5号机房", num: 3500 },
         { type: "杭州电信6号机房", num: 3200 },
@@ -60,23 +60,23 @@ export default {
   justify-content: space-between;
   & > div {
     width: 48%;
-    height: 250px;
-    // border: 1px solid red;
+    height: 280rem;
+    // border: 1rem solid red;
   }
   .visit-top {
     ul {
-      padding-left: 10px;
-      height: calc(100% - 30px);
+      padding-left: 10rem;
+      height: calc(100% - 30rem);
       width: 100%;
       display: flex;
       align-content: space-around;
       flex-wrap: wrap;
       li {
         width: 100%;
-        font-size: 12px;
+        font-size: 12rem;
         justify-content: space-between;
         display: flex;
-        height: 12px;
+        height: 12rem;
         align-items: center;
         .type {
           width: 30%;
@@ -86,14 +86,14 @@ export default {
           white-space: nowrap;
         }
         .bg {
-          border: 1px solid #133036;
+          border: 1rem solid #133036;
           width: 50%;
-          height: 15px;
+          height: 15rem;
           position: relative;
           overflow: hidden;
           .data {
-            margin: 2px;
-            height: 9px;
+            margin: 2rem;
+            height: 9rem;
             position: absolute;
             left: 0;
             background-image: url("../../../public/static/img/imgs/chart_bar_bg.png");
@@ -112,7 +112,7 @@ export default {
           width: 20%;
           text-align: right;
           color: #b9babc;
-          font-size: 12px;
+          font-size: 12rem;
         }
       }
     }

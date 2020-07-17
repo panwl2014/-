@@ -12,9 +12,9 @@
                 <p class="type">{{item.name}}</p>
                 <p class="value">
                   <countTo
-                    :startVal="index == 3 ? 0 :+catchNum[index]"
+                    :startVal="index == 3 ? 0 : (isFirst ? 0: item.value)"
                     :endVal="index == 3 ? +item.value.substr(0, item.value.length - 1) : +item.value"
-                    :duration="2500"
+                    :duration="2000"
                   ></countTo>
                   <span v-if="index == 3">%</span>
                 </p>
@@ -25,8 +25,8 @@
               <ul>
                 <li v-for="(item, index) in homeData.active_website.slice(0,5)" :key="index">
                   <span :class="index < 3 ? 'top3 top': 'top'">{{index + 1}}</span>
-                  <span class="name">{{item.name}}</span>
-                  <span class="url">{{item.ip}}</span>
+                  <span class="name text-overfllow">{{item.name}}</span>
+                  <span class="url text-overfllow">{{item.ip}}</span>
                   <span class="bg">
                     <span
                       class="data animate-left"
@@ -63,7 +63,7 @@
         <!-- 安全评分 -->
         <div class="part">
           <div class="score">
-            <span class="time">2020-06-13</span>
+            <span class="time">{{getTime()}}</span>
             <span>全省网络健康状态</span>
             <el-rate
               v-model="scoreValue"
@@ -83,7 +83,7 @@
             <Monitor></Monitor>
           </div>
           <div class="center-bottom-right">
-            <Title :title="'不良信息事件'"></Title>
+            <Title :title="'不良信息'"></Title>
             <UnhealthyInfo :chartData="homeData.unhealthy_type"></UnhealthyInfo>
           </div>
         </div>
@@ -98,19 +98,21 @@
           <div class="jiang-m-r">
             <li v-for="(item, index) in homeData.zombie_creep_statistics" :key="index">
               <div class="value">
-                <countTo :startVal="+catchNum1[index]" :endVal="+item.value" :duration="2500"></countTo>
+                <countTo :startVal="isFirst ? 0: item.value" :endVal="+item.value" :duration="2000"></countTo>
               </div>
               <div class="name">{{item.name}}</div>
             </li>
           </div>
         </div>
         <div class="part">
-          <Title :title="'信安事件数TOP10接入商'"></Title>
+          <Title :title="'信安事件接入商TOP10'"></Title>
           <WebSecurityEvent :chartData="homeData.unhealthy_info.slice(0,10)"></WebSecurityEvent>
         </div>
         <div class="part">
-          <Title :title="'信安事件数各地市分布情况'"></Title>
-          <InfoSecurityCity :chartData="homeData.unhealthy_info.map(item => ({name: item.name, value: item.value}))"></InfoSecurityCity>
+          <Title :title="'信安事件各地市分布情况'"></Title>
+          <InfoSecurityCity
+            :chartData="homeData.unhealthy_info.map(item => ({name: item.name, value: item.value}))"
+          ></InfoSecurityCity>
         </div>
       </div>
     </div>
@@ -119,33 +121,31 @@
 
 <style lang="scss" scoped>
 .home {
-  // overflow: hidden;
-  padding-top: 10px;
+  padding-top: 10rem;
   width: 100%;
   height: 100%;
   .main {
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 10rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    // border: 1px solid red;
+    // border: 1rem solid red;
     .left,
     .right {
-      // border: 1px solid red;
+      // border: 1rem solid red;
       display: flex;
       flex-wrap: wrap;
       width: 22%;
       align-content: space-between;
-      height: calc(100vh - 70px);
+      height: calc(100vh - 90rem);
       .part {
         width: 100%;
-        // border: 1px solid red;
+        // border: 1rem solid red;
       }
     }
     .right {
-      // overflow: hidden;
       .part {
         .jiang-m-r {
           width: 100%;
@@ -159,13 +159,14 @@
             .value {
               width: 100%;
               background: rgba(46, 66, 76, 0.25);
-              border: 1px solid rgba(255, 255, 255, 0.1);
+              border: 1rem solid rgba(255, 255, 255, 0.1);
             }
             .name {
-              font-size: 12px;
-              height: 20px;
-              margin-top: 10px;
-              margin-bottom: 15px;
+              font-size: 14rem;
+              height: 26rem;
+              margin-top: 10rem;
+              margin-bottom: 15rem;
+              line-height: 24rem;
             }
             .value {
               position: relative;
@@ -177,13 +178,13 @@
                 display: inline-block;
                 width: 0;
                 height: 0;
-                border: 5px solid #6beebb;
+                border: 5rem solid #6beebb;
                 border-right-color: transparent;
                 border-bottom-color: transparent;
               }
-              height: 40px;
-              line-height: 40px;
-              font-size: 45px;
+              height: 45rem;
+              line-height: 45rem;
+              font-size: 60rem;
               font-family: "font-Family-self";
             }
           }
@@ -193,55 +194,64 @@
     .left {
       .part {
         .web-statistics {
-          font-size: 12px;
+          margin-top: 20rem;
+          font-size: 12rem;
           color: #fff;
           ul {
-            padding-left: 10px;
-            margin-top: 10px;
+            padding-left: 10rem;
+            margin-top: 10rem;
             justify-content: space-between;
-            // border: 1px solid red;
             display: flex;
             li {
               width: 23%;
               text-align: center;
+              height: 70rem;
               .type {
-                border-left: 1px solid rgba(9, 105, 116, 1);
+                border-left: 1rem solid rgba(9, 105, 116, 1);
                 background: rgba(24, 44, 51, 0.84);
-                padding: 5px 0;
+                height: 26rem;
+                line-height: 26rem;
               }
               .value {
                 font-family: "font-Family-self";
                 width: 100%;
-                font-size: 40px;
+                font-size: 40rem;
                 color: #4cfdca;
-                line-height: 40px;
+                line-height: 40rem;
               }
             }
           }
         }
         .web-top10 {
-          margin-top: 20px;
-          font-size: 12px;
+          margin-top: 20rem;
+          font-size: 12rem;
           color: #fff;
-          padding-left: 10px;
+          padding-left: 10rem;
           ul {
             flex-wrap: wrap;
-            padding: 10px;
+            padding: 10rem;
             background-image: url("../../public/static/img/imgs/home_top5_outline.png");
             background-size: 100% 100%;
             li {
-              border-bottom: 1px dashed rgba(107, 238, 187, 0.1);
+              border-bottom: 1rem dashed rgba(107, 238, 187, 0.1);
               color: #999;
               width: 100%;
               display: flex;
               justify-content: space-between;
               align-items: center;
-              height: 30px;
+              height: 40rem;
               position: relative;
-              padding-right: 20px;
+              padding-right: 20rem;
+              .name {
+                width: 20%;
+                text-align: left;
+              }
+              .url {
+                width: 30%;
+              }
               .line {
-                height: 1px;
-                width: 10px;
+                height: 1rem;
+                width: 10rem;
                 background-color: #69edbe;
                 position: absolute;
                 bottom: 0;
@@ -250,14 +260,14 @@
               .top {
                 color: #fff;
                 background-color: #414845;
-                width: 30px;
-                border-radius: 3px;
+                width: 30rem;
+                border-radius: 3rem;
                 &.top3 {
                   background-color: #ac702a;
                 }
               }
               .bg {
-                height: 6px;
+                height: 6rem;
                 width: 30%;
                 background: rgba(117, 120, 124, 0.26);
                 position: relative;
@@ -276,19 +286,19 @@
         .idc-isp {
           color: #fff;
           ul {
-            padding-left: 10px;
+            padding-left: 10rem;
             display: flex;
             flex-wrap: wrap;
             li {
               display: flex;
-              padding: 15px 0;
+              padding: 25rem 0;
               &:nth-child(1),
               &:nth-child(2) {
-                border-bottom: 1px dashed rgba(107, 238, 187, 0.1);
+                border-bottom: 1rem dashed rgba(107, 238, 187, 0.1);
               }
               img {
-                width: 40px;
-                height: 40px;
+                width: 50rem;
+                height: 50rem;
               }
               p {
                 display: flex;
@@ -297,14 +307,14 @@
                 align-content: space-around;
                 span {
                   width: 100%;
-                  margin-left: 10px;
+                  margin-left: 10rem;
                 }
                 .type {
-                  font-size: 11px;
+                  font-size: 12rem;
                   color: #999;
                 }
                 .num {
-                  font-size: 16px;
+                  font-size: 20rem;
                   color: #6beebb;
                 }
               }
@@ -316,15 +326,15 @@
     }
     .control-center {
       // overflow: hidden;
-      padding: 0 10px;
-      height: calc(100vh - 70px);
+      padding: 0 30rem;
+      height: calc(100vh - 90rem);
       width: 56%;
       display: flex;
       flex-wrap: wrap;
       align-content: space-between;
       .score {
         width: 100%;
-        height: 75px;
+        height: 90rem;
         background-image: url("../../public/static/img/imgs/score_bg.png");
         background-repeat: no-repeat;
         background-position: center;
@@ -332,19 +342,19 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 15px;
-        color: #2dffe4;
+        font-size: 18rem;
+        color: #fff;
         span {
-          margin: 0 10px;
+          margin: 0 10rem;
         }
       }
       .part {
-        // border: 1px solid red;
+        // border: 1rem solid red;
         width: 100%;
         &.center-bottom {
           .center-bottom-left {
             width: 60%;
-            margin-right: 30px;
+            margin-right: 30rem;
           }
           .center-bottom-right {
             width: 40%;
@@ -361,45 +371,29 @@ import Header from "../components/Header";
 import Title from "../components/Title";
 import Nav from "../components/home/Nav";
 import Map from "../components/home/Map";
+// import WebSecurity from "../components/home/WebSecurity1";
 import WebSecurity from "../components/home/WebSecurity";
 import UnhealthyInfo from "../components/home/UnhealthyInfo";
 import WebSecurityEvent from "../components/home/InfoSecurityEvent";
 import Monitor from "../components/home/Monitor";
-import InfoSecurityCity from '../components/home/InfoSecurityCity'
+import InfoSecurityCity from "../components/home/InfoSecurityCity";
 
 import countTo from "vue-count-to";
 export default {
   data() {
     return {
       homeData: "", // 默认数据,
-      catchNum: [0, 0, 0, 0],
-      catchNum1: [0, 0, 0, 0],
+      // catchNum: [0, 0, 0, 0],
+      // catchNum1: [0, 0, 0, 0],
+      newNum: '',
       IDC: [
         { url: "icon_all" },
-        { url: "icon_buliang" },
+        { url: "icon_yichang" },
         { url: "icon_weibaobei" },
-        { url: "icon_yichang" }
+        { url: "icon_buliang" },
       ],
+      isFirst: true,
       scoreValue: 4.5,
-      data1: [
-        {
-          id: 1,
-          type: "商务网站",
-          num: 1000,
-          IDC: "杭州**公司",
-          num2: 1000
-        },
-        { id: 2, type: "商务网站", num: 900, IDC: "杭州**公司", num2: 900 },
-        { id: 3, type: "商务网站", num: 800, IDC: "杭州**公司", num2: 800 },
-        { id: 4, type: "商务网站商务", num: 700, IDC: "杭州**公司", num2: 700 },
-        { id: 5, type: "商务网站", num: 600, IDC: "杭州**公司", num2: 600 },
-        { id: 6, type: "商务网站", num: 500, IDC: "杭州**公司", num2: 500 },
-        { id: 7, type: "商务网站", num: 400, IDC: "杭州**公司", num2: 400 },
-        { id: 8, type: "商务网站", num: 300, IDC: "杭州**公司", num2: 300 },
-        { id: 9, type: "商务网站", num: 200, IDC: "杭州**公司", num2: 200 },
-        { id: 10, type: "商务网站", num: 100, IDC: "杭州**公司", num2: 100 }
-      ],
-      title1: ["网安事件数", "接入商", "地市", "网安事件数"]
     };
   },
   components: {
@@ -420,20 +414,25 @@ export default {
       this.$store.commit("setData", data);
       this.homeData = this.$store.state.homeData;
     });
+  },
+  methods: {
+    getTime() {
+      let date = new Date();
+      let time =
+        date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+      return time;
+    }
+  },
+  
+  mounted() {
+    setTimeout(() => {
+      this.isFirst = false
+    }, 1000);
     setInterval(() => {
       this.$http.get("/showData/getData/main").then(({ data }) => {
         data.nameSpace = "homeData";
         this.$store.commit("setData", data);
         this.homeData = this.$store.state.homeData;
-        console.log("轮询", data);
-        setTimeout(() => {
-          this.catchNum = this.homeData.website_statistics.map(
-            item => item.value
-          );
-          this.catchNum1 = this.homeData.zombie_creep_statistics.map(
-            item => item.value
-          );
-        }, 5000);
       });
     }, 5000);
   }

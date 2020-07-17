@@ -34,36 +34,36 @@
 .com-zj-map {
   display: flex;
   width: 100%;
-  height: 430px;
+  height: 500rem;
   background-image: url("../../../public/static/img/imgs/gk_map_outline.png");
   background-size: 100% 100%;
   overflow: hidden;
   .zj-map {
     width: 50%;
-    height: 430px;
+    height: 100%;
   }
   .chart {
     width: 40%;
-    height: 350px;
+    height: 350rem;
     position: relative;
     color: rgba(179, 179, 179, 1);
-    font-size: 11px;
+    font-size: 11rem;
     top: 0;
     bottom: 0;
     margin: auto;
     .circle {
       position: absolute;
-      left: -15px;
-      top: -15px;
-      height: 50px;
-      width: 50px;
+      left: -15rem;
+      top: -15rem;
+      height: 50rem;
+      width: 50rem;
       z-index: 10;
       img {
         width: 100%;
         position: absolute;
         left: 0;
         top: 0;
-        transform-origin: 26px 26px;
+        transform-origin: 26rem 26rem;
         &.circle1 {
           animation: out 4s infinite linear;
           @keyframes out {
@@ -97,34 +97,34 @@
     }
     .title {
       position: absolute;
-      font-size: 14px;
+      font-size: 14rem;
       width: 100%;
       text-align: center;
-      margin-top: -10px;
+      margin-top: -15rem;
       color: #6beebb;
     }
     .label {
       width: 100%;
       position: absolute;
-      top: 35px;
+      top: 35rem;
       display: flex;
       justify-content: space-around;
-      padding: 0 30px;
+      padding: 0 30rem;
       :first-child {
-        border-left: 20px solid #447569;
+        border-left: 20rem solid #447569;
       }
       :last-child {
-        border-left: 20px solid #87474c;
+        border-left: 20rem solid #87474c;
       }
       span {
-        line-height: 10px;
-        padding-left: 5px;
+        line-height: 10rem;
+        padding-left: 5rem;
       }
     }
     ul {
       width: 100%;
-      padding-top: 40px;
-      padding: 70px 10px 10px 10px;
+      padding-top: 40rem;
+      padding: 70rem 10rem 10rem 10rem;
       display: flex;
       flex-wrap: wrap;
       align-content: space-between;
@@ -136,8 +136,8 @@
         line-height: 12px;
         display: flex;
         justify-content: space-around;
-        height: 30px;
-        padding: 0 5px;
+        height: 30rem;
+        padding: 0 5rem;
         & .num:last-child {
           text-align: right;
         }
@@ -153,7 +153,7 @@
           background-size: 100%;
           .data-left {
             width: 50%;
-            height: 10px;
+            height: 10rem;
             right: 0;
             top: 0;
             position: absolute;
@@ -161,7 +161,7 @@
           }
           .data-right {
             width: 50%;
-            height: 10px;
+            height: 10rem;
             left: 0;
             top: 0;
             position: absolute;
@@ -170,7 +170,7 @@
         }
         .type {
           width: 25%;
-          margin: 0 10px;
+          margin: 0 10rem;
         }
       }
     }

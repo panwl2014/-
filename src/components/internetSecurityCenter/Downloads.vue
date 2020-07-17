@@ -20,27 +20,7 @@ export default {
           bottom: "5%",
           containLabel: true
         },
-        // tooltip: {
-        //     confine: true,
-        //   trigger: "axis",
-        //   axisPointer: {
-        //     label: {
-        //       show: true,
-        //       textStyle: {
-        //           fontSize: 10,
-        //       }
-        //     },
-        //     lineStyle: {
-        //       width: 0
-        //     }
-        //   },
-        //   backgroundColor: "#fff",
-        //   textStyle: {
-        //     color: "#5c6c7c"
-        //   },
-        //   padding: [10, 10],
-        //   extraCssText: "box-shadow: 1px 0 2px 0 rgba(163,163,163,0.5)"
-        // },
+       
         legend: {
           show: false
         },
@@ -132,20 +112,20 @@ export default {
 <style lang="scss" scoped>
 .com-jiangMuRu {
   width: 100%;
-  height: 170px;
+  height: 200rem;
   position: relative;
-  // border: 1px solid red;
+  // border: 1rem solid red;
   .box {
     width: 100%;
     height: 100%;
   }
   .label {
     width: 100%;
-    font-size: 10px;
+    font-size: 10rem;
     color: #9e9fa3;
     position: absolute;
     top: 0;
-    margin-left: 10px;
+    margin-left: 10rem;
   }
 }
 </style>

@@ -8,13 +8,13 @@
 .com-zj-map {
   display: flex;
   width: 100%;
-  height: 250px;
+  height: 300rem;
   overflow: hidden;
   .zj-map {
     width: 100%;
     height: 100%;
     background-image: url("../../../public/static/img/imgs/home_img_mapbg.png");
-    background-size: 80%;
+    background-size: 70%;
     background-position: center;
     background-repeat: no-repeat;
   }
@@ -91,7 +91,7 @@ export default {
           seriesIndex: 0,
           dataIndex: e.dataIndex
         });
-        this.timer = setInterval(fn, 3000);
+        me.timer = setInterval(fn, 3000);
       });
       // 地区、坐标、数据
       const coord = data.features.map(val => {
@@ -122,7 +122,7 @@ export default {
             <div style=" padding: 0px 10px">
                 <p style="font-size: 12px">${params.name}</p>
                 <p style="font-size: 12px">机房数:  ${params.data.value[2]}</p>
-                <p style="font-size: 12px">接入企业数量:  ${params.data.value[3]}</p>
+                <p style="font-size: 12px">接入企业数:  ${params.data.value[3]}</p>
             </div>
             `;
           }

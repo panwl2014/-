@@ -7,8 +7,9 @@
 .com-icp {
   width: 100%;
   .charts {
+    margin-top: 20rem;
     width: 100%;
-    height: 100px;
+    height: 110rem;
   }
 }
 </style>
@@ -16,8 +17,8 @@
 export default {
   props: ["chartData", "color", "max"],
   mounted() {
-    console.log(22222, this.chartData)
     const charts = this.$echarts.init(this.$refs.charts);
+    let me = this;
     let data = this.chartData;
     let titleArr = [],
       seriesArr = [];
@@ -26,7 +27,7 @@ export default {
       titleArr.push({
         text: item.name,
         left: index * 35 + 13 + "%",
-        top: "75%",
+        top: "80%",
         textAlign: "center",
         textStyle: {
           fontWeight: "normal",
@@ -39,7 +40,7 @@ export default {
         name: item.name,
         type: "pie",
         clockWise: false,
-        radius: [26, 30],
+        radius: [27, 30],
         itemStyle: {
           normal: {
             color: colors[index][0],
@@ -54,7 +55,7 @@ export default {
           }
         },
         hoverAnimation: false,
-        center: [index * 35 + 14 + "%", "40%"],
+        center: [index * 35 + 14 + "%", "42%"],
         data: [
           {
             value: item.value,
@@ -110,7 +111,7 @@ export default {
             }
           },
           {
-            value: 12000 - item.value,
+            value: me.max - item.value,
             name: "invisible",
             itemStyle: {
               normal: {

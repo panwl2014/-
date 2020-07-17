@@ -15,19 +15,19 @@
 </template>
 <style lang="scss" scoped>
 .com-monitor {
-  height: 220px;
+  height: 250rem;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   ul {
-    height: 130px;
+    height: 130rem;
     display: flex;
     width: 100%;
     justify-content: space-between;
     li {
       position: relative;
-      width: 75px;
-      height: 75px;
+      width: 100rem;
+      height: 100rem;
       text-align: center;
       .circle {
         position: absolute;
@@ -57,34 +57,34 @@
       .text {
         .num {
           font-family: "font-Family-self";
-          font-size: 45px;
+          font-size: 45rem;
           color: rgb(214, 200, 200);
-          line-height: 75px;
+          line-height: 100rem;
         }
       }
       .title {
-        margin-top: 20px;
+        margin-top: 20rem;
         background-color: #192c37;
-        font-size: 12px;
+        font-size: 12rem;
         color: #6beebb;
-        line-height: 20px;
+        line-height: 20rem;
         &::before {
           content: "";
           display: inline-block;
-          width: 6px;
-          height: 6px;
-          border-top: 1px solid #6beebb;
-          border-left: 1px solid #6beebb;
+          width: 6rem;
+          height: 6rem;
+          border-top: 1rem solid #6beebb;
+          border-left: 1rem solid #6beebb;
           float: left;
         }
         &::after {
-          margin-top: 12px;
+          margin-top: 12rem;
           content: "";
           display: inline-block;
-          width: 6px;
-          height: 6px;
-          border-bottom: 1px solid #6beebb;
-          border-right: 1px solid #6beebb;
+          width: 6rem;
+          height: 6rem;
+          border-bottom: 1rem solid #6beebb;
+          border-right: 1rem solid #6beebb;
           float: right;
         }
       }
@@ -98,11 +98,11 @@ export default {
   data() {
     return {
       monitorData: [
-        { name: "诈骗电话数", value: 123 },
-        { name: "诈骗短信数", value: 123 },
-        { name: "仿冒App", value: 123 },
-        { name: "钓鱼网站数", value: 123 },
-        { name: "伪基站数", value: 123 }
+        { name: "诈骗电话数", value: 120 },
+        { name: "诈骗短信数", value: 133 },
+        { name: "仿冒App数", value: 230 },
+        { name: "钓鱼网站数", value: 312 },
+        { name: "伪基站数", value: 112 }
       ]
     };
   }

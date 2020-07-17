@@ -21,17 +21,19 @@ export default {
 </script>
 <style lang="scss" scoped>
 .com-title {
-  padding-left: 10px;
+  padding-left: 10rem;
   position: relative;
   width: 100%;
-  height: 30px;
+  height: 30rem;
   font-size: 18rem;
-  line-height: 30px;
+  line-height: 30rem;
   color: #6beebb;
   .more {
     font-size: 14rem;
     float: right;
-    margin-top: -8px;
+    position: absolute;
+    right: 0;
+    top: -5px;
   }
   .img {
     position: absolute;

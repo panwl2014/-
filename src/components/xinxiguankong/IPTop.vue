@@ -25,13 +25,15 @@
 <style lang="scss" scoped>
 .com-iptop {
   display: flex;
-  padding-top: 10px;
-  padding-left: 10px;
-  font-size: 12px;
+  padding-top: 10rem;
+  padding-left: 10rem;
+  font-size: 12rem;
+  line-height: 12px;
+  height: 250rem;
   .right {
     width: 100%;
     color: #82888f;
-    font-size: 11px;
+    font-size: 11rem;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -49,20 +51,18 @@
       justify-content: space-around;
       width: 100%;
       display: flex;
-      margin-bottom: 6px;
       height: 12px;
     }
     .top10 {
-      padding: 0 10px;
       span {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        height: 13px;
+        height: 12px;
         &:first-of-type {
           background-color: #555f61;
           width: 10%;
-          border-radius: 5px 0 5px 0;
+          border-radius: 5rem 0 5rem 0;
           color: #fff;
         }
       }
@@ -89,12 +89,15 @@
       span {
         background-color: rgba(1, 1, 1, 0);
         color: #82888f;
-        height: 18px;
+        height: 18rem;
+      }
+      .name {
+        line-height: 18rem;
       }
       background-color: #0e292f;
-      margin-bottom: 10px;
-      line-height: 18px;
-      height: 18px;
+      margin-bottom: 10rem;
+      line-height: 18rem;
+      height: 18rem;
     }
   }
 }

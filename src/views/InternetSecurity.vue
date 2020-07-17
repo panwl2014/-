@@ -4,7 +4,7 @@
     <div class="main">
       <div class="left">
         <div class="part">
-          <Title title="网络安全事件"></Title>
+          <Title title="网络安全事件数"></Title>
           <TodaySecurity
             :chartData="webSecurityData.today_cybersecurity_incident.slice(0,3)"
             :color="color1"
@@ -38,20 +38,8 @@
 
       <div class="center">
         <div class="part">
-           <div class="today-security">
-            <div class="title">今日网络安全事件</div>
-            <div class="num">
-              <span
-                v-for="(item, index) in data5.toLocaleString()"
-                :key="index"
-                :class="item == ',' ? 'douhao': ''"
-              >{{item}}</span>
-            </div>
-            <div class="add">
-              <img src="../../public/static/img/icons/icon_center_add.png" alt />
-              <span class="add-num">100</span>
-            </div>
-          </div>
+           网络安全事件总数
+           <AllNumber :title="'网络安全事件总数'" :allNumber="data5" :add="add"></AllNumber>
         </div>
         <div class="part">
           <Map></Map>
@@ -66,13 +54,13 @@
           <Title title="移动互联网恶意程序样本"></Title>
           <div class="hazard-level">
             <li v-for="item in webSecurityData.malicious_program_type" :key="item.name">
-              <span>{{item.name}}</span>
+              <span>{{ '【' + item.name + '】'}}</span>
               <span>{{item.value}}</span>
             </li>
           </div>
         </div>
         <div class="part">
-          <MaliciousProgram :chartData="webSecurityData.malicious_program_samples.slice(1)"></MaliciousProgram>
+          <MaliciousProgram :height="'190rem'" :chartData="webSecurityData.malicious_program_samples.slice(1)"></MaliciousProgram>
         </div>
         <div class="part">
           <Downloads :chartData="webSecurityData.malicious_program_download"></Downloads>
@@ -94,8 +82,8 @@
   width: 100%;
   height: 100%;
   .main {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 10rem;
+    padding-right: 10rem;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -105,22 +93,23 @@
       flex-wrap: wrap;
       align-content: space-between;
       width: 22%;
-      height: calc(100vh - 60px);
-      // border: 1px solid red;
+      height: calc(100vh - 90rem);
+      // border: 1rem solid red;
       .part {
         width: 100%;
-        // border: 1px solid red;
+        // border: 1rem solid red;
         .malware {
+          margin-top: 15rem;
           position: relative;
           width: 100%;
-          height: 210px;
+          height: 280rem;
           background-image: url("../../public/static/img/imgs/wangan/img_eycxbg.png");
           background-size: 100%;
-          background-position: 0 10px;
+          background-position: 0 10rem;
           background-repeat: no-repeat;
-          font-size: 13px;
+          font-size: 13rem;
           color: #6beebb;
-          // padding-left: 10px;
+          // padding-left: 10rem;
           display: flex;
           flex-wrap: wrap;
           text-align: center;
@@ -128,57 +117,57 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            margin-left: -48px;
-            margin-top: -25px;
-            width: 100px;
-            height: 50px;
+            margin-left: -48rem;
+            margin-top: -30rem;
+            width: 100rem;
+            height: 50rem;
             .num {
               font-family: "font-Family-self";
-              font-size: 35px;
-              line-height: 30px;
+              font-size: 35rem;
+              line-height: 30rem;
             }
           }
           li {
             &:nth-of-type(odd) {
               p {
                 width: 60%;
-                margin-left: 10px;
+                margin-left: 10rem;
               }
             }
             &:nth-of-type(even) {
               p {
                 width: 60%;
-                margin-left: 55px;
+                margin-left: 55rem;
               }
             }
             height: 50%;
             width: 50%;
-            padding-top: 30px;
+            padding-top: 40rem;
             .num {
               font-family: "font-Family-self";
-              font-size: 40px;
-              line-height: 30px;
+              font-size: 40rem;
+              line-height: 30rem;
             }
           }
         }
         .hazard-level {
-          margin-top: 15px;
-          font-size: 12px;
+          margin-top: 15rem;
+          font-size: 14rem;
           color: rgba(254, 254, 254, 0.6);
           display: flex;
           justify-content: space-between;
-          padding-left: 10px;
+          padding-left: 10rem;
           li {
             display: flex;
             justify-content: space-around;
             align-items: center;
             width: 31%;
             background-color: #11323d;
-            height: 24px;
-            border: 1px solid #2c8684;
+            height: 30rem;
+            border: 1rem solid #2c8684;
             & span:first-child {
               position: relative;
-              margin-left: -5px;
+              margin-left: -5rem;
             }
           }
         }
@@ -189,8 +178,8 @@
       // overflow-x: hidden;
     }
     .center {
-      padding: 0 20px;
-      height: calc(100vh - 60px);
+      padding: 0 20rem;
+      height: calc(100vh - 90rem);
       width: 56%; 
       display: flex;
       flex-wrap: wrap;
@@ -200,51 +189,64 @@
         .today-security {
           display: flex;
           justify-content: center;
-          margin-top: 20px;
-          height: 50px;
-          font-size: 13px;
+          margin-top: 20rem;
+          height: 55rem;
+          font-size: 13rem;
           color: rgba(179, 179, 179, 1);
           .add {
-            width: 20px;
-            width: 100px;
+            position: relative;
+            width: 20rem;
+            width: 100rem;
             height: 100%;
+            top: -4rem;
             img {
               height: 70%;
-              margin-right: 10px;
-              line-height: 50px;
+              margin-right: 10rem;
+              line-height: 50rem;
               position: relative;
-              top: 10px;
+              top: 18rem;
+            }
+            .add-text {
+              display: block;
+              width: 50rem;
+              position: absolute;
+              font-size: 10px;
+              color: #999;
+              position: absolute;
+              bottom: 0;
+              left: 33rem;
             }
             .add-num {
-              font-size: 20px;
+              font-size: 25rem;
               color: #e4da39;
+              
             }
           }
           .title {
-            line-height: 55px;
-            font-size: 14px;
+            line-height: 55rem;
+            font-size: 18rem;
             color: #e4da39;
           }
           .num {
             text-align: center;
             height: 100%;
-            margin: 0 30px;
+            margin: 0 30rem;
             span {
               font-family: "font-Family-number";
-              margin: 0 5px;
+              margin: 0 5rem;
               display: inline-block;
-              width: 35px;
-              height: 55px;
-              font-size: 45px;
+              width: 35rem;
+              height: 55rem;
+              font-size: 45rem;
               color: #e4da39;
-              border-radius: 5px;
+              border-radius: 5rem;
               background-color: #2c4f4f;
-              border: 1px solid #66a794;
+              border: 1rem solid #66a794;
               &.douhao {
                 background-color: transparent;
-                border: 1px solid transparent;
+                border: 1rem solid transparent;
                 margin: 0;
-                width: 20px;
+                width: 20rem;
               }
             }
           }
@@ -266,6 +268,7 @@ import TodaySecurity from "../components/internetSecurityCenter/TodaySecurity";
 import Map from "../components/internetSecurityCenter/Map";
 import CenterBottom from "../components/internetSecurityCenter/CenterBottom";
 // import IPNum from '../components/xinxiguankong/IPNum';
+import AllNumber from '../components/AllNumber'
 export default {
   components: {
     ChildHeader,
@@ -277,8 +280,8 @@ export default {
     JiangMuRu,
     Bug,
     Map,
-    // IPNum,
-    CenterBottom
+    CenterBottom,
+    AllNumber
   },
   created() {
     this.$http.get("/showData/getData/internet_security").then(({ data }) => {
@@ -287,40 +290,24 @@ export default {
       this.webSecurityData = this.$store.state.webSecurityData;
       console.log(23333333, this.webSecurityData);
     });
+  },
+  mounted() {
     setInterval(() => {
       this.$http.get("/showData/getData/internet_security").then(({ data }) => {
         data.nameSpace = "webSecurityData";
         this.$store.commit("setData", data);
         this.webSecurityData = this.$store.state.webSecurityData;
-        setTimeout(() => {
-          this.catchNum = this.webSecurityData.website_statistics.map(
-            item => item.value
-          );
-          this.catchNum1 = this.webSecurityData.zombie_creep_statistics.map(
-            item => item.value
-          );
-        }, 5000);
       });
     }, 5000);
-  },
-  mounted() {
     setInterval(() => {
-      this.data5 = +this.data5 + 1
-    }, 300);
+      this.data5 = this.data5 + 1
+      this.add = this.add + 1
+    }, 3000);
   },
   data() {
     return {
       webSecurityData: "",
-      data1: [
-        { name: "安全事件总数", value: "2000" },
-        { name: "系统漏洞", value: "400" },
-        { name: "web漏洞", value: "600" }
-      ],
-      data2: [
-        { name: "可用性事件", value: "1000" },
-        { name: "网站挂马", value: "800" },
-        { name: "篡改事件", value: "600" }
-      ],
+      
       color1: [
         ["#397870", "#2f3535"],
         ["#822a23", "#2f3535"],
@@ -331,18 +318,9 @@ export default {
         ["#7a5031", "#2f3535"],
         ["#397970", "#2f3535"]
       ],
-      data3: [
-        { type: "WEB漏洞", num: 30000 },
-        { type: "主机漏洞", num: 20000 },
-        { type: "网站挂马", num: 3000 },
-        { type: "网站篡改", num: 10000 }
-      ],
-      data4: [
-        { type: "【高危】", value: "290" },
-        { type: "【中危】", value: "290" },
-        { type: "【低危】", value: "290" }
-      ],
-      data5: 293840
+      add: 47,
+      data5: 29467
+      
     };
   }
 };

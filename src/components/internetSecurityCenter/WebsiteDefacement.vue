@@ -1,6 +1,7 @@
 <template>
   <div class="com-website-defacement">
     <div class="chart" ref="chart"></div>
+    <div class="x">被篡改次数</div>
     <div class="ctrl">
       <span :class="check == 'web' ? 'active': ''" @click="showChart('web')">被篡改网站</span>
       <span :class="check == 'room' ? 'active': ''" @click="showChart('room')">被篡改机房</span>
@@ -10,7 +11,7 @@
 </template>
 <style lang="scss" scoped>
 .com-website-defacement {
-  height: calc(100% - 30px);
+  height: calc(100% - 30rem);
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -18,26 +19,33 @@
     width: 100%;
     height: 100%;
   }
+  .x {
+    position: absolute;
+    bottom: 3%;
+    right: 10rem;
+    color: #909196;
+    font-size: 10rem;
+  }
   .ctrl {
-    font-size: 12px;
+    font-size: 12rem;
     color: #fff;
     position: absolute;
-    top: 20px;
-    left: 10px;
+    top: 20rem;
+    left: 10rem;
     width: 20%;
     height: 80%;
     span {
         display: block;
-        height: 25px;
-        line-height: 22px;
+        height: 25rem;
+        line-height: 22rem;
         width: 100%;
         color: #929294;
-        border: 1px solid #4a515b;
-        font-size: 11px;
+        border: 1rem solid #4a515b;
+        font-size: 11rem;
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 10rem;
          &.active {
-          border: 1px solid #39a397;
+          border: 1rem solid #39a397;
           color: #6beebb;
         }
       }
@@ -54,7 +62,7 @@ export default {
     };
   },
   created() {
-    this.chartData = this.$store.state.webSecurityData.falsify_website
+    this.chartData = this.$store.state.webSecurityData.falsify_website.reverse()
   },
   mounted() {
     this.initChart();
@@ -64,25 +72,19 @@ export default {
       this.check = chartType;
       switch (chartType) {
         case 'web':
-          this.chartData = this.$store.state.webSecurityData.falsify_website
+          this.chartData = this.$store.state.webSecurityData.falsify_website.reverse()
           break;
         case 'room':
-          this.chartData = this.$store.state.webSecurityData.falsify_engine_room
+          this.chartData = this.$store.state.webSecurityData.falsify_engine_room.reverse()
           break;
         case 'address':
-          this.chartData = this.$store.state.webSecurityData.falsify_area
+          this.chartData = this.$store.state.webSecurityData.falsify_area.reverse()
           break;
       }
     },
     initChart() {
       let chart = this.$echarts.init(this.$refs.chart);
       let option = {
-        // tooltip: {
-        //   trigger: "axis",
-        //   axisPointer: {
-        //     type: "shadow"
-        //   }
-        // },
         grid: {
           top: 20,
           left: "25%",
@@ -104,6 +106,7 @@ export default {
             show: false
           },
           axisLabel: {
+            show: false,
             textStyle: {
               color: "#a7a7a9",
               fontSize: 11
@@ -113,6 +116,13 @@ export default {
         yAxis: {
           data: this.chartData.map(item => item.name),
           axisLabel: {
+            formatter(e) {
+              if (e.length > 8) {
+                return e.slice(0, 8) + '...'
+              } else {
+                return e
+              }
+            },
             textStyle: {
               color: "#a7a7a9",
               fontSize: 11

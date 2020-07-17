@@ -122,8 +122,8 @@
         </div>
       </router-link>
       <!-- 维稳管控 -->
-      <router-link to="/weiWen">
-        <div class="bg weiwen">
+      <router-link to="/">
+        <div class="bg weiwen"  @click="click">
           <div class="bgbox">
             <div class="title">
               <svg
@@ -154,16 +154,16 @@
               </svg>
 
               <svg class="icon iconweiwengongzuo" aria-hidden="true">
-                <use xlink:href="#iconweiwengongzuo" />
+                <use xlink:href="#iconnanpingshigongyehulianwangxiezuofuwupingtai_yousuyun" />
               </svg>
-              <p class="ww-text">维稳管控中心</p>
+              <p class="ww-text">工业互联网</p>
             </div>
           </div>
         </div>
       </router-link>
       <!-- 反诈中心 -->
-      <router-link to="/fanzha">
-        <div class="bg fanzha">
+      <router-link to="/" >
+        <div class="bg fanzha" @click="click">
           <div class="bgbox">
             <div class="title">
               <svg
@@ -201,8 +201,8 @@
         </div>
       </router-link>
       <!-- 新业务 -->
-      <router-link to="/newService">
-        <div class="bg xuke">
+      <router-link to="/" >
+        <div class="bg xuke" @click="click">
           <div class="bgbox">
             <div class="title">
               <svg
@@ -232,9 +232,9 @@
                 </g>
               </svg>
               <svg class="icon iconxuke" aria-hidden="true">
-                <use xlink:href="#iconm_xukeshenqing" />
+                <use xlink:href="#iconicon-xinyewuyangpin" />
               </svg>
-              <p class="xk-text">新业务安全中心</p>
+              <p class="xk-text">新业务中心</p>
             </div>
           </div>
         </div>
@@ -338,7 +338,7 @@
       }
       // 维稳
       .ww-text {
-        left: 87px;
+        left: 91px;
         z-index: 100;
       }
       .iconweiwengongzuo {
@@ -362,7 +362,7 @@
       }
       // 许可
       .xk-text {
-        left: 53px;
+        left: 65px;
         z-index: 100;
       }
       .iconxuke {
@@ -396,183 +396,6 @@
     }
   }
 
-  // 88************************************************
-  // .hulianwang {
-  //   position: absolute;
-  //   animation: hulianwang 1.2s 0.6s forwards ease-in;
-  //   opacity: 0;
-  //   @keyframes hulianwang {
-  //     0% {
-  //       top: 115px;
-  //       left: 50%;
-  //       margin-left: -90px;
-  //     }
-  //     50% {
-  //       opacity: 0.8;
-  //       top: 0px;
-  //       left: 20%;
-  //       margin-left: -90px;
-  //     }
-  //     100% {
-  //       opacity: 1;
-  //       left: 0;
-  //       top: 0;
-  //     }
-  //   }
-  // }
-  // .beian {
-  //   position: absolute;
-  //   animation: beian 1.2s 0.6s forwards ease-in;
-  //   opacity: 0;
-  //   @keyframes beian {
-  //     0% {
-  //       opacity: 0;
-  //       top: 115px;
-  //       left: -50%;
-  //       margin-left: -90px;
-  //     }
-  //     50% {
-  //       opacity: 0.8;
-  //       top: 0px;
-  //       left: -10%;
-  //       margin-left: -90px;
-  //     }
-  //     100% {
-  //       opacity: 1;
-  //       left: 0;
-  //       top: 0;
-  //     }
-  //   }
-  // }
-  // .wangan {
-  //   opacity: 0;
-  //   position: absolute;
-  //   z-index: 107;
-  //   animation: wangan 1.2s 0.6s forwards ease-in;
-  //   @keyframes wangan {
-  //     0% {
-  //       opacity: 0;
-  //       left: 50%;
-  //       margin-left: -90px;
-  //     }
-  //     50% {
-  //       opacity: 0.8;
-  //       left: 20%;
-  //       margin-left: -90px;
-  //     }
-  //     100% {
-  //       opacity: 1;
-  //       left: 0;
-  //     }
-  //   }
-  // }
-  // .weiwen {
-  //   z-index: 108;
-  //   opacity: 0;
-  //   position: absolute;
-  //   animation: weiwen 1.2s 0.6s forwards ease-in;
-  //   @keyframes weiwen {
-  //     0% {
-  //       opacity: 0;
-  //       right: 50%;
-  //       margin-left: -90px;
-  //     }
-  //     50% {
-  //       opacity: 0.8;
-  //       right: 10%;
-  //       margin-left: -90px;
-  //     }
-  //     100% {
-  //       opacity: 1;
-  //       right: 0;
-  //     }
-  //   }
-  // }
-  // .fanzha {
-  //   opacity: 0;
-  //   animation: fanzha 1.2s 0.6s forwards ease-in;
-  //   @keyframes fanzha {
-  //     0% {
-  //       opacity: 0;
-  //       left: 50%;
-  //       bottom: 115px;
-  //       margin-left: -90px;
-  //     }
-  //     50% {
-  //       opacity: 0.8;
-  //       bottom: 0px;
-  //       left: 20%;
-  //       margin-left: -90px;
-  //     }
-  //     100% {
-  //       opacity: 1;
-  //       left: 0;
-  //       margin: 0;
-  //     }
-  //   }
-  // }
-  // .xuke {
-  //   position: absolute;
-  //   animation: xuke 1.2s 0.6s forwards ease-in;
-  //   opacity: 0;
-  //   @keyframes xuke {
-  //     0% {
-  //       opacity: 0;
-  //       bottom: 115px;
-  //       left: -50%;
-  //       margin-left: -90px;
-  //     }
-  //     50% {
-  //       opacity: 0.8;
-  //       bottom: 0px;
-  //       left: -10%;
-  //       margin-left: -90px;
-  //     }
-  //     100% {
-  //       opacity: 1;
-  //       left: 0;
-  //       bottom: 0;
-  //     }
-  //   }
-  // }
-  // ************************************************
-  // .line-move {
-  //   height: 2px;
-  //   width: 15px;
-  //   background-color: #53d8c5;
-  //   z-index: 110;
-  // }
-  // .line-move-lb {
-  //   opacity: 0;
-  //   position: absolute;
-  //   top: 212px;
-  //   left: 229px;
-  //   animation: line_move_lt 1.5s 2s ease-in-out forwards infinite;
-  // }
-  // .line-move-lt {
-  //   opacity: 0;
-  //   position: absolute;
-  //   top: 141px;
-  //   left: 229px;
-  //   animation: line_move_lt 1.5s 2s ease-in-out forwards infinite;
-  //   @keyframes line_move_lt {
-  //     0% {
-  //       opacity: 0;
-  //       width: 0;
-  //       left: 229px;
-  //     }
-  //     40% {
-  //       opacity: 1;
-  //       width: 93px;
-  //       left: 229px;
-  //     }
-  //     100% {
-  //       opacity: 0;
-  //       width: 0px;
-  //       left: 322px;
-  //     }
-  //   }
-  // }
   .hulianwang {
     animation: hulianwang 1.2s 1s ease-in forwards;
     @keyframes hulianwang {
@@ -1108,6 +931,15 @@ export default {
   methods: {
     enter(e) {
       console.log(111, e);
+    },
+    click(){
+      this.$message({
+        message: '数据暂缺',
+        center: true,
+        offset: 400,
+        iconClass: 'none',
+        duration: 1000
+      })
     }
   }
 };

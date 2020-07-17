@@ -1,6 +1,7 @@
 <template>
-  <div class="com-wanghanhuoyue">
+  <div class="com-wanghanhuoyue" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
     <div class="box" ref="wanghanhuoyue"></div>
+    <div class="y">时间</div>
     <div class="tab">
       <div class="left-text">
         <span class="left"></span>
@@ -9,7 +10,7 @@
           <br />单位：万
         </p>
       </div>
-      <div>
+      <div class="tabs">
         <span :class="isCheck =='30day' ? 'active': ''" @click="showChart('30day')">近30天</span>
         <span :class="isCheck =='month' ? 'active': ''" @click="showChart('month')">月度</span>
         <span :class="isCheck =='quarter' ? 'active': ''" @click="showChart('quarter')">季度</span>
@@ -30,10 +31,30 @@ export default {
   data() {
     return {
       isCheck: "30day",
-      chartData: ""
+      chartData: "",
+      start: 0,
+      end: 30,
+      timer: null
     };
   },
   methods: {
+    mouseEnter() {
+      clearInterval(this.timer);
+      this.timer = null;
+    },
+
+    mouseLeave() {
+      this.timer = setInterval(() => {
+        if (this.start >= 70) {
+          this.start = 0;
+        }
+        if (this.end >= 100) {
+          this.end = 30;
+        }
+        this.start = this.start + 5;
+        this.end = this.end + 5;
+      }, 3000);
+    },
     // 改变图表
     showChart(chartType) {
       this.isCheck = chartType;
@@ -234,7 +255,16 @@ export default {
 
       // 开启数据缩放
       if (this.isCheck == "30day") {
-        option.dataZoom = this.$store.state.dataZoom;
+        let dataZoom = [
+          {
+            type: "inside",
+            show: true,
+            xAxisIndex: [0],
+            start: this.start,
+            end: this.end
+          }
+        ];
+        option.dataZoom = dataZoom;
       }
 
       chart.setOption(option, true);
@@ -248,11 +278,26 @@ export default {
       if (a !== b) {
         this.initChart();
       }
+    },
+    end(a, b) {
+      if (a !== b) {
+        this.initChart();
+      }
     }
   },
   mounted() {
     this.chartData = this.$store.state.controlData.active_website_last_30day_trend;
     this.initChart();
+    this.timer = setInterval(() => {
+      if (this.start >= 70) {
+        this.start = 0;
+      }
+      if (this.end >= 100) {
+        this.end = 30;
+      }
+      this.start = this.start + 5;
+      this.end = this.end + 5;
+    }, 3000);
   }
 };
 </script>
@@ -260,59 +305,72 @@ export default {
 <style lang="scss" scoped>
 .com-wanghanhuoyue {
   width: 100%;
-  height: 200px;
+  height: 280rem;
   position: relative;
   .box {
     width: 100%;
     height: 100%;
   }
+  .y {
+    font-size: 10rem;
+    position: absolute;
+    bottom: 6%;
+    right: 0;
+    color: #909196;
+  }
   .tab {
+    font-size: 9rem;
     width: 100%;
     position: absolute;
-    top: 15px;
+    top: 15rem;
     right: 0;
     z-index: 10;
     display: flex;
     justify-content: space-between;
+    .tabs {
+      span {
+        margin-bottom: 5rem;
+      }
+    }
     .left-text {
+      // background-color: #fff;
       position: relative;
-      width: 23%;
+      width: 26%;
       span {
         position: absolute;
         left: 0;
         top: 0;
-        width: 10px;
-        height: 10px;
+        width: 10rem;
+        height: 10rem;
         background-color: #226667;
         border: none;
       }
       p {
         position: absolute;
-        font-size: 10px;
+        font-size: 9rem;
+        // background-color: #fff;
         color: #909196;
-        left: 16px;
-        top: -2px;
+        left: 16rem;
+        top: -2rem;
       }
     }
     .right {
+      width: 23%;
+      // background-color: #fff;
       & > span {
         background-color: #4c7652;
-        position: absolute;
-        margin-left: 17px;
       }
       & > p {
-        position: absolute;
-        right: 0;
         text-align: right;
       }
     }
     span {
       display: inline-block;
-      font-size: 11px;
-      padding: 1px 3px;
-      margin: 0 3px;
+      font-size: 11rem;
+      padding: 1rem 3rem;
+      margin: 0 3rem;
       background-color: #133841;
-      border: 1px solid #2f4c4d;
+      border: 1rem solid #2f4c4d;
       color: #70878d;
       &:hover {
         cursor: pointer;
@@ -320,7 +378,7 @@ export default {
     }
     .active {
       background: #226567;
-      border: 1px solid #439d84;
+      border: 1rem solid #439d84;
       color: #fff;
     }
   }
