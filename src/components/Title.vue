@@ -21,7 +21,7 @@ export default {
   align-items: center;
   font-size: 18rem;
   line-height: 30rem;
-  color: #6beebb;
+  color: #fff;
   .img {
     flex: 1;
     margin-left: 20rem;
@@ -37,7 +37,7 @@ export default {
     height: 18rem;
     position: relative;
     top: 2rem;
-    background-color: rgba(107, 238, 187, 1);
+    background-color:$blue1;
   }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
-  <div class="ISMSTop">
-    <p class="tab">
-      <span :class="check == 'left' ? 'active': ''" @click="showChart('left')">违规类型</span>
-      <span :class="check == 'right' ? 'active': ''" @click="showChart('right')">当前巡检违规机房</span>
+  <div class="ISMSTop" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+    <p class="tab-bar-2">
+      <span :class="tab == 'left' ? 'active': ''" @click="showChart('left')">违规类型</span>
+      <span :class="tab == 'right' ? 'active': ''" @click="showChart('right')">当前巡检违规机房</span>
     </p>
     <ul>
       <li v-for="(item, index) in data" :key="index">
@@ -22,7 +22,8 @@ export default {
   data() {
     return {
       data: '',
-      check: "left"
+      tab: "left",
+      timer: null
     };
   },
   created() {
@@ -30,8 +31,22 @@ export default {
   },
   components: {},
   methods: {
+    mouseLeave() {
+      clearInterval(this.timer);
+      this.timer = setInterval(() => {
+      if (this.tab == "left") {
+        this.showChart("right");
+      } else {
+        this.showChart("left");
+      }
+    }, 4000);
+
+    },
+    mouseEnter() {
+      clearInterval(this.timer)
+    },
     showChart(chartType) {
-      this.check = chartType
+      this.tab = chartType
       switch (chartType) {
         case 'left':
           this.data = this.$store.state.infoSecurityData.ISMS_type_statistics
@@ -41,6 +56,15 @@ export default {
           break;
       }
     }
+  },
+  mounted() {
+    this.timer = setInterval(() => {
+      if (this.tab == "left") {
+        this.showChart("right");
+      } else {
+        this.showChart("left");
+      }
+    }, 4000);
   }
 };
 </script>
@@ -53,26 +77,6 @@ export default {
   .tab {
     width: 100%;
     margin-bottom: 30rem;
-    span {
-      &:first-child {
-        border-right: none;
-      }
-      &:last-child {
-        border-left: none;
-      }
-      &.active {
-        border: 1rem solid #39a397;
-        color: #6beebb;
-      }
-      display: inline-block;
-      height: 25rem;
-      line-height: 25rem;
-      width: 50%;
-      color: #929294;
-      border: 1rem solid #4a515b;
-      font-size: 12rem;
-      text-align: center;
-    }
   }
   ul {
     width: 100%;

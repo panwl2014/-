@@ -1,160 +1,113 @@
 <template>
-  <div class="com-icp">
-    <div class="charts" ref="charts"></div>
+  <div class="com-icp" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+    <div class="tab">
+      <span :class="checkTab == 'icp'? 'active': ''" @click="showChart('icp')">ICP备案</span>
+      <span :class="checkTab == 'app'? 'active': ''" @click="showChart('app')">app备案</span>
+      <span :class="checkTab == 'level'? 'active': ''" @click="showChart('level')">定级备案</span>
+    </div>
+    <div class="charts" ref="charts_icp" v-if="checkTab =='icp'">
+      <BeianICP :chartData="chartData[0]"></BeianICP>
+    </div>
+    <div class="charts" ref="charts_app" v-if="checkTab =='app'">
+      <BeianAPP :chartData="chartData[1].slice(1)"></BeianAPP>
+    </div>
+    <div class="charts" ref="charts_level" v-if="checkTab =='level'">
+      <BeianILevel :chartData="chartData[2].slice(1)"></BeianILevel>
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>
 .com-icp {
+  width: 100%;
+  .charts {
     width: 100%;
-    .charts {
-        width: 100%;
-        height: 200rem;
+    height: 180rem;
+  }
+  .tab {
+    margin-top: 20rem;
+    height: 25rem;
+    display: flex;
+    font-size: 12rem;
+    text-align: center;
+    & span:nth-child(2) {
+      border-left: none;
+      border-right: none;
     }
+    span {
+      line-height: 25rem;
+      border: 1rem solid rgba(255, 255, 255, 0.274);
+      color: $fff05;
+      flex: 1;
+      &.active {
+        border: 1rem solid $blue2;
+        color: $blue2;
+      }
+    }
+  }
 }
 </style>
 <script>
+import BeianAPP from "./BeianAPP";
+import BeianICP from "./BeianICP";
+import BeianILevel from "./BeianILevel";
 export default {
-  props: ['chartData'],
-
-  mounted() {
-      const charts = this.$echarts.init(this.$refs.charts);
-    var data = this.chartData
-
-    var titleArr = [],
-      seriesArr = [];
-    let colors = [
-      ["#397870", "#2f3535"],
-      ["#83472b", "#2f3535"],
-      ["#ffc257", "#2f3535"],
-    ];
-    data.forEach(function(item, index) {
-      titleArr.push({
-        text: item.name,
-        left: index * 35 + 13 + "%",
-        top: "80%",
-        textAlign: "center",
-        textStyle: {
-          fontWeight: "normal",
-          fontSize: "13",
-          color: '#727375',
-          textAlign: "center"
-        }
-      });
-      if (index !== 2) {
-        seriesArr.push({
-          name: item.name,
-          type: "pie",
-          clockWise: false,
-          radius: [34, 40],
-          itemStyle: {
-            normal: {
-              color: colors[index][0],
-              shadowColor: colors[index][0],
-              shadowBlur: 0,
-              label: {
-                show: false
-              },
-              labelLine: {
-                show: false
-              }
-            }
-          },
-          hoverAnimation: false,
-          center: [index * 35 + 14 + "%", "50%"],
-          data: [
-            {
-              value: item.value,
-              label: {
-                normal: {
-                  formatter: function(params) {
-                    return params.value;
-                  },
-                  position: "center",
-                  show: true,
-                  textStyle: {
-                    fontSize: "13",
-                    color: '#fff',
-                  }
-                }
-              }
-            },
-            {
-              value: data[0].value + data[1].value - item.value,
-              name: "invisible",
-              itemStyle: {
-                normal: {
-                  color: colors[index][1]
-                },
-                emphasis: {
-                  color: colors[index][1]
-                }
-              }
-            }
-          ]
-        });
-      } else {
-        seriesArr.push({
-          name: item.name,
-          type: "pie",
-          clockWise: false,
-          radius: [34, 40],
-          itemStyle: {
-            normal: {
-              color: colors[index][0],
-              shadowColor: colors[index][0],
-              shadowBlur: 0,
-              label: {
-                show: false
-              },
-              labelLine: {
-                show: false
-              }
-            }
-          },
-          hoverAnimation: false,
-          center: [index * 35 + 14 + "%", "50%"],
-          data: [
-            {
-              value: item.value.slice(0, item.value.length -1),
-              label: {
-                normal: {
-                  formatter: function(params) {
-                    return params.value + '%';
-                  },
-                  position: "center",
-                  show: true,
-                  textStyle: {
-                    fontSize: "16",
-                    color: '#fff',
-                  }
-                }
-              }
-            },
-            {
-              value: 100 - item.value,
-              name: "invisible",
-              itemStyle: {
-                normal: {
-                  color: colors[index][1]
-                },
-                emphasis: {
-                  color: colors[index][1]
-                }
-              }
-            }
-          ]
-        });
-      }
-    });
-
-    let option = {
-      title: titleArr,
-      series: seriesArr
+  components: {
+    BeianAPP,
+    BeianICP,
+    BeianILevel,
+  },
+  props: ["chartData"],
+  data() {
+    return {
+      checkTab: "icp",
+      timer: null,
+      timerIndex: 0,
     };
-     charts.setOption(option);
-    window.addEventListener("resize", () => {
-      charts.resize();
-    });
-  }
+  },
+  mounted() {
+    // this.timer = this.timerFn();
+    this.timer = setInterval(() => {
+      if (this.checkTab == "icp") {
+        this.checkTab = "app";
+      } else if (this.checkTab == "app") {
+        this.checkTab = "level";
+      } else if (this.checkTab == "level") {
+        this.checkTab = "icp";
+      }
+    }, 4000);
+  },
+
+  methods: {
+    showChart(e) {
+      this.checkTab = e;
+    },
+    mouseLeave() {
+      clearInterval(this.timer);
+      //  this.timer = this.timerFn();
+      this.timer = setInterval(() => {
+        if (this.checkTab == "icp") {
+          this.checkTab = "app";
+        } else if (this.checkTab == "app") {
+          this.checkTab = "level";
+        } else if (this.checkTab == "level") {
+          this.checkTab = "icp";
+        }
+      }, 4000);
+    },
+    mouseEnter() {
+      clearInterval(this.timer);
+    },
+    timerFn() {
+      setInterval(() => {
+        if (this.checkTab == "icp") {
+          this.checkTab = "app";
+        } else if (this.checkTab == "app") {
+          this.checkTab = "level";
+        } else if (this.checkTab == "level") {
+          this.checkTab = "icp";
+        }
+      }, 4000);
+    },
+  },
 };
 </script>

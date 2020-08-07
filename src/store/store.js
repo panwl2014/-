@@ -9,7 +9,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     token: localStorage.getItem('token') || '',
-
+    page: 'home',
     homeData: '',
     // controlData: data,
     
@@ -17,7 +17,7 @@ export default new Vuex.Store({
     tooltip: [
       {
         trigger: "item",
-        backgroundColor: "rgba(24, 150, 140, .9)",
+        backgroundColor: "rgba(0,101,153,.5)",
         textStyle: {
           fontSize: 12,
           color: '#fff'
@@ -37,7 +37,7 @@ export default new Vuex.Store({
             width: 0
           }
         },
-        backgroundColor: "rgba(24, 150, 140, .9)",
+        backgroundColor: "rgba(0,101,153,.5)",
         textStyle: {
           fontSize: 12,
           color: "#fff"
@@ -66,6 +66,9 @@ export default new Vuex.Store({
 
     setData(state, value) {
       state[value.nameSpace] = value;
+    },
+    showPage(state, value) {
+      state.page = value
     }
   },
   actions: {

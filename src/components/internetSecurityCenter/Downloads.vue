@@ -1,87 +1,73 @@
 <template>
   <div class="com-jiangMuRu">
     <div class="box" ref="jiangMuRu"></div>
-    <div class="label">被下载次数（单位: 万）</div>
+    <!-- <div class="label">被下载次数（单位: 万）</div> -->
   </div>
 </template>
 <script>
 export default {
-  props: ['chartData'],
+  props: ["chartData"],
   methods: {
     initChart() {
-      let fontColor = "#9e9fa3";
+      let fontColor = "rgba(255, 255, 255, .5)";
+      let lineColor = "#1c2844";
       let chart = this.$echarts.init(this.$refs.jiangMuRu);
+      let {
+        axisLabel,
+        axisLine,
+        axisTick,
+        splitLine,
+        nameTextStyle
+        
+      } = this.$chartConfig.lineStyle;
+      let { getRem } = this.$chartConfig;
       let option = {
         tooltip: this.$store.state.tooltip[1],
         grid: {
           left: "10",
           right: "18%",
-          top: "15%",
+          top: "20%",
           bottom: "5%",
           containLabel: true
         },
-       
+
         legend: {
           show: false
         },
         xAxis: [
           {
-            name: '      恶意程序名',
-            nameLocation: 'end',
+            name: "     恶意程序名",
+            nameLocation: "end",
             nameTextStyle: {
-                color: '#9e9fa3',
-                fontSize: 10,
-                align: 'center',
+              color: "rgba(255,255,255,.5)",
+              fontSize: getRem(12),
+              align: "center"
             },
             type: "category",
             // boundaryGap: true,
-            boundaryGap: ['10%', '10%'],
+            boundaryGap: ["10%", "10%"],
             axisLabel: {
               interval: 0,
               rotate: 38,
               color: fontColor,
-              fontSize: 10
+              fontSize: getRem(12)
             },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false,
-              lineStyle: {
-                color: "red"
-              }
-            },
+            axisLine,
+            axisTick,
+            splitLine,
             data: this.chartData.map(item => item.name)
           }
         ],
         yAxis: [
           {
+            name: "         被下载次数（单位：万）",
+            nameTextStyle,
             type: "value",
-            axisLabel: {
-              formatter: "{value}",
-              textStyle: {
-                color: "#9e9fa3",
-                fontSize: 10
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false
-            }
-          },
+            axisLabel,
+            axisLine,
+            axisTick,
+            splitLine
+          }
         ],
         series: [
           {
@@ -90,11 +76,11 @@ export default {
             barWidth: 5,
             itemStyle: {
               normal: {
-                color: "#367a6a",
+                color: "#3e7b94"
               }
             },
             data: this.chartData
-          },
+          }
         ]
       };
       chart.setOption(option, true);

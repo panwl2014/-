@@ -75,7 +75,7 @@ export default {
           {
             value: 7.5,
             itemStyle: {
-              color: "#182126"
+              color: "rgb(39, 41, 62)"
             }
           },
           {

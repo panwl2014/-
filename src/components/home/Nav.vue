@@ -18,8 +18,7 @@
                     data-name="hulianwang"
                     d="M171.888,187s-29.038,46.071-36.772,102.8h-8.256s8.7-58.233,35.269-102.8Zm-21.762,0S125.817,229.244,117.1,289.059H14.3S18.048,241.786,39.067,187Z"
                     transform="translate(798.603 -815.196)"
-                    fill="rgba(45,255,228,0.2)"
-                    stroke="#01b8ac"
+                    fill="rgba(45,199,255,0.2)" stroke="#10b9e2" 
                     stroke-width="1"
                   />
                   <rect
@@ -58,8 +57,7 @@
                     data-name="beian"
                     d="M14.3,187s29.038,46.071,36.772,102.8h8.256s-8.7-58.233-35.269-102.8Zm21.762,0s24.309,42.244,33.023,102.059h102.8S168.14,241.786,147.12,187Z"
                     transform="translate(1540.209 -815.196)"
-                    fill="rgba(45,255,228,0.2)"
-                    stroke="#01b8ac"
+                    fill="rgba(45,199,255,0.2)" stroke="#10b9e2" 
                     stroke-width="1"
                   />
                   <rect
@@ -98,8 +96,7 @@
                     data-name="wangan"
                     d="M156.353,126h-8.21c-6.957,59.924,5.221,102.187,5.221,102.187h8.21C149.174,169.008,156.353,126,156.353,126ZM139.2,126H37c-4.96,52.81,4.477,102.187,4.477,102.187H144.41C131.371,172.675,139.2,126,139.2,126Z"
                     transform="translate(774.483 -601.446)"
-                    fill="rgba(45,255,228,0.2)"
-                    stroke="#01b8ac"
+                    fill="rgba(45,199,255,0.2)" stroke="#10b9e2" 
                     stroke-width="1"
                   />
                   <rect
@@ -122,8 +119,8 @@
         </div>
       </router-link>
       <!-- 维稳管控 -->
-      <router-link to="/">
-        <div class="bg weiwen"  @click="click">
+      <router-link to="/industrialInter">
+        <div class="bg weiwen" >
           <div class="bgbox">
             <div class="title">
               <svg
@@ -138,8 +135,7 @@
                     data-name="weiwen"
                     d="M40.782,126h8.21c6.957,59.924-5.221,102.187-5.221,102.187h-8.21C47.961,169.008,40.782,126,40.782,126Zm17.151,0h102.2c4.96,52.81-4.477,102.187-4.477,102.187H52.725C65.764,172.675,57.933,126,57.933,126Z"
                     transform="translate(1553.382 -601.446)"
-                    fill="rgba(45,255,228,0.2)"
-                    stroke="#01b8ac"
+                   fill="rgba(45,199,255,0.2)" stroke="#10b9e2" 
                     stroke-width="1"
                   />
                   <rect
@@ -162,8 +158,8 @@
         </div>
       </router-link>
       <!-- 反诈中心 -->
-      <router-link to="/" >
-        <div class="bg fanzha" @click="click">
+      <router-link to="/antifraud" >
+        <div class="bg fanzha">
           <div class="bgbox">
             <div class="title">
               <svg
@@ -178,8 +174,7 @@
                     data-name="fanzha"
                     d="M137.748,224.3H128.8c14.881,56.583,43.974,94.661,43.974,94.661h10.438C151.376,278.428,137.748,224.3,137.748,224.3ZM17,224.3s8.317,49.318,30.563,96.147H161.6s-27.824-38.4-41.736-96.147Z"
                     transform="translate(801.005 -545.496)"
-                    fill="rgba(45,255,228,0.2)"
-                    stroke="#01b8ac"
+                    fill="rgba(45,199,255,0.2)" stroke="#10b9e2" 
                     stroke-width="1"
                   />
                   <rect
@@ -201,8 +196,8 @@
         </div>
       </router-link>
       <!-- 新业务 -->
-      <router-link to="/" >
-        <div class="bg xuke" @click="click">
+      <router-link to="/dataSecurity" >
+        <div class="bg xuke">
           <div class="bgbox">
             <div class="title">
               <svg
@@ -217,8 +212,7 @@
                     data-name="xuke"
                     d="M62.46,224.3h8.952c-14.881,56.583-43.974,94.661-43.974,94.661H17C48.832,278.428,62.46,224.3,62.46,224.3Zm120.748,0s-8.317,49.318-30.563,96.147H38.611s27.824-38.4,41.736-96.147Z"
                     transform="translate(1523.787 -545.496)"
-                    fill="rgba(45,255,228,0.2)"
-                    stroke="#01b8ac"
+                    fill="rgba(45,199,255,0.2)" stroke="#10b9e2" 
                     stroke-width="1"
                   />
                   <rect
@@ -234,7 +228,7 @@
               <svg class="icon iconxuke" aria-hidden="true">
                 <use xlink:href="#iconicon-xinyewuyangpin" />
               </svg>
-              <p class="xk-text">新业务中心</p>
+              <p class="xk-text">数据安全</p>
             </div>
           </div>
         </div>
@@ -253,9 +247,10 @@
       <img class="top-icon2" src="../../../public/static/img/imgs/icon_point.png" alt />
       <img class="bottom-icon2" src="../../../public/static/img/imgs/icon_point.png" alt />
 
-      <img class="top1" src="../../../public/static/img/imgs/img_topring.png" alt />
-      <img class="bottom1" src="../../../public/static/img/imgs/img_bottomring.png" alt />
-
+      <!-- <img class="top1" src="../../../public/static/img/imgs/img_topring.png" alt /> -->
+      <!-- <img class="bottom1" src="../../../public/static/img/imgs/img_bottomring.png" alt /> -->
+      <img class="bottom1" src="../../../public/static/img/imgs/out_clice.png" alt />
+ -->
       <!-- 旋转的三条线 -->
       <img src="../../../public/static/img/imgs/rotate_circle.png" class="rotate-circle" alt />
 
@@ -325,10 +320,9 @@
         position: absolute;
         left: 86px;
         top: 20px;
-        fill: red;
       }
       // 网安
-      .wa-text {
+      .wa-text {  
         left: 17px;
       }
       .iconwangan {
@@ -377,7 +371,7 @@
         top: 80px;
         font-size: 12px;
         left: 65px;
-        color: #60e6d2;
+        color: rgba(198, 221, 228, 1);
       }
       img {
         width: 180px;
@@ -390,7 +384,7 @@
         #fanzha-2,
         #hulianwang-2,
         #beian-2 {
-          fill: rgba(45, 255, 228, 0.4);
+          fill: rgba(45,199,255,0.3);
         }
       }
     }
@@ -507,7 +501,7 @@
     background-size: 40%;
     width: 270px;
     height: 270px;
-    background-color: rgba(21, 96, 99, 0.7);
+    background-color: rgba(45,199,255,0.2);
     border-radius: 50%;
     position: absolute;
     left: 50%;
@@ -613,16 +607,16 @@
     }
   }
   .bottom1 {
-    width: 270px;
+    width: 336px;
     z-index: 103;
     position: absolute;
-    bottom: 5px;
+    bottom: 4px;
     left: 50%;
     opacity: 0;
-    margin-left: -135px;
+    margin-left: -168px;
     animation: bottom1 0.3s 0.3s forwards, toprotate 8s 3s linear infinite;
     // animation: bottom1 0.3s 0.3s forwards ease-out;
-    transform-origin: center -88px;
+    transform-origin: center;
     @keyframes bottom1 {
       0% {
         transform: translateY(20px);
@@ -713,7 +707,7 @@
     width: 12px;
     animation: topicon1 0.5s 1.5s forwards;
     position: absolute;
-    top: 30px;
+    top: 25px;
     left: 50%;
     margin-left: -6px;
     @keyframes topicon1 {
@@ -732,7 +726,7 @@
     width: 12px;
     animation: bottomicon1 0.5s 1.5s forwards;
     position: absolute;
-    bottom: 30px;
+    bottom: 25px;
     left: 50%;
     margin-left: -6px;
     @keyframes bottomicon1 {
@@ -750,7 +744,7 @@
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    border: 25px solid rgba(21, 96, 99, 0.7);
+    border: 25px solid rgba(45,199,255,0.2);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -865,7 +859,7 @@
         opacity: 0;
       }
       100% {
-        transform: translateX(198px);
+        transform: translateX(275px);
         opacity: 1;
       }
     }
@@ -885,7 +879,7 @@
         opacity: 0;
       }
       100% {
-        transform: translateX(-198px);
+        transform: translateX(-275px);
         opacity: 1;
       }
     }
@@ -900,7 +894,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    border: 2px solid #69fce4;
+    border: 2px solid rgba(45,199,255,1);
   }
   .mimi-circleLeft {
     animation: circleLeft 1s forwards ease;

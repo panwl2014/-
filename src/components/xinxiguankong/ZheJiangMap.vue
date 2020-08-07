@@ -61,7 +61,7 @@
       font-size: 14rem;
       width: 100%;
       text-align: center;
-      margin-top: 18rem;
+      line-height: 40rem;
       color: #fff;
     }
     .label {
@@ -110,7 +110,7 @@
           text-align: center;
           width: 50%;
           height: 14rem;
-          background-color: #232d37;
+          background-color: none;
           position: relative;
           overflow: hidden;
           .data {
@@ -281,7 +281,7 @@ export default {
         roam: false,
         itemStyle: {
           normal: {
-            shadowColor: "#053f40",
+            shadowColor: "#21446a",
             shadowOffsetX: 5,
             shadowOffsetY: 15
           }
@@ -311,13 +311,13 @@ export default {
           },
           itemStyle: {
             normal: {
-              borderColor: "#267f6d",
+              borderColor: "#3687a7",
               borderWidth: 1.5,
-              areaColor: "#0d524d"
+              areaColor: "#1c517a"
             },
             emphasis: {
-              areaColor: "#25776b",
-              borderColor: "#62dcab",
+              areaColor: "#6a733c",
+              borderColor: "#ced166",
               borderWidth: 2
             }
           },

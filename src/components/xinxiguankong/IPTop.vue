@@ -94,7 +94,7 @@
       .name {
         line-height: 18rem;
       }
-      background-color: #0e292f;
+      background-color: #132b40;
       margin-bottom: 10rem;
       line-height: 18rem;
       height: 18rem;

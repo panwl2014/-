@@ -58,23 +58,23 @@
         .num {
           font-family: "font-Family-self";
           font-size: 45rem;
-          color: rgb(214, 200, 200);
+          color:$ccc;
           line-height: 100rem;
         }
       }
       .title {
         margin-top: 20rem;
-        background-color: #192c37;
+        background-color: $bg05;
         font-size: 12rem;
-        color: #6beebb;
+        color: $ccc;
         line-height: 20rem;
         &::before {
           content: "";
           display: inline-block;
           width: 6rem;
           height: 6rem;
-          border-top: 1rem solid #6beebb;
-          border-left: 1rem solid #6beebb;
+          border-top: 1rem solid $blue3;
+          border-left: 1rem solid $blue3;
           float: left;
         }
         &::after {
@@ -83,8 +83,8 @@
           display: inline-block;
           width: 6rem;
           height: 6rem;
-          border-bottom: 1rem solid #6beebb;
-          border-right: 1rem solid #6beebb;
+          border-bottom: 1rem solid $blue3;
+          border-right: 1rem solid $blue3;
           float: right;
         }
       }
@@ -98,11 +98,11 @@ export default {
   data() {
     return {
       monitorData: [
-        { name: "诈骗电话数", value: 120 },
-        { name: "诈骗短信数", value: 133 },
-        { name: "仿冒App数", value: 230 },
-        { name: "钓鱼网站数", value: 312 },
-        { name: "伪基站数", value: 112 }
+        { name: "反诈电话拦截", value: 1000 },
+        { name: "诈骗电话接收", value: 3000 },
+        { name: "恶意网址", value: 500 },
+        { name: "诈骗金额", value: 2000 },
+        { name: "伪基站", value: 100 }
       ]
     };
   }

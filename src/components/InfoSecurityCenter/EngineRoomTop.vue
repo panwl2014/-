@@ -49,7 +49,7 @@
     &.title {
       height: 16rem;
       line-height: 16rem;
-      background-color: #102a30;
+      background-color: $bg03;
       .top,
       .name,
       .bg {
@@ -66,6 +66,7 @@
         border-radius: 3rem 0 3rem 0;
         display: block;
         margin-left: 10%;
+        color: #fff;
         &.t1 {
           background-color: #fbce38;
           color: #3a3a3a;
@@ -97,7 +98,7 @@
         top: 0;
         width: 50%;
         height: 100%;
-        background-color: #164045;
+        background-color: $bg05;
         animation: showright 1.2s forwards;
         @keyframes showright {
           0% {

@@ -3,9 +3,15 @@
     <div class="box" ref="wanghanhuoyue"></div>
     <div class="tab">
       <div>
-        <span :class="isCheck =='month' ? 'active': ''" @click="showChart('month')">近30天</span>
-        <span :class="isCheck =='year' ? 'active': ''" @click="showChart('year')">近1年</span>
-        <span :class="isCheck =='5year' ? 'active': ''" @click="showChart('5year')">近5年</span>
+        <span
+          :class="isCheck =='month' ? 'active tab-btn': 'tab-btn'"
+          @click="showChart('month')"
+        >近30天</span>
+        <span :class="isCheck =='year' ? 'active tab-btn': 'tab-btn'" @click="showChart('year')">近1年</span>
+        <span
+          :class="isCheck =='5year' ? 'active tab-btn': 'tab-btn'"
+          @click="showChart('5year')"
+        >近5年</span>
       </div>
     </div>
     <p class="y">漏洞数量</p>
@@ -50,6 +56,8 @@ export default {
       this.initChart();
       switch (chartType) {
         case "month":
+           this.end = 0;
+          this.start = 30,
           this.chartData = this.$store.state.webSecurityData.overall_loopholes_last_30day_trend;
           break;
         case "year":
@@ -62,12 +70,19 @@ export default {
     },
 
     initChart() {
-      let fontColor = "#9e9fa3";
+      let fontColor = "rgba(255, 255, 255, .5)";
+      let lineColor = "#1c2844";
       let chart = this.$echarts.init(this.$refs.wanghanhuoyue);
       let data1 = [];
       let data2 = [];
       let data3 = [];
       // let allData = [];
+      let {
+        axisLabel,
+        axisLine,
+        axisTick,
+        splitLine
+      } = this.$chartConfig.lineStyle;
 
       for (let i = 0; i < this.chartData.name.length; i++) {
         data1.push({
@@ -138,49 +153,24 @@ export default {
             // boundaryGap: ['10%', '10%'],
             axisLabel: {
               interval: 0,
-              rotate: this.isCheck == "month" ? 0 : 35,
+              // rotate: this.isCheck == "month" ? 0 : 35,
+              rotate: 35,
               color: fontColor,
               fontSize: 10
             },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false,
-              lineStyle: {
-                color: "red"
-              }
-            },
+            axisLine,
+            axisTick,
+            splitLine,
             data: this.chartData.name
           }
         ],
         yAxis: [
           {
             type: "value",
-            axisLabel: {
-              formatter: "{value}",
-              textStyle: {
-                color: "#9e9fa3",
-                fontSize: 10
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false
-            }
+            axisLabel,
+            axisLine,
+            axisTick,
+            splitLine
           }
         ],
         series: [
@@ -234,7 +224,7 @@ export default {
             },
             itemStyle: {
               normal: {
-                color: "#63dcae",
+                color: "rgba(255, 255, 255, .4)",
                 barBorderRadius: 0,
                 label: {
                   show: false,
@@ -248,15 +238,16 @@ export default {
         ]
       };
       if (this.isCheck == "month") {
-        let dataZoom =
-          [{
+        let dataZoom = [
+          {
             type: "inside",
             show: true,
             xAxisIndex: [0],
             start: this.start,
             end: this.end
-          }];
-          option.dataZoom = dataZoom;
+          }
+        ];
+        option.dataZoom = dataZoom;
         // option.dataZoom = this.$store.state.dataZoom;
       }
       chart.setOption(option, true);
@@ -281,13 +272,13 @@ export default {
     this.initChart();
     this.timer = setInterval(() => {
       if (this.start >= 70) {
-        this.start = 0
+        this.start = 0;
       }
       if (this.end >= 100) {
-        this.end = 30
+        this.end = 30;
       }
-      this.start = this.start + 5
-      this.end = this.end + 5
+      this.start = this.start + 5;
+      this.end = this.end + 5;
     }, 3000);
   }
 };
@@ -322,23 +313,6 @@ export default {
     top: 0rem;
     left: 10rem;
     z-index: 10;
-    span {
-      display: inline-block;
-      font-size: 11rem;
-      padding: 1rem 3rem;
-      margin: 0 3rem;
-      background-color: #133841;
-      border: 1rem solid #2f4c4d;
-      color: #70878d;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .active {
-      background: #226567;
-      border: 1rem solid #439d84;
-      color: #fff;
-    }
   }
 }
 </style>

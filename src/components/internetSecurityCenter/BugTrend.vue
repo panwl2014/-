@@ -1,9 +1,9 @@
 <template>
   <div class="com-BugTrend">
     <div class="ctrl">
-      <span :class="check == 'month' ? 'active': ''" @click="showChart('month')">近30天</span>
-      <span :class="check == 'quarter' ? 'active': ''" @click="showChart('quarter')">季度</span>
-      <span :class="check == 'year' ? 'active': ''" @click="showChart('year')">年度</span>
+      <span :class="check == 'month' ? 'active tab-btn': 'tab-btn'" @click="showChart('month')">近30天</span>
+      <span :class="check == 'quarter' ? 'active tab-btn': 'tab-btn'" @click="showChart('quarter')">季度</span>
+      <span :class="check == 'year' ? 'active tab-btn': 'tab-btn'" @click="showChart('year')">年度</span>
     </div>
     <div class="right">
       <li class="title top10" id="title">
@@ -43,20 +43,9 @@
     padding-right: 10rem;
     span {
       display: block;
-      height: 22rem;
-      padding: 0 5rem;
-      line-height: 20rem;
-      color: #929294;
-      border: 1rem solid #2f4c4d;
       text-align: center;
       margin-bottom: 10rem;
-      border-radius: 2rem;
-      background-color: #133841;
-      &.active {
-        border: 1rem solid #39a397;
-        color: #fff;
-        background: #226566;
-      }
+      padding: 3rem;
     }
   }
   .right {
@@ -85,7 +74,7 @@
       &.title {
         height: 16rem;
         line-height: 16rem;
-        background-color: #102a30;
+        background-color: $bg05;
         .top,
         .name,
         .bg {
@@ -93,12 +82,12 @@
         }
       }
       .top {
-        //   background-color: orange;
         width: 15%;
         span {
           width: 80%;
           height: 100%;
           background-color: #555f61;
+          color: #fff;
           border-radius: 3rem 0 3rem 0;
           display: block;
           margin-left: 10%;
@@ -133,7 +122,7 @@
           top: 0;
           width: 50%;
           height: 100%;
-          background-color: #164045;
+          background-color: $bg03;
           animation: showright 1.2s forwards;
           @keyframes showright {
             0% {

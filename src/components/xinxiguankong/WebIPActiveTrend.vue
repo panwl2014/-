@@ -1,7 +1,7 @@
 <template>
   <div class="com-wanghanhuoyue" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
     <div class="box" ref="wanghanhuoyue"></div>
-    <div class="y">时间</div>
+    <div class="y">日期</div>
     <div class="tab">
       <div class="left-text">
         <span class="left"></span>
@@ -11,10 +11,19 @@
         </p>
       </div>
       <div class="tabs">
-        <span :class="isCheck =='30day' ? 'active': ''" @click="showChart('30day')">近30天</span>
-        <span :class="isCheck =='month' ? 'active': ''" @click="showChart('month')">月度</span>
-        <span :class="isCheck =='quarter' ? 'active': ''" @click="showChart('quarter')">季度</span>
-        <span :class="isCheck =='year' ? 'active': ''" @click="showChart('year')">年度</span>
+        <span
+          :class="isCheck =='30day' ? 'active tab-btn': 'tab-btn'"
+          @click="showChart('30day')"
+        >近30天</span>
+        <span
+          :class="isCheck =='month' ? 'active tab-btn': 'tab-btn'"
+          @click="showChart('month')"
+        >月度</span>
+        <span
+          :class="isCheck =='quarter' ? 'active tab-btn': 'tab-btn'"
+          @click="showChart('quarter')"
+        >季度</span>
+        <span :class="isCheck =='year' ? 'active tab-btn': 'tab-btn'" @click="showChart('year')">年度</span>
       </div>
       <div class="left-text right">
         <span class="left"></span>
@@ -92,8 +101,15 @@ export default {
           Math.max(...data2.map(item => item.value))) *
         1.4
       ).toFixed(0);
-      let fontColor = "#9e9fa3";
+      let fontColor = "rgba(255, 255, 255, .5)";
+      let lineColor = "#384861";
       let chart = this.$echarts.init(this.$refs.wanghanhuoyue);
+      let {
+        axisLabel,
+        axisLine,
+        axisTick,
+        splitLine
+      } = this.$chartConfig.lineStyle;
       let option = {
         grid: {
           left: "0",
@@ -108,24 +124,10 @@ export default {
           {
             type: "category",
             boundaryGap: false,
-            axisLabel: {
-              color: fontColor
-            },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false,
-              lineStyle: {
-                color: "#195384"
-              }
-            },
+            axisLabel,
+            axisLine,
+            axisTick,
+            splitLine,
             data: this.chartData.name
           }
         ],
@@ -134,53 +136,19 @@ export default {
             type: "value",
             min: 0,
             max,
-            axisLabel: {
-              formatter: "{value}",
-              textStyle: {
-                color: "#9e9fa3",
-                fontSize: 11
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false
-              // lineStyle: {
-              //   color: "#11366e"
-              // }
-            }
+            axisLabel,
+            axisLine,
+            axisTick,
+            splitLine
           },
           {
             type: "value",
             min: 0,
             max,
-            axisLabel: {
-              formatter: "{value}",
-              textStyle: {
-                color: "#9e9fa3",
-                fontSize: 11
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false
-              // lineStyle: {
-              //   color: "#11366e"
-              // }
-            }
+            axisLabel,
+            axisLine,
+            axisTick,
+            splitLine
           }
         ],
         series: [
@@ -314,9 +282,9 @@ export default {
   .y {
     font-size: 10rem;
     position: absolute;
-    bottom: 6%;
+    bottom: 10%;
     right: 0;
-    color: #909196;
+    color: $fff05;
   }
   .tab {
     font-size: 9rem;
@@ -349,7 +317,7 @@ export default {
         position: absolute;
         font-size: 9rem;
         // background-color: #fff;
-        color: #909196;
+        color: $fff05;
         left: 16rem;
         top: -2rem;
       }
@@ -363,23 +331,6 @@ export default {
       & > p {
         text-align: right;
       }
-    }
-    span {
-      display: inline-block;
-      font-size: 11rem;
-      padding: 1rem 3rem;
-      margin: 0 3rem;
-      background-color: #133841;
-      border: 1rem solid #2f4c4d;
-      color: #70878d;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .active {
-      background: #226567;
-      border: 1rem solid #439d84;
-      color: #fff;
     }
   }
 }

@@ -17,6 +17,7 @@
 export default {
   props: ["chartData", "color", "max"],
   mounted() {
+    console.log(this.chartData, this.color, this.max)
     const charts = this.$echarts.init(this.$refs.charts);
     let me = this;
     let data = this.chartData;
@@ -32,7 +33,7 @@ export default {
         textStyle: {
           fontWeight: "normal",
           fontSize: "12",
-          color: "#727375",
+          color: "rgba(255, 255, 255, .5)",
           textAlign: "center"
         }
       });
@@ -75,13 +76,13 @@ export default {
                     },
                     add: {
                       fontSize: 12,
-                      height: 13,
+                      height: 12,
                       lineHeight: 15,
                       color: 'rgb(227, 219, 79)',
                     },
                     icon: {
-                      width: 13,
-                      height:13,
+                      width: 9,
+                      height:9,
                       backgroundColor: {
                         image: `${require("../../../public/static/img/icons/icon_add.png")}`
                       },
@@ -97,7 +98,7 @@ export default {
                       "\n" +
                       "{icon|" +
                       "}" +
-                      "{add|" +
+                      "{add|" + ' ' + 
                       item.add +
                       "}"
                     );

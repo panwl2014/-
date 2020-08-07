@@ -1,6 +1,5 @@
 <template>
   <div class="page-internet-security" v-if="webSecurityData">
-    <ChildHeader :title="'网络安全中心'"></ChildHeader>
     <div class="main">
       <div class="left">
         <div class="part">
@@ -12,7 +11,7 @@
           ></TodaySecurity>
           <TodaySecurity
             :chartData="webSecurityData.today_cybersecurity_incident.slice(3)"
-            :color="color1"
+            :color="color2"
             :max="webSecurityData.today_cybersecurity_incident[0].value"
           ></TodaySecurity>
         </div>
@@ -24,8 +23,8 @@
               <p class="num">{{item.value}}</p>
             </li>
             <div class="all">
-              <p class="num">{{webSecurityData.malicious_program.reduce((prev, item) => prev + item.value, 0)}}</p>
               <p>总数</p>
+              <p class="num">{{webSecurityData.malicious_program.reduce((prev, item) => prev + item.value, 0)}}</p>
             </div>
           </div>
         </div>
@@ -38,7 +37,6 @@
 
       <div class="center">
         <div class="part">
-           网络安全事件总数
            <AllNumber :title="'网络安全事件总数'" :allNumber="data5" :add="add"></AllNumber>
         </div>
         <div class="part">
@@ -107,8 +105,8 @@
           background-size: 100%;
           background-position: 0 10rem;
           background-repeat: no-repeat;
-          font-size: 13rem;
-          color: #6beebb;
+          font-size: 15rem;
+          color: rgba(149, 216, 255, 1);
           // padding-left: 10rem;
           display: flex;
           flex-wrap: wrap;
@@ -123,7 +121,7 @@
             height: 50rem;
             .num {
               font-family: "font-Family-self";
-              font-size: 35rem;
+              font-size: 45rem;
               line-height: 30rem;
             }
           }
@@ -145,8 +143,8 @@
             padding-top: 40rem;
             .num {
               font-family: "font-Family-self";
-              font-size: 40rem;
-              line-height: 30rem;
+              font-size: 45rem;
+              line-height: 40rem;
             }
           }
         }
@@ -162,9 +160,9 @@
             justify-content: space-around;
             align-items: center;
             width: 31%;
-            background-color: #11323d;
+            background-color: $bg05;
             height: 30rem;
-            border: 1rem solid #2c8684;
+            border: 1rem solid $blue1;
             & span:first-child {
               position: relative;
               margin-left: -5rem;
@@ -257,7 +255,6 @@
 }
 </style>
 <script>
-import ChildHeader from "../components/ChildHeader";
 import Title from "../components/Title";
 import JiangMuRu from "../components/internetSecurityCenter/JiangMuRu";
 import Downloads from "../components/internetSecurityCenter/Downloads";
@@ -271,7 +268,6 @@ import CenterBottom from "../components/internetSecurityCenter/CenterBottom";
 import AllNumber from '../components/AllNumber'
 export default {
   components: {
-    ChildHeader,
     Title,
     Downloads,
     LouDongQuShi,
@@ -309,14 +305,14 @@ export default {
       webSecurityData: "",
       
       color1: [
-        ["#397870", "#2f3535"],
-        ["#822a23", "#2f3535"],
-        ["#808253", "#2f3535"]
+        ["#4c7e90", "#2f3535"],
+        ["#77302c", "#2f3535"],
+        ["#797954", "#2f3535"]
       ],
       color2: [
-        ["#60455f", "#2f3535"],
-        ["#7a5031", "#2f3535"],
-        ["#397970", "#2f3535"]
+        ["#594559", "#2f3535"],
+        ["#655440", "#2f3535"],
+        ["#437878", "#2f3535"]
       ],
       add: 47,
       data5: 29467

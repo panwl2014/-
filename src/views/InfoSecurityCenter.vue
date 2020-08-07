@@ -1,6 +1,5 @@
 <template>
   <div class="page-internet-security" v-if="infoSecurityData">
-    <ChildHeader :title="'信息安全中心'"></ChildHeader>
     <div class="main">
       <div class="left">
         <div class="part">
@@ -87,7 +86,6 @@
 }
 </style>
 <script>
-import ChildHeader from "../components/ChildHeader";
 // import Title from "../components/Title";
 import Map from "../components/InfoSecurityCenter/Map";
 import CenterBottom from "../components/InfoSecurityCenter/CenterBottom";
@@ -100,7 +98,6 @@ import Title from "../components/InfoSecurityTitle";
 import AllNumber from '../components/AllNumber'
 export default {
   components: {
-    ChildHeader,
     Title,
     Map,
     CenterBottom,

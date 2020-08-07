@@ -20,25 +20,41 @@
 </template>
 <script>
 export default {
-  props: ['chartData'],
+  props: ["chartData"],
   data() {
     return {
       data1: [],
       data2: [],
-      data3: [],
+      data3: []
     };
   },
   created() {
-    for (let i = 0; i < this.chartData.name.length;  i++) {
-      this.data1.push({name: this.chartData.name[i], value: this.chartData.value['控制服务器IP在本省数'][i]});
-      this.data2.push({name: this.chartData.name[i], value: this.chartData.value['被控服务器IP在本省数'][i]});
-      this.data3.push({name: this.chartData.name[i], value: this.chartData.value['感染飞客蠕虫主机IP数'][i]});
+    for (let i = 0; i < this.chartData.name.length; i++) {
+      this.data1.push({
+        name: this.chartData.name[i],
+        value: this.chartData.value["控制服务器IP在本省数"][i]
+      });
+      this.data2.push({
+        name: this.chartData.name[i],
+        value: this.chartData.value["被控服务器IP在本省数"][i]
+      });
+      this.data3.push({
+        name: this.chartData.name[i],
+        value: this.chartData.value["感染飞客蠕虫主机IP数"][i]
+      });
     }
   },
   methods: {
     initChart() {
-      let fontColor = "#9e9fa3";
+      let fontColor = "rgba(255, 255, 255, .5)";
+      let lineColor = "#1c2844";
       let chart = this.$echarts.init(this.$refs.jiangMuRu);
+      let {
+        axisLabel,
+        axisLine,
+        axisTick,
+        splitLine
+      } = this.$chartConfig.lineStyle;
       let option = {
         grid: {
           left: "0",
@@ -47,7 +63,7 @@ export default {
           bottom: "5%",
           containLabel: true
         },
-        
+
         legend: {
           show: false
         },
@@ -61,21 +77,9 @@ export default {
               color: fontColor,
               fontSize: 10
             },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: true,
-              lineStyle: {
-                color: "#1c2633"
-              }
-            },
+            axisLine,
+            axisTick,
+            splitLine,
             data: this.data1.map(item => item.name)
           }
         ],
@@ -84,25 +88,11 @@ export default {
             type: "value",
             min: 0,
             // max: 10000,
-            axisLabel: {
-              formatter: "{value}",
-              textStyle: {
-                color: "#9e9fa3",
-                fontSize: 10
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false
-            }
-          },
+            axisLabel,
+            axisLine,
+            axisTick,
+            splitLine
+          }
         ],
         series: [
           {
@@ -118,7 +108,6 @@ export default {
                   color: "#e8e579",
                   width: 1
                 }
-               
               }
             },
             markPoint: {
@@ -143,7 +132,6 @@ export default {
                   color: "#e58079",
                   width: 1
                 }
-               
               }
             },
             data: this.data2
@@ -161,7 +149,6 @@ export default {
                   color: "#70e4ba",
                   width: 1
                 }
-               
               }
             },
             data: this.data3

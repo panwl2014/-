@@ -46,7 +46,7 @@ export default {
         },
         axisTick: {
           lineStyle: {
-            color: "#62a78e"
+            color: "rgba(95, 111, 139, 1)"
           }
         },
         axisLabel: {

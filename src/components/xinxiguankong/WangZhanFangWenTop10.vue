@@ -3,7 +3,7 @@
     <div class="chart" ref="chart"></div>
     <div class="x">访问量</div>
     <div class="ctrl">
-      <p class="tab">
+      <p class="tab-bar-2">
         <span :class="tab == 'left' ? 'active': ''" @click="showChart('left')">本省接入网站访问排名</span>
         <span :class="tab == 'right' ? 'active': ''" @click="showChart('right')">本省主体网站访问排名</span>
       </p>
@@ -11,35 +11,35 @@
         <li>
           <img
             @click="showChart('day')"
-            :src="require(`../../../public/static/img/icons/icon_day_${iconCheck == 'day'? 'click': 'normal'}@2x.png`)"
+            :src="require(`../../../public/static/img/icons/icon_day_${iconCheck == 'day'? 'click': 'normal'}.png`)"
             alt
           />
         </li>
         <li>
           <img
             @click="showChart('week')"
-            :src="require(`../../../public/static/img/icons/icon_week_${iconCheck == 'week'? 'click': 'normal'}@2x.png`)"
+            :src="require(`../../../public/static/img/icons/icon_week_${iconCheck == 'week'? 'click': 'normal'}.png`)"
             alt
           />
         </li>
         <li>
           <img
             @click="showChart('month')"
-            :src="require(`../../../public/static/img/icons/icon_month_${iconCheck == 'month'? 'click': 'normal'}@2x.png`)"
+            :src="require(`../../../public/static/img/icons/icon_month_${iconCheck == 'month'? 'click': 'normal'}.png`)"
             alt
           />
         </li>
         <li>
           <img
             @click="showChart('quarter')"
-            :src="require(`../../../public/static/img/icons/icon_quarter_${iconCheck == 'quarter'? 'click': 'normal'}@2x.png`)"
+            :src="require(`../../../public/static/img/icons/icon_quarter_${iconCheck == 'quarter'? 'click': 'normal'}.png`)"
             alt
           />
         </li>
         <li>
           <img
             @click="showChart('year')"
-            :src="require(`../../../public/static/img/icons/icon_year_${iconCheck == 'year'? 'click': 'normal'}@2x.png`)"
+            :src="require(`../../../public/static/img/icons/icon_year_${iconCheck == 'year'? 'click': 'normal'}.png`)"
             alt
           />
         </li>
@@ -50,7 +50,7 @@
 <style lang="scss" scoped>
 .com-visittop {
   padding-top: 20rem;
-  height: 400rem;
+  height: 350rem;
   width: 100%;
   position: relative;
   .chart {
@@ -79,30 +79,10 @@
         margin-bottom: 10rem;
       }
     }
-    .tab {
+    .tab-bar-2 {
       width: 100%;
       position: absolute;
       top: 25rem;
-      span {
-        &:first-child {
-          border-right: none;
-        }
-        &:last-child {
-          border-left: none;
-        }
-        &.active {
-          border: 1rem solid #39a397;
-          color: #6beebb;
-        }
-        display: inline-block;
-        height: 25rem;
-        line-height: 25rem;
-        width: 50%;
-        color: #929294;
-        border: 1rem solid #4a515b;
-        font-size: 12rem;
-        text-align: center;
-      }
     }
   }
 }
@@ -120,7 +100,6 @@ export default {
   },
   mounted() {
     this.chartData = this.$store.state.controlData.access_website_visit_day;
-    console.log('test', this.chartData)
     this.initChart();
     this.timer = setInterval(() => {
       if (this.tab == "left") {
@@ -134,17 +113,15 @@ export default {
     mouseLeave() {
       clearInterval(this.timer);
       this.timer = setInterval(() => {
-      if (this.tab == "left") {
-        this.showChart("right");
-      } else {
-        this.showChart("left");
-      }
-    }, 4000);
-
+        if (this.tab == "left") {
+          this.showChart("right");
+        } else {
+          this.showChart("left");
+        }
+      }, 4000);
     },
     mouseEnter() {
-      clearInterval(this.timer)
-      
+      clearInterval(this.timer);
     },
     showChart(chartType) {
       if (chartType == "left" || chartType == "right") {
@@ -196,14 +173,14 @@ export default {
       }
     },
     initChart() {
+      let {
+        axisLabel,
+        axisLine,
+        axisTick,
+        splitLine
+      } = this.$chartConfig.lineStyle;
       let chart = this.$echarts.init(this.$refs.chart);
       let option = {
-        // tooltip: {
-        //   trigger: "axis",
-        //   axisPointer: {
-        //     type: "shadow"
-        //   }
-        // },
         grid: {
           left: "14%",
           right: "13%",
@@ -212,43 +189,19 @@ export default {
         },
         xAxis: {
           type: "value",
-          axisTick: {
-            show: false
-          },
-          axisLine: {
-            lineStyle: {
-              color: "#224f4a"
-            }
-          },
-          splitLine: {
-            show: false
-          },
           axisLabel: {
-            show: false,
-            rotate: 20,
-            interval: 1,
-            textStyle: {
-              color: "#a7a7a9",
-              fontSize: 11
-            }
-          }
+            show: false
+          },
+          axisLine,
+          axisTick,
+          splitLine
         },
         yAxis: {
-          data: this.chartData.map(item => item.name).reverse(),
-          axisLabel: {
-            textStyle: {
-              color: "#a7a7a9",
-              fontSize: 11
-            }
-          },
-          axisLine: {
-            lineStyle: {
-              color: "#224f4a"
-            }
-          },
-          axisTick: {
-            show: false
-          },
+          data: this.chartData.map(item => item.name),
+         axisLabel,
+          axisLine,
+          axisTick,
+          splitLine,
           type: "category"
         },
         series: [
@@ -257,9 +210,9 @@ export default {
             name: "访问量",
             type: "bar",
             itemStyle: {
-              color: "#174046"
+              color: "#214b5d"
             },
-            data: this.chartData.reverse(),
+            data: this.chartData,
             label: {
               show: true,
               position: "right",
@@ -270,7 +223,6 @@ export default {
           }
         ]
       };
-
       chart.setOption(option, true);
       window.addEventListener("resize", () => {
         chart.resize();

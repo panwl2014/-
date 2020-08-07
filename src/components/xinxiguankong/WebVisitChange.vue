@@ -3,11 +3,14 @@
     <div class="box" ref="wanghanhuoyue"></div>
     <div class="tab">
       <div>
-        <span :class="isCheck =='day' ? 'active': ''" @click="showChart('day')">天</span>
-        <span :class="isCheck =='week' ? 'active': ''" @click="showChart('week')">周</span>
-        <span :class="isCheck =='month' ? 'active': ''" @click="showChart('month')">月</span>
-        <span :class="isCheck =='quarter' ? 'active': ''" @click="showChart('quarter')">季</span>
-        <span :class="isCheck =='year' ? 'active': ''" @click="showChart('year')">年度</span>
+        <span :class="isCheck =='day' ? 'active tab-btn': 'tab-btn'" @click="showChart('day')">昨日</span>
+        <span :class="isCheck =='week' ? 'active tab-btn': 'tab-btn'" @click="showChart('week')">周</span>
+        <span :class="isCheck =='month' ? 'active tab-btn': 'tab-btn'" @click="showChart('month')">月</span>
+        <span
+          :class="isCheck =='quarter' ? 'active tab-btn': 'tab-btn'"
+          @click="showChart('quarter')"
+        >季</span>
+        <span :class="isCheck =='year' ? 'active tab-btn': 'tab-btn'" @click="showChart('year')">年度</span>
       </div>
     </div>
     <p class="y">网站数</p>
@@ -27,8 +30,9 @@ export default {
   },
   methods: {
     showChart(chartType) {
-      this.isCheck != chartType && this.initChart();
+      // this.isCheck != chartType && this.initChart();
       this.isCheck = chartType;
+      this.initChart()
       switch (chartType) {
         case "day":
           this.end = 0;
@@ -54,6 +58,12 @@ export default {
 
     initChart() {
       let fontColor = "#9e9fa3";
+      let {
+        axisLabel,
+        axisLine,
+        axisTick,
+        splitLine
+      } = this.$chartConfig.lineStyle;
       let chart = this.$echarts.init(this.$refs.wanghanhuoyue);
       let data = [];
       for (let i = 0; i < this.chartData.name.length; i++) {
@@ -77,27 +87,10 @@ export default {
             type: "category",
             // boundaryGap: true,
             // boundaryGap: ['10%', '10%'],
-            axisLabel: {
-              interval: 0,
-              // rotate: 38,
-              color: fontColor,
-              fontSize: 10
-            },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false,
-              lineStyle: {
-                color: "red"
-              }
-            },
+            axisLabel,
+            axisLine,
+            axisTick,
+            splitLine,
             data: this.chartData.name
           }
         ],
@@ -106,24 +99,10 @@ export default {
             type: "value",
             min: 0,
             // max: 3800,
-            axisLabel: {
-              formatter: "{value}",
-              textStyle: {
-                color: "#9e9fa3",
-                fontSize: 10
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false
-            }
+            axisLabel,
+            axisLine,
+            axisTick,
+            splitLine
           }
         ],
         series: [
@@ -134,7 +113,7 @@ export default {
             barWidth: 10,
             itemStyle: {
               normal: {
-                color: "#1f6563"
+                color: "#39717e"
               }
             },
             data
@@ -146,13 +125,13 @@ export default {
             },
             type: "line",
             symbolSize: 5,
-            symbol: "circle",
+            symbol: "none",
             lineStyle: {
               width: 1
             },
             itemStyle: {
               normal: {
-                color: "#63dcae",
+                color: "#DE8B85",
                 barBorderRadius: 0,
                 label: {
                   show: false,
@@ -258,23 +237,6 @@ export default {
     top: 10rem;
     right: 10rem;
     z-index: 10;
-    span {
-      display: inline-block;
-      font-size: 11rem;
-      padding: 2rem 5rem;
-      margin: 0 3rem;
-      background-color: #133841;
-      border: 1rem solid #2f4c4d;
-      color: #70878d;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .active {
-      background: #226567;
-      border: 1rem solid #439d84;
-      color: #fff;
-    }
   }
 }
 </style>

@@ -9,13 +9,12 @@
 export default {
   data() {
     return {
-      data: [],
       start: 0,
       end: 30,
       timer: null
-    }
+    };
   },
-  props: ['chartData'],
+  props: ["chartData"],
   methods: {
     mouseEnter() {
       clearInterval(this.timer);
@@ -35,15 +34,24 @@ export default {
       }, 3000);
     },
     initChart() {
-      let fontColor = "#9e9fa3";
+      let fontColor = "rgba(255, 255, 255, .5)";
+      let {
+        axisLabel,
+        axisLine,
+        axisTick,
+        splitLine
+      } = this.$chartConfig.lineStyle;
       let chart = this.$echarts.init(this.$refs.OneMonthInfoSecurity);
       let data = [];
-      for (let i = 0; i < this.chartData.name.length; i ++) {
-        data.push({name: this.chartData.name[i], value: this.chartData.value[i]})
+      for (let i = 0; i < this.chartData.name.length; i++) {
+        data.push({
+          name: this.chartData.name[i],
+          value: this.chartData.value[i]
+        });
       }
       let option = {
         tooltip: this.$store.state.tooltip[1],
-     
+
         grid: {
           left: "0",
           right: "12%",
@@ -51,33 +59,15 @@ export default {
           bottom: "5%",
           containLabel: true
         },
-        // tooltip: {
-        //   show: true,
-        //   trigger: "item"
-        // },
 
         xAxis: [
           {
             type: "category",
             boundaryGap: false,
-            axisLabel: {
-              color: fontColor
-            },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false,
-              lineStyle: {
-                color: "#195384"
-              }
-            },
+            axisLabel,
+            axisLine,
+            axisTick,
+            splitLine,
             data: this.chartData.name
           }
         ],
@@ -86,27 +76,10 @@ export default {
             type: "value",
             min: 0,
             // max: 4000,
-            axisLabel: {
-              formatter: "{value}",
-              textStyle: {
-                color: "#9e9fa3",
-                fontSize: 11
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: "#3a414b"
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: true,
-              lineStyle: {
-                color: "rgb(27, 38, 50)"
-              }
-            }
+            axisLabel,
+            axisLine,
+            axisTick,
+            splitLine
           }
         ],
         series: [
@@ -118,9 +91,9 @@ export default {
             smooth: true,
             itemStyle: {
               normal: {
-                color: "#6beebb",
+                color: "#6abcc7",
                 lineStyle: {
-                  color: "#479e83",
+                  color: "#33526e",
                   width: 1
                 },
                 areaStyle: {
@@ -128,11 +101,11 @@ export default {
                   color: new this.$echarts.graphic.LinearGradient(0, 1, 0, 0, [
                     {
                       offset: 0,
-                      color: "rgba(46, 105, 93,.1)"
+                      color: "rgba(57, 102, 127,.1)"
                     },
                     {
                       offset: 1,
-                      color: "rgba(46, 105, 93,1)"
+                      color: "rgba(57, 102, 127,1)"
                     }
                   ])
                 }
@@ -143,15 +116,15 @@ export default {
         ]
       };
       let dataZoom = [
-          {
-            type: "inside",
-            show: true,
-            xAxisIndex: [0],
-            start: this.start,
-            end: this.end
-          }
-        ];
-        option.dataZoom = dataZoom;
+        {
+          type: "inside",
+          show: true,
+          xAxisIndex: [0],
+          start: this.start,
+          end: this.end
+        }
+      ];
+      option.dataZoom = dataZoom;
       chart.setOption(option, true);
       window.addEventListener("resize", () => {
         chart.resize();
@@ -170,8 +143,7 @@ export default {
       }
     }
   },
-  created() {
-  },
+  created() {},
   mounted() {
     this.initChart();
     this.timer = setInterval(() => {

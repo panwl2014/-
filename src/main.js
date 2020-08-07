@@ -3,31 +3,37 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router/router';
 import store from './store/store';
+
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 axios.defaults.crossDomain = true;
+
 import echarts from 'echarts';
 import 'echarts-gl';
 
+
 import vuescroll from 'vuescroll';
 import 'vuescroll/dist/vuescroll.css';
-Vue.use(vuescroll)
-;
+
+
+
+
+import chartConfig from './js/chart_config';
 import 'lib-flexible';
 // import axios from './axios/axios';
-// import dataV from '@jiaminghi/data-view';
 
 import ElementUi from 'element-ui';
-
 import 'element-ui/lib/theme-chalk/index.css';
+// import VueAwesomeSwiper from 'vue-awesome-swiper';
+// Vue.use(VueAwesomeSwiper)
+
 import './js/background';
 import './js/iconfont';
-// import 'echarts/map/js/world';
-// import 'echarts/map/json/world.json';
 
-// Vue.use(dataV)
 Vue.use(ElementUi);
+Vue.use(vuescroll);
 Vue.prototype.$http = axios;
+Vue.prototype.$chartConfig = chartConfig;
 Vue.prototype.$message = ElementUi.Message
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false

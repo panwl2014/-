@@ -41,7 +41,6 @@ export default {
       height: 4rem;
       background-color: rgba(80, 80, 80, 0.4);
       width: 40%;
-      color: rgb(187, 187, 187);
       position: relative;
       overflow: hidden;
       .right-data {
@@ -64,7 +63,7 @@ export default {
     }
     .right-num {
       width: 15%;
-      color: #999;
+      color: rgba(255, 255, 255, .5);
       margin-top: 2rem;
       text-align: right;
     }

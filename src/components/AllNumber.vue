@@ -47,12 +47,12 @@ export default {
       display: block;
       width: 100%;
       position: absolute;
-      font-size: 3rem;
+      font-size: 10rem;
       color: #999;
       position: absolute;
       bottom: -2rem;
       left: 10rem;
-      transform: scale(.8);
+      // transform: scale(.8);
     }
     .add-num {
       display: block;
@@ -82,6 +82,7 @@ export default {
       color: #e4da39;
       border-radius: 5rem;
       background-color: #2c4f4f;
+      // background-color: $color;
       border: 1rem solid #66a794;
       &.douhao {
         background-color: transparent;

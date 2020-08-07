@@ -101,7 +101,7 @@
       width: 100%;
       text-align: center;
       margin-top: -15rem;
-      color: #6beebb;
+      color: #fff;
     }
     .label {
       width: 100%;
@@ -111,7 +111,7 @@
       justify-content: space-around;
       padding: 0 30rem;
       :first-child {
-        border-left: 20rem solid #447569;
+        border-left: 20rem solid  rgba(33, 130, 154, .4);
       }
       :last-child {
         border-left: 20rem solid #87474c;
@@ -157,7 +157,7 @@
             right: 0;
             top: 0;
             position: absolute;
-            background: rgba(106, 180, 151, 0.38);
+            background: rgba(33, 130, 154, .4);
           }
           .data-right {
             width: 50%;
@@ -276,7 +276,7 @@ export default {
         roam: false,
         itemStyle: {
           normal: {
-            shadowColor: "#053f40",
+            shadowColor: "#21446a",
             shadowOffsetX: 5,
             shadowOffsetY: 15
           }
@@ -293,26 +293,39 @@ export default {
           label: {
             normal: {
               show: true,
+              formatter({ data }) {
+                return data.name + '\n' + "{icon|" + ' ' + "}";
+              },
               textStyle: {
-                fontSize: 12,
-                color: "#DADADA"
+                color: "rgba(255, 255, 255, 0.7)",
+                fontSize: "12",
+                lineHeight: 16,
+                rich: {
+                  icon: {
+                    width: 12,
+                    height: 12,
+                    backgroundColor: {
+                      image: `${require("../../../public/static/img/imgs/fanzha/icon_mappoint.png")}`
+                    }
+                  }
+                }
               }
             },
             emphasis: {
               textStyle: {
-                color: "#e8cf41"
+                color: "#fff"
               }
             }
           },
           itemStyle: {
             normal: {
-              borderColor: "#267f6d",
+              borderColor: "#3687a7",
               borderWidth: 1.5,
-              areaColor: "#0d524d"
+              areaColor: "#1c517a"
             },
             emphasis: {
-              areaColor: "#25776b",
-              borderColor: "#62dcab",
+              areaColor: "#6a733c",
+              borderColor: "#ced166",
               borderWidth: 2
             }
           },
@@ -320,25 +333,6 @@ export default {
           map: "zhejiang",
           data: this.mapData
         },
-        // {
-        //   type: "effectScatter",
-        //   coordinateSystem: "geo",
-        //   showEffectOn: "render",
-        //   symbolSize: 8,
-        //   rippleEffect: {
-        //     period: 3,
-        //     scale: 3,
-        //     brushType: "fill"
-        //   },
-        //   hoverAnimation: true,
-        //   itemStyle: {
-        //     normal: {
-        //       color: "#e8cf41",
-        //       shadowBlur: 10
-        //     }
-        //   },
-        //   data: this.mapData
-        // }
       ]
     };
     chart.setOption(option);

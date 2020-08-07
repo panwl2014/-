@@ -1,6 +1,6 @@
 <template>
   <div class="home" v-if="homeData">
-    <Header :title="'浙江省通信大数据综合管理平台'"></Header>
+    <!-- <Header :title="'浙江省通信大数据综合管理平台'"></Header> -->
     <div class="main">
       <div class="left">
         <div class="part">
@@ -68,10 +68,10 @@
             <el-rate
               v-model="scoreValue"
               disabled
-              :colors="['#2dffe4', '#2dffe4', '#2dffe4']"
+              :colors="['#00FFA0', '#00FFA0', '#00FFA0']"
               disabled-void-color="rgba(255,255,255,0.2)"
             ></el-rate>
-          </div>
+          </div> 
         </div>
         <div class="part">
           <Nav></Nav>
@@ -83,8 +83,9 @@
             <Monitor></Monitor>
           </div>
           <div class="center-bottom-right">
-            <Title :title="'不良信息'"></Title>
-            <UnhealthyInfo :chartData="homeData.unhealthy_type"></UnhealthyInfo>
+            <Title :title="'数据安全事件'"></Title> 
+            <DataSecurityEvent :chartData="homeData.info_security"></DataSecurityEvent>
+            <!-- <UnhealthyInfo :chartData="homeData.unhealthy_type"></UnhealthyInfo> -->
           </div>
         </div>
       </div>
@@ -109,23 +110,23 @@
           <WebSecurityEvent :chartData="homeData.unhealthy_info.slice(0,10)"></WebSecurityEvent>
         </div>
         <div class="part">
-          <Title :title="'信安事件各地市分布情况'"></Title>
+          <Title :title="'工业互联网行业数据'"></Title>
           <InfoSecurityCity
-            :chartData="homeData.unhealthy_info.map(item => ({name: item.name, value: item.value}))"
+            :chartData="homeData.industrial_internet"
           ></InfoSecurityCity>
+
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <style lang="scss" scoped>
 .home {
   padding-top: 10rem;
   width: 100%;
   height: 100%;
   .main {
-    padding-top: 10rem;
+    padding-top: 10rem; 
     padding-left: 10rem;
     padding-right: 10rem;
     height: 100%;
@@ -133,7 +134,7 @@
     flex-wrap: wrap;
     // border: 1rem solid red;
     .left,
-    .right {
+    .right { 
       // border: 1rem solid red;
       display: flex;
       flex-wrap: wrap;
@@ -152,14 +153,14 @@
           display: flex;
           justify-content: space-between;
           li {
-            color: #386e68;
+            color: $ccc;
             text-align: center;
             width: 31%;
             .name,
             .value {
               width: 100%;
-              background: rgba(46, 66, 76, 0.25);
-              border: 1rem solid rgba(255, 255, 255, 0.1);
+              background:rgba(27,48,72,0.25);
+              border: 1rem solid rgba(255, 255, 255, 0.2);
             }
             .name {
               font-size: 14rem;
@@ -178,7 +179,7 @@
                 display: inline-block;
                 width: 0;
                 height: 0;
-                border: 5rem solid #6beebb;
+                border: 5rem solid $blue3;
                 border-right-color: transparent;
                 border-bottom-color: transparent;
               }
@@ -207,8 +208,8 @@
               text-align: center;
               height: 70rem;
               .type {
-                border-left: 1rem solid rgba(9, 105, 116, 1);
-                background: rgba(24, 44, 51, 0.84);
+                border-left: 2rem solid $blue2;
+                background: $bg05;
                 height: 26rem;
                 line-height: 26rem;
               }
@@ -216,7 +217,7 @@
                 font-family: "font-Family-self";
                 width: 100%;
                 font-size: 40rem;
-                color: #4cfdca;
+                color: $ccc;
                 line-height: 40rem;
               }
             }
@@ -252,7 +253,7 @@
               .line {
                 height: 1rem;
                 width: 10rem;
-                background-color: #69edbe;
+                background-color: $blue3;
                 position: absolute;
                 bottom: 0;
                 right: 0;
@@ -271,13 +272,13 @@
                 width: 30%;
                 background: rgba(117, 120, 124, 0.26);
                 position: relative;
-                // overflow: hidden;
+                overflow: hidden;
                 .data {
                   position: absolute;
                   left: 0;
                   width: 50%;
                   height: 100%;
-                  background: rgba(107, 238, 187, 0.5);
+                  background: $blue3;
                 }
               }
             }
@@ -315,7 +316,7 @@
                 }
                 .num {
                   font-size: 20rem;
-                  color: #6beebb;
+                  color: $ccc;
                 }
               }
               width: 50%;
@@ -343,7 +344,7 @@
         align-items: center;
         justify-content: center;
         font-size: 18rem;
-        color: #fff;
+        color: rgba(255, 255, 255, .8);
         span {
           margin: 0 10rem;
         }
@@ -367,7 +368,7 @@
 }
 </style>
 <script>
-import Header from "../components/Header";
+// import Header from "../components/Header";
 import Title from "../components/Title";
 import Nav from "../components/home/Nav";
 import Map from "../components/home/Map";
@@ -377,6 +378,7 @@ import UnhealthyInfo from "../components/home/UnhealthyInfo";
 import WebSecurityEvent from "../components/home/InfoSecurityEvent";
 import Monitor from "../components/home/Monitor";
 import InfoSecurityCity from "../components/home/InfoSecurityCity";
+import DataSecurityEvent from '../components/home/DataSecurityEvent'
 
 import countTo from "vue-count-to";
 export default {
@@ -397,7 +399,7 @@ export default {
     };
   },
   components: {
-    Header,
+    // Header,
     Title,
     Nav,
     UnhealthyInfo,
@@ -406,20 +408,22 @@ export default {
     WebSecurityEvent,
     countTo,
     Monitor,
-    InfoSecurityCity
+    InfoSecurityCity,
+    DataSecurityEvent
   },
   created() {
     this.$http.get("/showData/getData/main").then(({ data }) => {
       data.nameSpace = "homeData";
       this.$store.commit("setData", data);
       this.homeData = this.$store.state.homeData;
+       console.log(999, this.homeData)
     });
   },
   methods: {
     getTime() {
       let date = new Date();
       let time =
-        date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        date.getFullYear() + "-" + (date.getMonth() <= 9 ? ('0' + (date.getMonth() + 1)): (date.getMonth() + 1)) + "-" + (date.getMonth() <= 9 ? ('0' + (date.getDate())): (date.getDate()));
       return time;
     }
   },

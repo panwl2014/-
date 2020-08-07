@@ -25,7 +25,7 @@
     background-image: url("../../../public/static/img/imgs/ip_num_img_outline1.png");
     background-size: 100% 100%;
     position: relative;
-    color: #ed7775;
+    color: $red;
     font-size: 16rem;
     height: 50rem;
     width: 24%;
@@ -48,7 +48,7 @@
     }
     &.all {
       background-image: url("../../../public/static/img/imgs/ip_num_img_outline.png");
-      color: #6beebb;
+      color: $blue2;
     }
   }
 }

@@ -31,7 +31,6 @@ export default {
     };
   },
   mounted() {
-    // console.log(this.mapData);
     const chart = this.$echarts.init(this.$refs.map);
     if (data) {
       let index = -1;
@@ -112,7 +111,7 @@ export default {
         tooltip: {
           confine: true,
           trigger: "item",
-          backgroundColor: "rgba(24, 150, 140, .65)",
+          backgroundColor: "rgba(0,101,153,.5)",
           borderColor: "rgba(1, 1, 1, 0)",
           // padding: [10, 20],
           borderWidth: 1,
@@ -153,7 +152,7 @@ export default {
                 show: true,
                 textStyle: {
                   fontSize: 10,
-                  color: "#2F8876"
+                  color: "rgba(255, 255, 255, .3)"
                 }
               },
               emphasis: {
@@ -164,14 +163,14 @@ export default {
             },
             itemStyle: {
               normal: {
-                borderColor: "#2b474a",
-                borderWidth: 1.5,
-                areaColor: "#0f2733"
+                borderColor: "#356e8f",
+                borderWidth: 1,
+                areaColor: "#061f3d"
               },
               emphasis: {
-                areaColor: "#265d60",
-                borderColor: "#62dcab",
-                borderWidth: 1.5
+                areaColor: "#09437a",
+                borderColor: "#356e8f",
+                borderWidth: 1
               }
             },
             zoom: 1.1,

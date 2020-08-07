@@ -18,8 +18,8 @@ export default {
   mounted() {
     let allNum = this.chartData.reduce((prev, item) => prev + item.value, 0);
     const pieCharts = this.$echarts.init(this.$refs.pieCharts);
+    let { getRem } = this.$chartConfig;
     let option = {
-      
       tooltip: this.$store.state.tooltip[0],
       // 小图标表
       legend: {
@@ -30,20 +30,22 @@ export default {
         height: "100%",
         itemWidth: 10,
         itemHeight: 5,
-        itemGap: 5,
+        itemGap: 8,
         textStyle: {
           color: "#7B949B",
-          fontSize: "10 ",
+          fontSize: getRem(12),
           rich: {
             name: {
-              width: 100,
-              align: "left"
+              fontSize: getRem(12),
+              width: getRem(150),
+              align: "left",
             },
             value: {
-              width: 30,
-              align: "right"
-            }
-          }
+              fontSize: getRem(12),
+              width: getRem(30),
+              align: "right",
+            },
+          },
         },
         formatter(name) {
           let data = option.series[0].data;
@@ -56,7 +58,7 @@ export default {
           }
           num = "{name|" + name + "}" + "{value|" + cur_nums + "}";
           return num;
-        }
+        },
       },
       // 大图表
       series: [
@@ -73,46 +75,46 @@ export default {
             "#937e11",
             "#1d7b4c",
             "#197885",
-            "#26649a"
+            "#26649a",
           ],
           label: {
-        normal: {
-          padding: [5, 0, 0, 0],
-          textStyle: {
-            fontWeight: "normal",
-            color: "#739B9C",
-            fontSize: 13,
-            lineHeight: 20
+            normal: {
+              padding: [5, 0, 0, 0],
+              textStyle: {
+                fontWeight: "normal",
+                color: "#739B9C",
+                fontSize: getRem(14),
+                lineHeight: getRem(20),
+              },
+              formatter: function () {
+                return `总数\n${allNum}`;
+              },
+              position: "center",
+              show: true,
+            },
           },
-          formatter: function() {
-            return `总数\n${allNum}`
-          },
-          position: "center",
-          show: true
-        }
-      },
           // 显示文字
           emphasis: {
             label: {
-              show: false
-            }
+              show: false,
+            },
           },
           labelLine: {
-            show: false
+            show: false,
           },
           data: this.chartData,
           itemStyle: {
             borderWidth: 1,
-            borderColor: "#04111F"
-          }
-        }
-      ]
+            borderColor: "#04111F",
+          },
+        },
+      ],
     };
     (option.formatter = "{a} <br/>{b}: {c} ({d}%)"),
       pieCharts.setOption(option);
     window.addEventListener("resize", () => {
       pieCharts.resize();
     });
-  }
+  },
 };
 </script>

@@ -27,8 +27,9 @@ export default {
   height: 30rem;
   font-size: 18rem;
   line-height: 30rem;
-  color: #6beebb;
+  color: #fff;
   .more {
+  color: $blue1;
     font-size: 14rem;
     float: right;
     position: absolute;

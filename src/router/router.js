@@ -11,25 +11,29 @@ Vue.use(VueRouter);
 
 const routes = [
   // { path: '/', component: () => import('../views/Login.vue') },
-  { path: '/', component: () => import('../views/Home.vue') },
 
-  // 反诈
-  { path: '/ip', component: () => import('../views/IPConvergence.vue') },
-  // { path: '/fanzha', component: () => import('../views/FanZha.vue') },
-  // 信息安全
-  { path: '/infoSecurityCenter', component: () => import('../views/InfoSecurityCenter.vue') },
-  // 网络安全
-  { path: '/internetSecurity', component: () => import('../views/InternetSecurity.vue') },
+
+
+  { path: '/', component: () => import('../views/Home.vue') },
+  { path: '/home', component: () => import('../views/Home.vue') },
   // 管控信息中心
   { path: '/managementControl', component: () => import('../views/ManagementControl.vue') },
-  // 新业务安全中心
-  // { path: '/newService', component: () => import('../views/NewService.vue') },
+  // 网络安全
+  { path: '/internetSecurity', component: () => import('../views/InternetSecurity.vue') },
+  // 信息安全
+  { path: '/infoSecurityCenter', component: () => import('../views/InfoSecurityCenter.vue') },
+  // 反诈
+  { path: '/antifraud', component: () => import('../views/Antifraud.vue') },
+  // 工业互联网
+  { path: '/industrialInter', component: () => import('../views/IndustrialInter.vue') },
+  // 数据安全
+  { path: '/dataSecurity', component: () => import('../views/DataSecurity.vue') },
+  // IP汇聚
+  { path: '/ip', component: () => import('../views/IPConvergence.vue') },
 
-  // { path: '/systemManagement', component: () => import('../views/SystemManagement.vue') },
 
-  // 维稳
-  // { path: '/weiWen', component: () => import('../views/WeiWen.vue') },
 
+  // { path: '/fanzha', component: () => import('../views/FanZha.vue') },
   // 测试
   { path: '/map', component: () => import('../components/worldMap.vue') },
   { path: '/map3d', component: () => import('../components/test/Map3D.vue') },

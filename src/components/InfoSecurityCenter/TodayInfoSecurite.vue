@@ -66,8 +66,8 @@ export default {
                   fontSize: 11
                 },
                 icon: {
-                  width: 12,
-                  height: 12,
+                  width: 10,
+                  height: 10,
                   backgroundColor: {
                     image: `${require("../../../public/static/img/icons/icon_add.png")}`
                   }
@@ -88,10 +88,11 @@ export default {
                 "}" +
                 "  " +
                 "{icon|" +
-                " " +
+                "   " +
                 "}" +
-                "{num|" +
-                e.data.add +
+                "{num|" + ' '
+                +
+                e.data.add + 
                 "}" + '\n' + 
                 "{num|" +
                 e.data.rate + "%" +

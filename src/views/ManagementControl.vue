@@ -1,6 +1,5 @@
 <template>
   <div class="page-mc" v-if="controlData">
-    <ChildHeader :title="'管控信息中心'"></ChildHeader>
     <div class="main">
       <div class="left">
           <div class="part">
@@ -35,15 +34,14 @@
               <YiChangWangZhanShuLiang :height="'250rem'" :chartData="controlData.abnormal_website_number"></YiChangWangZhanShuLiang>
           </div>
           <div class="part">
-              <Title title="ICP备案"></Title>
-              <ICP :chartData="controlData.ICP_record_number"></ICP>
+              <Title title="备案情况"></Title>
+              <ICP :chartData="[controlData.ICP_record_number, controlData.APP_record_number, controlData.rating_record_number]"></ICP>
           </div>
           <div class="part">
               <Title title="网站访问排名TOP10"></Title>
               <WangZhanFangWenTop10></WangZhanFangWenTop10>
           </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -88,7 +86,6 @@
 }
 </style>
 <script>
-import ChildHeader from '../components/ChildHeader'
 import Title from '../components/Title'
 import WebIPActiveTrend from '../components/xinxiguankong/WebIPActiveTrend'
 import WebTradeTop from '../components/xinxiguankong/WebTradeTop'
@@ -102,7 +99,6 @@ import CenterBottom from "../components/xinxiguankong/CenterBottom"
 export default {
   
   components: {
-   ChildHeader,
    Title,
    WebIPActiveTrend,
    WebTradeTop,
@@ -125,6 +121,7 @@ export default {
       data.nameSpace = "controlData";
       this.$store.commit("setData", data);
       this.controlData = this.$store.state.controlData;
+      console.log(999, this.controlData)
     });
     setInterval(() => {
       this.$http.get("/showData/getData/control_info").then(({ data }) => {

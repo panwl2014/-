@@ -28,27 +28,26 @@
   }
   .ctrl {
     font-size: 12rem;
-    color: #fff;
     position: absolute;
     top: 20rem;
     left: 10rem;
     width: 20%;
     height: 80%;
     span {
-        display: block;
-        height: 25rem;
-        line-height: 22rem;
-        width: 100%;
-        color: #929294;
-        border: 1rem solid #4a515b;
-        font-size: 11rem;
-        text-align: center;
-        margin-bottom: 10rem;
-         &.active {
-          border: 1rem solid #39a397;
-          color: #6beebb;
-        }
+      display: block;
+      height: 25rem;
+      line-height: 22rem;
+      width: 100%;
+      color: rgba(255, 255, 255, 0.5);
+      border: 1rem solid rgba(255, 255, 255, 0.3);
+      font-size: 11rem;
+      text-align: center;
+      margin-bottom: 10rem;
+      &.active {
+        border: 1rem solid $blue3;
+        color: $blue3;
       }
+    }
   }
 }
 </style>
@@ -57,12 +56,12 @@
 export default {
   data() {
     return {
-      chartData: '',
-      check: "web",
+      chartData: "",
+      check: "web"
     };
   },
   created() {
-    this.chartData = this.$store.state.webSecurityData.falsify_website.reverse()
+    this.chartData = this.$store.state.webSecurityData.falsify_website;
   },
   mounted() {
     this.initChart();
@@ -71,19 +70,26 @@ export default {
     showChart(chartType) {
       this.check = chartType;
       switch (chartType) {
-        case 'web':
-          this.chartData = this.$store.state.webSecurityData.falsify_website.reverse()
+        case "web":
+          this.chartData = this.$store.state.webSecurityData.falsify_website;
           break;
-        case 'room':
-          this.chartData = this.$store.state.webSecurityData.falsify_engine_room.reverse()
+        case "room":
+          this.chartData = this.$store.state.webSecurityData.falsify_engine_room;
           break;
-        case 'address':
-          this.chartData = this.$store.state.webSecurityData.falsify_area.reverse()
+        case "address":
+          this.chartData = this.$store.state.webSecurityData.falsify_area;
           break;
       }
     },
     initChart() {
       let chart = this.$echarts.init(this.$refs.chart);
+      let lineColor = "#1c2844";
+      let {
+        axisLabel,
+        axisLine,
+        axisTick,
+        splitLine
+      } = this.$chartConfig.lineStyle;
       let option = {
         grid: {
           top: 20,
@@ -94,33 +100,21 @@ export default {
         },
         xAxis: {
           type: "value",
-          axisTick: {
-            show: false
-          },
-          axisLine: {
-            lineStyle: {
-              color: "#224f4a"
-            }
-          },
-          splitLine: {
-            show: false
-          },
           axisLabel: {
-            show: false,
-            textStyle: {
-              color: "#a7a7a9",
-              fontSize: 11
-            }
-          }
+            show: false
+          },
+          axisLine,
+          axisTick,
+          splitLine
         },
         yAxis: {
           data: this.chartData.map(item => item.name),
           axisLabel: {
             formatter(e) {
               if (e.length > 8) {
-                return e.slice(0, 8) + '...'
+                return e.slice(0, 8) + "...";
               } else {
-                return e
+                return e;
               }
             },
             textStyle: {
@@ -128,14 +122,9 @@ export default {
               fontSize: 11
             }
           },
-          axisLine: {
-            lineStyle: {
-              color: "#224f4a"
-            }
-          },
-          axisTick: {
-            show: false
-          },
+          axisLine,
+          axisTick,
+          splitLine,
           type: "category"
         },
         series: [
@@ -145,7 +134,7 @@ export default {
             name: "篡改数量",
             type: "bar",
             itemStyle: {
-              color: "#174046"
+              color: "rgba(103, 134, 166, .3)"
             },
             data: this.chartData,
             label: {
