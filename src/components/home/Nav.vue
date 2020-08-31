@@ -1,4 +1,5 @@
 <template>
+<!-- 大屏入口， 动画 -->
   <div class="com-control">
     <div class="control-main">
       <!-- 管控信息中心 -->

@@ -1,4 +1,5 @@
 <template>
+<!-- icp备案 -->
   <div class="com-icp">
     <div class="charts" ref="charts_icp"></div>
   </div>

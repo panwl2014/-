@@ -1,6 +1,6 @@
 <template>
+<!-- 信安接入商top -->
   <div class="com-info-security">
-   
     <li v-for="(item, index) in chartData" :key="index" :class="'top10'">
       <span :class="(index <= 2) ? 'topColor': '' + 'top' " :style="{backgroundColor: colorList[index] || '#354044'}">{{index + 1}}</span>
       <span class="idc text-overfllow">{{item.IDC}}</span>

@@ -22,31 +22,6 @@
         <span :class="tabBarCheck == 'year' ? 'active': ''" @click="changeTabBar('year')">本年</span>
       </div>
 
-      <!-- <div class="swiper-container1" v-if="tabCheck == 'in'">
-        <div class="swiper-wrapper">
-          <div
-            class="chart-info swiper-slide"
-            v-for="(item, index) in Math.ceil(chartData[chartIndex].length / 10)"
-            :key="index"
-          >
-            <li class="title">
-              <span>{{tabCheck == 'in' ? '省份': '国家'}}</span>
-              <span>应答量</span>
-              <span>拦截量</span>
-              <span>占比</span>
-            </li>
-            <li
-              v-for="(item1, index1) in chartData[chartIndex].slice(index * 10, (index + 1) * 10)"
-              :key="index1"
-            >
-              <span>{{tabCheck == 'in' ? item1.province: item1.country}}</span>
-              <span>{{item1.response_amount}}</span>
-              <span>{{item1.intercept_amount}}</span>
-              <span>{{item1.rate + '%'}}</span>
-            </li>
-          </div>
-        </div>
-      </div>-->
       <div class="swiper-container1" v-show="tabCheck == 0">
         <div class="swiper-wrapper">
           <div

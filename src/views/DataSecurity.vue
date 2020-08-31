@@ -66,7 +66,7 @@
     }
     .bottom {
       width: 100%;
-      height: 30vh;
+      height: 32vh;
       background-image: url("../../public/static/img/imgs/shujuanquan/img_databottombg.png");
       background-size: 100% 100%;
       margin-top: 20rem;

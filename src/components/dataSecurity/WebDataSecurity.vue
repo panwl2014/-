@@ -46,7 +46,7 @@
   }
   .chart_top {
     width: 100%;
-    height: 250rem;
+    height: 40%;
   }
   .chart_bottom {
     width: 100%;

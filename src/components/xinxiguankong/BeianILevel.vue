@@ -1,4 +1,5 @@
 <template>
+<!-- 定级备案 -->
   <div class="com-device-qty">
     <div class="chart">
       <div class="chart-pie" ref="chart"></div>

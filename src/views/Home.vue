@@ -85,7 +85,6 @@
           <div class="center-bottom-right">
             <Title :title="'数据安全事件'"></Title> 
             <DataSecurityEvent :chartData="homeData.info_security"></DataSecurityEvent>
-            <!-- <UnhealthyInfo :chartData="homeData.unhealthy_type"></UnhealthyInfo> -->
           </div>
         </div>
       </div>
@@ -111,9 +110,9 @@
         </div>
         <div class="part">
           <Title :title="'工业互联网行业数据'"></Title>
-          <InfoSecurityCity
+          <IndustrialInter
             :chartData="homeData.industrial_internet"
-          ></InfoSecurityCity>
+          ></IndustrialInter>
 
         </div>
       </div>
@@ -374,10 +373,9 @@ import Nav from "../components/home/Nav";
 import Map from "../components/home/Map";
 // import WebSecurity from "../components/home/WebSecurity1";
 import WebSecurity from "../components/home/WebSecurity";
-import UnhealthyInfo from "../components/home/UnhealthyInfo";
 import WebSecurityEvent from "../components/home/InfoSecurityEvent";
 import Monitor from "../components/home/Monitor";
-import InfoSecurityCity from "../components/home/InfoSecurityCity";
+import IndustrialInter from "../components/home/IndustrialInter";
 import DataSecurityEvent from '../components/home/DataSecurityEvent'
 
 import countTo from "vue-count-to";
@@ -385,9 +383,6 @@ export default {
   data() {
     return {
       homeData: "", // 默认数据,
-      // catchNum: [0, 0, 0, 0],
-      // catchNum1: [0, 0, 0, 0],
-      newNum: '',
       IDC: [
         { url: "icon_all" },
         { url: "icon_yichang" },
@@ -402,13 +397,12 @@ export default {
     // Header,
     Title,
     Nav,
-    UnhealthyInfo,
     Map,
     WebSecurity,
     WebSecurityEvent,
     countTo,
     Monitor,
-    InfoSecurityCity,
+    IndustrialInter,
     DataSecurityEvent
   },
   created() {

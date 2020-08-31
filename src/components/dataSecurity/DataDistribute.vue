@@ -53,13 +53,13 @@
   }
   .chart_bottom {
     width: 100%;
-    height: 280rem;
+    height: 45%;
     margin-top: 20rem;
     display: flex;
     flex-wrap: wrap;
     .item {
       width: 50%;
-      height: 140rem;
+      height: 50%;
     }
   }
 }

@@ -53,7 +53,7 @@ export default {
         borderColor: "rgba(1, 1, 1, 0)",
         // padding: [10, 20],
         borderWidth: 1,
-        position: ["55%", "17%"],
+        position: ["55%", "5%"],
         formatter: function (params) {
           return `
             <div style="background-image: url('${require("../../../public/static/img/imgs/shujuanquan/img_dishibg.png")}'); background-size: 100% 100%;  width:75rem; height: 85rem; line-height: 20rem; font-size: 12rem; color: #23CEFF; padding-left: 8rem; padding-top: 5rem">

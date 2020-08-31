@@ -19,13 +19,11 @@ import 'vuescroll/dist/vuescroll.css';
 
 
 import chartConfig from './js/chart_config';
-import 'lib-flexible';
+// import 'lib-flexible';
 // import axios from './axios/axios';
 
 import ElementUi from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// import VueAwesomeSwiper from 'vue-awesome-swiper';
-// Vue.use(VueAwesomeSwiper)
 
 import './js/background';
 import './js/iconfont';

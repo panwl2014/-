@@ -1,4 +1,5 @@
 <template>
+<!--  home > 数据安全事件 -->
   <div class="data_S">
     <div class="chart_bottom">
       <ul>
@@ -129,7 +130,5 @@
 <script>
 export default {
  props: ['chartData'],
-  methods: {
-  },
 };
 </script>  

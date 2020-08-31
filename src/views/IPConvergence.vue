@@ -37,42 +37,42 @@
               </dl>
             </div>
           </vue-scroll>
-          <vue-scroll :ops="ops" v-if="check == 'security'">
-            <div class="security-part">
-              <div class="part bug-part">
-                <p>{{data.security[0].type}}</p>
-                <li>
-                  <p>漏洞名称</p>
-                  <p>危险等级</p>
-                </li>
-                <li v-for="(item, index) in data.security[0].data" :key="index">
-                  <p>{{item.name}}</p>
-                  <p>{{item.value}}</p>
-                  <span class="line"></span>
-                </li>
-              </div>
-              <div class="part info-event">
-                <p>{{data.security[1].type}}</p>
-                <li>
-                  <p>事件名称</p>
-                  <p>时间</p>
-                </li>
-                <li v-for="(item, index) in data.security[1].data" :key="index">
-                  <p>{{item.name}}</p>
-                  <p>{{item.value}}</p>
-                </li>
-              </div>
-              <div class="part web-event">
-                <p>{{data.security[2].type}}</p>
-                <li>
-                  <p>漏洞名称</p>
-                  <p>时间</p>
-                </li>
-                <li v-for="(item, index) in data.security[2].data" :key="index">
-                  <p>{{item.name}}</p>
-                  <p>{{item.value}}</p>
-                </li>
-              </div>
+          <vue-scroll :ops="ops" v-if="check == 'security'" ref="scroll" class="security-part">
+            <!-- <div class="security-part"> -->
+            <div class="part bug-part">
+              <p>{{data.security[0].type}}</p>
+              <li>
+                <p>漏洞名称</p>
+                <p>危险等级</p>
+              </li>
+              <li v-for="(item, index) in data.security[0].data" :key="index">
+                <p>{{item.name}}</p>
+                <p>{{item.value}}</p>
+                <span class="line"></span>
+              </li>
+            </div>
+            <div class="part info-event">
+              <p>{{data.security[1].type}}</p>
+              <li>
+                <p>事件名称</p>
+                <p>时间</p>
+              </li>
+              <li v-for="(item, index) in data.security[1].data" :key="index">
+                <p>{{item.name}}</p>
+                <p>{{item.value}}</p>
+              </li>
+            </div>
+            <div class="part web-event">
+              <p>{{data.security[2].type}}</p>
+              <li>
+                <p>漏洞名称</p>
+                <p>时间</p>
+              </li>
+              <li v-for="(item, index) in data.security[2].data" :key="index">
+                <p>{{item.name}}</p>
+                <p>{{item.value}}</p>
+              </li>
+              <!-- </div> -->
             </div>
           </vue-scroll>
           <vue-scroll :ops="ops" v-if="check == 'trace'">
@@ -152,7 +152,7 @@
       }
 
       .ip-chart {
-        border: 1rem solid red;
+        // border: 1rem solid red;
         width: 75vw;
         height: 80vh;
         margin-top: 50rem;
@@ -443,6 +443,7 @@ export default {
       check: "info",
       bg: 1,
       showData: "",
+      getRem: null,
       ops: {
         bar: {
           hoverStyle: true,
@@ -565,6 +566,7 @@ export default {
     };
   },
   created() {
+    this.getRem = this.$chartConfig.getRem;
     // this.showData = this.data.data1.ipInfoLeft;
   },
   mounted() {
@@ -572,6 +574,25 @@ export default {
     this.initChart1();
   },
   methods: {
+    toTop(e) {
+      this.$nextTick(() => {
+        // let offsetArr = [];
+        // console.log(112233, document.querySelector(".security-part").scrollTop);
+        // document.querySelectorAll(".security-part > div").forEach((item) => {
+        //   offsetArr.push(item.offsetTop);
+        // });
+        // info-event
+        // bug-part
+        // web-event
+        if (e == "网安事件") {
+          this.$refs["scroll"].scrollIntoView(".web-event", 300);
+        } else if (e == "信息安全") {
+          this.$refs["scroll"].scrollIntoView(".info-event", 300);
+        } else {
+          this.$refs["scroll"].scrollIntoView(".bug-part", 300);
+        }
+      });
+    },
     initChart1() {
       const chart1 = this.$echarts.init(this.$refs.chart1);
       let option1 = {
@@ -590,7 +611,7 @@ export default {
             return e.data.name;
           },
         },
-        animationDurationUpdate: 1500,
+        animationDurationUpdate: this.getRem(1500),
         animationEasingUpdate: "quinticInOut",
         color: ["#83e0ff", "#45f5ce", "#b158ff"],
         series: [
@@ -598,8 +619,8 @@ export default {
             type: "graph",
             layout: "force",
             force: {
-              repulsion: 2000,
-              edgeLength: 200,
+              repulsion: this.getRem(2000),
+              edgeLength: this.getRem(200),
             },
             //  focusNodeAdjacency: true,
             edgeSymbol: ["circle", "circle"], //线2头标记
@@ -620,7 +641,7 @@ export default {
             data: [
               {
                 name: "192.168.122.5",
-                symbolSize: 150,
+                symbolSize: this.getRem(150),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/items_icon.png")}`,
                 // draggable: true,
@@ -636,7 +657,7 @@ export default {
               },
               {
                 name: "167.98.33.2",
-                symbolSize: 150,
+                symbolSize: this.getRem(150),
                 label: {
                   show: false,
                 },
@@ -651,7 +672,7 @@ export default {
               },
               {
                 name: "178.32.4.2",
-                symbolSize: 150,
+                symbolSize: this.getRem(150),
                 draggable: true,
                 label: {
                   show: false,
@@ -666,7 +687,7 @@ export default {
               },
               {
                 name: "12.5.632.67",
-                symbolSize: 150,
+                symbolSize: this.getRem(150),
                 draggable: true,
                 label: {
                   show: false,
@@ -722,7 +743,7 @@ export default {
             return e.data.name;
           },
         },
-        animationDurationUpdate: 1500,
+        animationDurationUpdate: this.getRem(2000),
         animationEasingUpdate: "quinticInOut",
         color: ["#83e0ff", "#45f5ce", "#b158ff"],
         series: [
@@ -730,7 +751,7 @@ export default {
             type: "graph",
             layout: "force",
             force: {
-              repulsion: 900,
+              repulsion: this.getRem(800),
               edgeLength: 100,
             },
             //  focusNodeAdjacency: true,
@@ -752,7 +773,7 @@ export default {
             data: [
               {
                 name: "192.168.122.5",
-                symbolSize: 150,
+                symbolSize: this.getRem(150),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/items_icon.png")}`,
                 // draggable: true,
@@ -769,7 +790,7 @@ export default {
               },
               {
                 name: "信息安全",
-                symbolSize: 150,
+                symbolSize: this.getRem(150),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ sphere_normal.png")}`,
                 itemStyle: {
@@ -784,7 +805,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 category: 1,
@@ -799,7 +820,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 category: 1,
@@ -814,7 +835,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 category: 1,
@@ -829,7 +850,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 // category: 1,
@@ -844,7 +865,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 // category: 1,
@@ -857,7 +878,7 @@ export default {
               // ************************************************************
               {
                 name: "漏洞风险",
-                symbolSize: 150,
+                symbolSize: this.getRem(150),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ sphere_normal.png")}`,
                 itemStyle: {
@@ -871,7 +892,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 // category: 2,
@@ -886,7 +907,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 // category: 2,
@@ -901,7 +922,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 // category: 2,
@@ -916,7 +937,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 // category: 3,
@@ -931,7 +952,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 // category: 3,
@@ -944,7 +965,7 @@ export default {
               // ***************************************
               {
                 name: "网安事件",
-                symbolSize: 150,
+                symbolSize: this.getRem(150),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ sphere_normal.png")}`,
                 category: 2,
@@ -959,7 +980,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 itemStyle: {
@@ -973,7 +994,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 itemStyle: {
@@ -987,7 +1008,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 itemStyle: {
@@ -1001,7 +1022,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 itemStyle: {
@@ -1015,7 +1036,7 @@ export default {
                 label: {
                   show: false,
                 },
-                symbolSize: 70,
+                symbolSize: this.getRem(70),
                 draggable: true,
                 symbol: `image://${require("../../public/static/img/imgs/ip/img_ball_normal.png")}`,
                 itemStyle: {
@@ -1113,6 +1134,7 @@ export default {
           e.data.name == "漏洞风险"
         ) {
           me.check = "security";
+          me.toTop(e.data.name);
         } else if (e.data.name == "192.168.122.5") {
           me.check = "info";
         }
@@ -1126,10 +1148,8 @@ export default {
       this.check = e;
       if (e == "trace") {
         this.initChart1();
-        // this.bg = 2;
       }
       if (e == "security" || e == "info") {
-        // this.bg = 1;
         this.initChart();
       }
     },
